@@ -1,0 +1,29 @@
+actions:
+  - hook: wp_enqueue_scripts
+    class: VendorName\ReplaceMeTheme\Registry\PublicQueueRegistry
+  - hook: admin_enqueue_scripts
+    class: VendorName\ReplaceMeTheme\Registry\AdminQueueRegistry
+  - hook: rest_api_init
+    class: VendorName\ReplaceMeTheme\Registry\ApiRouteRegistry
+  - hook: init
+    class: VendorName\ReplaceMeTheme\Registry\ShortcodeRegistry
+  - hook: after_setup_theme
+    class: VendorName\ReplaceMeTheme\Registry\ThemeSupportRegistry
+  - hook: init
+    class: VendorName\ReplaceMeTheme\Registry\ImageSizeRegistry
+  - hook: init
+    class: VendorName\ReplaceMeTheme\Registry\MenuRegistry
+  - hook: acf/init
+    class: VendorName\ReplaceMeTheme\Registry\FieldRegistry
+  - hook: init
+    class: VendorName\ReplaceMeTheme\Registry\PostTypeRegistry
+  - hook: after_switch_theme
+    class: VendorName\ReplaceMeTheme\Core\Activator
+    method: activate
+filters:
+  - hook: template_include
+    class: VendorName\ReplaceMeTheme\Core\TemplateHandler
+    method: handle
+  - hook: post_updated_messages
+    class: VendorName\ReplaceMeTheme\Registry\PostTypeRegistry
+    method: updateMessages

@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+error_reporting(E_ERROR);
+
+// include autoload for local or global context
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require __DIR__ . '/vendor/autoload.php';
+} else {
+    require __DIR__ . '/../../../vendor/autoload.php';
+}
+
+use Forme\CodeGen\Command\MakeCommand;
+use Forme\CodeGen\Command\NewCommand;
+use Symfony\Component\Console\Application;
+
+$container = include 'definitions/bootstrap.php';
+
+$application = new Application('Forme Code Generator', '1.0');
+
+$application->add($container->get(MakeCommand::class));
+$application->add($container->get(NewCommand::class));
+
+$application->run();
