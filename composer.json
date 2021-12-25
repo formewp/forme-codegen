@@ -1,6 +1,6 @@
 {
     "name": "forme/codegen",
-    "version": "1.0",
+    "version": "1.0.1",
     "license": "MIT",
     "description": "Code Generation CLI For The Forme WordPress Framework",
     "require": {
