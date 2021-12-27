@@ -116,6 +116,13 @@ General
 - Will `composer create project` from `forme/server`
 - Will check for dependencies
 
+### Bump Project Versions
+
+- Will bump version number in plugin or theme files ✅
+- Will update git tag ✅
+- Will update changelog using git cliff ✅
+- Will git commit and push all changes ✅
+
 ### Syntax and usage
 
 - Initially this will at least work from within the codegen project folder ✅
