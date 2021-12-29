@@ -1,0 +1,50 @@
+FROM ubuntu:18.04
+
+LABEL maintainer="Moussa Clarke"
+
+RUN apt-get update \
+    && apt-get install -y locales \
+    && locale-gen en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ UTC
+ENV WP_CLI_VERSION 2.5.0
+ENV NODE_VERSION=16
+
+RUN apt-get update \
+    && apt-get install -y nginx curl zip unzip git software-properties-common supervisor \
+    && add-apt-repository -y ppa:ondrej/php \
+    && apt-get update \
+    && apt-get install -y php8.0-fpm php8.0-cli php8.0-mcrypt php8.0-gd php8.0-mysql \
+    php8.0-imap php-memcached php8.0-mbstring php8.0-xml php8.0-curl \
+    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+    && mkdir /run/php \
+    && cd /tmp \
+    && url="https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar" \
+    && curl -o wp.phar -fSL "${url}" \
+    && chmod +x wp.phar \
+    && mv wp.phar /usr/local/bin/wp \
+    && curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm \
+    && apt-get remove -y --purge software-properties-common \
+    && apt-get -y autoremove \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && echo "daemon off;" >> /etc/nginx/nginx.conf
+
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
+COPY default /etc/nginx/sites-available/default
+
+COPY php-fpm.conf /etc/php/8.0/fpm/php-fpm.conf
+
+EXPOSE 80
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["/usr/bin/supervisord"]

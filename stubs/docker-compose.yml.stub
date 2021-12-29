@@ -1,0 +1,32 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: {BASE_PROJECT_NAME}/app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - ketch
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "{BASE_PROJECT_NAME}"
+      MYSQL_USER: "{BASE_PROJECT_NAME}"
+      MYSQL_PASSWORD: "{BASE_PROJECT_NAME}"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - ketch
+networks:
+  ketch:
+    driver: "bridge"
+volumes:
+  mysqldata:
+    driver: "local"
