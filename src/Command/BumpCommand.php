@@ -20,6 +20,9 @@ final class BumpCommand extends Command
     /** @var FilesystemOperator */
     private $filesystem;
 
+    /** @var FilesystemOperator */
+    private $codegenFilesystem;
+
     public function __construct(ContainerInterface $container, Filesystem $filesystem)
     {
         $this->codegenFilesystem = $container->get('codegenFilesystem');
