@@ -43,7 +43,7 @@ final class KetchCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (!$this->filesystem->fileExists('/public/wp-config.php')) {
-            $output->writeln("⛔ <fg=red>This doesn't look like a WordPress server directory.</> Try cd-ing into the root directory first");
+            $output->writeln("⛔ <fg=red>This doesn't look like a WordPress/Forme base directory.</> Try cd-ing into the root directory first");
 
             return Command::FAILURE;
         }
@@ -54,8 +54,11 @@ final class KetchCommand extends Command
         if ($command === 'init') {
             return $this->initCommand($args, $output);
         } else {
-            // otherwise we check to see if docker compose exists and if so, we pass the command to our shell script
-            return $this->passThroughCommand($command, $args, $output);
+            if ($this->filesystem->fileExists('/docker-compose.yml')) {
+                return $this->passThroughCommand($command, $args, $output);
+            } else {
+                $output->writeln("⛔ <fg=red>It doesn't look like docker has been initialised yet.</> Try running `forme ketch init`");
+            }
         }
     }
 
