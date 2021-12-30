@@ -113,8 +113,15 @@ General
 
 ### Create New Servers
 
-- Will `composer create project` from `forme/server`
+- Will `composer create project` from `forme/base`
 - Will check for dependencies
+
+### Docker
+
+- Will initialise a basic docker environment similar to Laravel Sail ✅
+- Will link plugin or theme directories into the docker environment ✅
+- Will pass through npm, wp and composer commands into the docker environment ✅
+- Will pass through docker compose commands ✅
 
 ### Bump Project Versions
 
