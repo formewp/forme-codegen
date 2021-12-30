@@ -52,45 +52,51 @@ final class KetchCommand extends Command
         $args                = $input->getArgument('args');
         // if init, we copy over the docker files
         if ($command === 'init') {
-            $dockerCompose = $this->codegenFilesystem->read('stubs/docker-compose.yml.stub');
-            // get the last part of the name of the directory we are in
-            if (!$args[0] || $args[0] === '.') {
-                $args[0] = basename(getcwd());
-            }
-            // remove spaces from the name and lowercase it
-            $projectName   = strtolower(str_replace(' ', '', $args[0]));
-            $dockerCompose = str_replace('{BASE_PROJECT_NAME}', $projectName, $dockerCompose);
-
-            // save it to the project directory
-            $this->filesystem->write('docker-compose.yml', $dockerCompose);
-
-            // copy over the docker directory
-            $this->filesystem->write('docker/default', $this->codegenFilesystem->read('stubs/docker/default.stub'));
-            $this->filesystem->write('docker/Dockerfile', $this->codegenFilesystem->read('stubs/docker/Dockerfile.stub'));
-            $this->filesystem->write('docker/php-fpm.conf', $this->codegenFilesystem->read('stubs/docker/php-fpm.conf.stub'));
-            $this->filesystem->write('docker/supervisord.conf', $this->codegenFilesystem->read('stubs/docker/supervisord.conf.stub'));
-
-            $output->writeln('🎉 <fg=green>Ketch initialised docker successfully! </> Run `forme ketch up` to start the container.');
-
-            return Command::SUCCESS;
+            return $this->initCommand($args, $output);
         } else {
             // otherwise we check to see if docker compose exists and if so, we pass the command to our shell script
-            $shellScript         = $this->codegenFilesystem->read('src/Shell/ketch.sh');
-            $tmpScriptFile       = 'src/Shell/tmp' . uniqid() . '.sh';
-            $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
-            $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile, $command, ...$args]);
-            $process->run(function ($type, $buffer) use ($output) {
-                $output->writeln($buffer);
-            });
-            $this->codegenFilesystem->delete($tmpScriptFile);
-            if (!$process->isSuccessful()) {
-                $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
-
-                return Command::FAILURE;
-            }
-            $output->writeln('🎉 <fg=green>Ran ketch command successfully!');
-
-            return Command::SUCCESS;
+            return $this->passThroughCommand($command, $args, $output);
         }
+    }
+
+    protected function initCommand(array $args, OutputInterface $output): int
+    {
+        $dockerCompose = $this->codegenFilesystem->read('stubs/docker-compose.yml.stub');
+        // get the last part of the name of the directory we are in
+        if (!$args[0] || $args[0] === '.') {
+            $args[0] = basename(getcwd());
+        }
+        // remove spaces from the name and lowercase it
+        $projectName   = strtolower(str_replace(' ', '', $args[0]));
+        $dockerCompose = str_replace('{BASE_PROJECT_NAME}', $projectName, $dockerCompose);
+
+        // save it to the project directory
+        $this->filesystem->write('docker-compose.yml', $dockerCompose);
+
+        // copy over the docker directory
+        $this->filesystem->write('docker/default', $this->codegenFilesystem->read('stubs/docker/default.stub'));
+        $this->filesystem->write('docker/Dockerfile', $this->codegenFilesystem->read('stubs/docker/Dockerfile.stub'));
+        $this->filesystem->write('docker/php-fpm.conf', $this->codegenFilesystem->read('stubs/docker/php-fpm.conf.stub'));
+        $this->filesystem->write('docker/supervisord.conf', $this->codegenFilesystem->read('stubs/docker/supervisord.conf.stub'));
+
+        $output->writeln('🎉 <fg=green>Ketch initialised docker successfully! </> Run `forme ketch up` to start the container.');
+
+        return Command::SUCCESS;
+    }
+
+    protected function passThroughCommand(string $command, array $args, OutputInterface $output): int
+    {
+        $process = new Process(['bash', __DIR__ . '/../../src/Shell/ketch.sh', $command, ...$args]);
+        $process->run(function ($type, $buffer) use ($output) {
+            $output->writeln($buffer);
+        });
+        if (!$process->isSuccessful()) {
+            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
+
+            return Command::FAILURE;
+        }
+        $output->writeln('🎉 <fg=green>Ran ketch command successfully!');
+
+        return Command::SUCCESS;
     }
 }
