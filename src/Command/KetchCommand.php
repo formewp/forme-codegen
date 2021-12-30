@@ -34,9 +34,9 @@ final class KetchCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Docker commands for Forme')
-            ->setHelp('Pass in the command to run')
-            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'Init, up etc')
+            ->setDescription('A simple Docker cli for Forme')
+            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker compose commands like up, down, etc. You can also run a selection of commands within the configured container, such as composer, npm, npx and wp')
+            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, composer, npm, wp')
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
     }
