@@ -135,6 +135,8 @@ General
 - Initially this will at least work from within the codegen project folder ✅
 - Library will work globally even though not installed globally ✅
 - Library could be installed globally and `make` should work from within any relevant theme or plugin folder ✅
+- `ketch` should only work from within any relevant base install ✅
+- `bump` should only work from within a relevant theme or plugin folder
 
 ```bash
 # Just install it globally
@@ -158,6 +160,10 @@ ln -s /path/to/installation/forme-codegen/forme /usr/local/bin/
 forme make <name> <type>
 # Creates a new project
 forme new <name> <type> <host(optional)>
+# bump a project
+forme bump <type(optional)>
+# ketch for docker
+forme ketch <command> <arguments>
 ```
 
 - The above syntax will work but without forme alias ✅
@@ -181,4 +187,4 @@ $ forme make
 ... etc
 ```
 
-- Eventually it could work from the root WP installation (standard or bedrock)
+- Eventually `make` could work from the base WP installation with additional arguments
