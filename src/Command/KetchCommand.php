@@ -35,8 +35,8 @@ final class KetchCommand extends Command
     {
         $this
             ->setDescription('A simple Docker cli for Forme')
-            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker compose commands like up, down, etc. You can also run a selection of commands within the configured container, such as composer, npm, npx and wp')
-            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, composer, npm, wp')
+            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker-compose commands like `up`, `down`, `ps` etc. You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands')
+            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, ps, composer, npm, wp, shell')
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
     }
@@ -95,6 +95,10 @@ final class KetchCommand extends Command
     protected function passThroughCommand(string $command, array $args, OutputInterface $output): int
     {
         $process = new Process(['bash', __DIR__ . '/../../src/Shell/ketch.sh', $command, ...$args]);
+        if ($command === 'shell') {
+            $process->setTty(true);
+            $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
+        }
         $process->run(function ($type, $buffer) use ($output) {
             $output->writeln($buffer);
         });

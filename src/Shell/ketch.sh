@@ -42,6 +42,17 @@ if [ $# -gt 0 ];then
         shift 1
         $COMPOSE up -d "$@"
 
+    # exec
+    elif [ "$1" == "shell" ]; then
+        shift 1
+        # check if the container is running first
+        if [ "$(docker ps -q -f name=$CONTAINER)" ]; then
+            docker exec -it $CONTAINER bash "$@"
+        else
+            echo "The container does not appear to be running. Please run 'forme ketch up' first."
+            exit 1
+        fi
+
     # Else, pass-thru args to docker-compose
     else
         $COMPOSE "$@"
