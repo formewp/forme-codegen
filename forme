@@ -18,7 +18,7 @@ use Symfony\Component\Console\Application;
 
 $container = include 'definitions/bootstrap.php';
 
-$application = new Application('Forme Code Generator', '1.2.1');
+$application = new Application('Forme Code Generator', '1.2.2');
 
 $application->add($container->get(MakeCommand::class));
 $application->add($container->get(NewCommand::class));
