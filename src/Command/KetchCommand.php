@@ -87,6 +87,18 @@ final class KetchCommand extends Command
         $this->filesystem->write('docker/php-fpm.conf', $this->codegenFilesystem->read('stubs/docker/php-fpm.conf.stub'));
         $this->filesystem->write('docker/supervisord.conf', $this->codegenFilesystem->read('stubs/docker/supervisord.conf.stub'));
 
+        // use wp cli to define the various constants in wp-config.php
+        $wpCli = new Process(['wp', 'cli', 'config', 'constant', 'FORME_PRIVATE_ROOT', '/var/www/html/']);
+        $wpCli->run();
+        $wpCli = new Process(['wp', 'cli', 'config', 'constant', 'DB_NAME', $projectName]);
+        $wpCli->run();
+        $wpCli = new Process(['wp', 'cli', 'config', 'constant', 'DB_USER', $projectName]);
+        $wpCli->run();
+        $wpCli = new Process(['wp', 'cli', 'config', 'constant', 'DB_PASSWORD', $projectName]);
+        $wpCli->run();
+        $wpCli = new Process(['wp', 'cli', 'config', 'constant', 'DB_HOST', 'mysql']);
+        $wpCli->run();
+
         $output->writeln('🎉 <fg=green>Ketch initialised docker successfully! </> Run `forme ketch up` to start the container.');
 
         return Command::SUCCESS;
