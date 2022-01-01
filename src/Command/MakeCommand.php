@@ -9,6 +9,8 @@ use Forme\CodeGen\Utils\ClassFinder;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use League\Flysystem\Filesystem;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Completion\CompletionInput;
+use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -104,5 +106,12 @@ final class MakeCommand extends Command
         $output->writeln($messages);
 
         return Command::SUCCESS;
+    }
+
+    public function complete(CompletionInput $input, CompletionSuggestions $suggestions): void
+    {
+        if ($input->mustSuggestArgumentValuesFor('type')) {
+            $suggestions->suggestValues(self::VALID_TYPES);
+        }
     }
 }
