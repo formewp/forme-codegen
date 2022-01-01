@@ -111,10 +111,12 @@ General
 - Should work on Windows 10 ✅ (As long as correct environment, then yes)
 - Should be able handle different github hosts ✅
 
-### Create New Servers
+### Create New Base Installations
 
-- Will `composer create project` from `forme/base`
+- Will `composer create project` from `forme/base` ✅
 - Will check for dependencies
+- Will link plugin or theme directories into the base installation ✅
+- Will run `forme/base` custom composer scripts ✅
 
 ### Docker
 
@@ -136,7 +138,8 @@ General
 - Library will work globally even though not installed globally ✅
 - Library could be installed globally and `make` should work from within any relevant theme or plugin folder ✅
 - `ketch` should only work from within any relevant base install ✅
-- `bump` should only work from within a relevant theme or plugin folder
+- `base` should only work from within any relevant base install (except for `base new`) ✅
+- `bump` should only work from within a relevant theme or plugin folder ✅
 
 ```bash
 # Just install it globally
@@ -164,6 +167,8 @@ forme new <name> <type> <host(optional)>
 forme bump <type(optional)>
 # ketch for docker
 forme ketch <command> <arguments>
+# base installation utils
+forme base <command> <arguments>
 ```
 
 - The above syntax will work but without forme alias ✅
