@@ -73,8 +73,8 @@ final class BaseCommand extends Command
 
             return Command::FAILURE;
         }
-        // remove non alpha from the name and lowercase it
-        $projectName   = preg_replace('/[^a-zA-Z0-9]/', '', $args[0]);
+        // replace non alpha with hyphens and lowercase the name
+        $projectName   = preg_replace('/[^a-zA-Z0-9]/', '-', $args[0]);
         $projectName   = strtolower($projectName);
 
         // run composer create project
