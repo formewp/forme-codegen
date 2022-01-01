@@ -110,6 +110,8 @@ final class KetchCommand extends Command
         $process = new Process(['bash', __DIR__ . '/../../src/Shell/ketch.sh', $command, ...$args]);
         if ($command === 'shell') {
             $process->setTty(true);
+            $process->setTimeout(null);
+            $process->setIdleTimeout(null);
             $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
         }
         $process->run(function ($type, $buffer) use ($output) {

@@ -62,6 +62,7 @@ final class NewCommand extends Command
         $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
         $this->filesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
+        $process->setTimeout(null);
         $process->run(function ($type, $buffer) use ($output) {
             $output->writeln($buffer);
         });
