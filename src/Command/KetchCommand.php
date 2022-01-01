@@ -8,6 +8,8 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Completion\CompletionInput;
+use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,6 +26,8 @@ final class KetchCommand extends Command
     /** @var FilesystemOperator */
     private $codegenFilesystem;
 
+    private const SUGGESTED_COMMANDS = ['init', 'up', 'down', 'restart', 'list', 'composer', 'npm', 'npx', 'wp', 'shell'];
+
     public function __construct(ContainerInterface $container, Filesystem $filesystem)
     {
         $this->codegenFilesystem = $container->get('codegenFilesystem');
@@ -36,7 +40,7 @@ final class KetchCommand extends Command
         $this
             ->setDescription('A simple Docker cli for Forme')
             ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker-compose commands like `up`, `down`, `restart`, `list` etc. You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands')
-            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, restart, list, composer, npm, wp, shell')
+            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. ' . implode(', ', self::SUGGESTED_COMMANDS))
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
     }
@@ -158,5 +162,16 @@ final class KetchCommand extends Command
         $output->writeln('🎉 <fg=green>Linked ' . $type . ' ' . $pluginOrThemeName . ' successfully!</>');
 
         return Command::SUCCESS;
+    }
+
+    public function complete(CompletionInput $input, CompletionSuggestions $suggestions): void
+    {
+        if ($input->mustSuggestArgumentValuesFor('ketchCommand')) {
+            $suggestions->suggestValues(self::SUGGESTED_COMMANDS);
+        }
+
+        if ($input->mustSuggestArgumentValuesFor('args') && $input->getArgument('ketchCommand') === 'link') {
+            $suggestions->suggestValues(['plugin', 'theme']);
+        }
     }
 }

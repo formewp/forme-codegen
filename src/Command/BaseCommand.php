@@ -7,6 +7,8 @@ namespace Forme\CodeGen\Command;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Completion\CompletionInput;
+use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -153,5 +155,12 @@ final class BaseCommand extends Command
         $output->writeln('🎉 <fg=green>' . $command . ' completed successfully!</>');
 
         return Command::SUCCESS;
+    }
+
+    public function complete(CompletionInput $input, CompletionSuggestions $suggestions): void
+    {
+        if ($input->mustSuggestArgumentValuesFor('baseCommand')) {
+            $suggestions->suggestValues(self::AVAILABLE_COMMANDS);
+        }
     }
 }
