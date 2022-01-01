@@ -97,7 +97,7 @@ final class KetchCommand extends Command
         $wpCli->run();
         $wpCli = new Process(['wp', 'config', 'set', 'DB_PASSWORD', $projectName]);
         $wpCli->run();
-        $wpCli = new Process(['wp', 'cli', 'set', 'constant', 'DB_HOST', 'mysql']);
+        $wpCli = new Process(['wp', 'config', 'set', 'constant', 'DB_HOST', 'mysql']);
         $wpCli->run();
 
         $output->writeln('🎉 <fg=green>Ketch initialised docker successfully! </> Run `forme ketch up` to start the container.');
