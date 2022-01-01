@@ -8,6 +8,8 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Completion\CompletionInput;
+use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,6 +24,12 @@ final class BumpCommand extends Command
 
     /** @var FilesystemOperator */
     private $codegenFilesystem;
+
+    private const BUMP_TYPES = [
+        'major',
+        'minor',
+        'patch',
+    ];
 
     public function __construct(ContainerInterface $container, Filesystem $filesystem)
     {
@@ -48,6 +56,13 @@ final class BumpCommand extends Command
         }
 
         $scope             = $input->getArgument('scope');
+
+        if (!in_array($scope, self::BUMP_TYPES)) {
+            $output->writeln('⛔ <fg=red>Not a valid scope.</> Try major, minor or patch.');
+
+            return Command::FAILURE;
+        }
+
         $shellScript       = $this->codegenFilesystem->read('src/Shell/bump.sh');
         $tmpScriptFile     = 'src/Shell/tmp' . uniqid() . '.sh';
         $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
@@ -66,5 +81,12 @@ final class BumpCommand extends Command
         $output->writeln('🎉 <fg=green>Bumped version number successfully!');
 
         return Command::SUCCESS;
+    }
+
+    public function complete(CompletionInput $input, CompletionSuggestions $suggestions): void
+    {
+        if ($input->mustSuggestArgumentValuesFor('scope')) {
+            $suggestions->suggestValues(self::BUMP_TYPES);
+        }
     }
 }
