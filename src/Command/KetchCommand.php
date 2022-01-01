@@ -35,8 +35,8 @@ final class KetchCommand extends Command
     {
         $this
             ->setDescription('A simple Docker cli for Forme')
-            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker-compose commands like `up`, `down`, `ps` etc. You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands')
-            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, ps, composer, npm, wp, shell')
+            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker-compose commands like `up`, `down`, `restart`, `list` etc. You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands')
+            ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. init, up, down, restart, list, composer, npm, wp, shell')
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
     }
@@ -97,7 +97,7 @@ final class KetchCommand extends Command
         $wpCli->run();
         $wpCli = new Process(['wp', 'config', 'set', 'DB_PASSWORD', $projectName]);
         $wpCli->run();
-        $wpCli = new Process(['wp', 'config', 'set', 'constant', 'DB_HOST', 'mysql']);
+        $wpCli = new Process(['wp', 'config', 'set', 'DB_HOST', 'mysql']);
         $wpCli->run();
 
         $output->writeln('🎉 <fg=green>Ketch initialised docker successfully! </> Run `forme ketch up` to start the container.');

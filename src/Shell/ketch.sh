@@ -53,6 +53,11 @@ if [ $# -gt 0 ];then
             exit 1
         fi
 
+    # list alias for ps
+    elif [ "$1" == "list" ]; then
+        shift 1
+        $COMPOSE ps "$@"
+
     # Else, pass-thru args to docker-compose
     else
         $COMPOSE "$@"
