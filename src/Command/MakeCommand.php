@@ -48,7 +48,7 @@ final class MakeCommand extends Command
         $this
             ->setDescription('Generates class and other boilerplate in the current working directory')
             ->setHelp('Pass in the name and type')
-            ->addArgument('type', InputArgument::REQUIRED, 'The type of class or hook - see documentation for available options')
+            ->addArgument('type', InputArgument::REQUIRED, 'The type of class or hook - available types are ' . implode(', ', self::VALID_TYPES))
             ->addArgument('name', InputArgument::REQUIRED, 'This could be the class prefix in PascalCase or the hook reference or custom post type in snake_case')
         ;
     }
@@ -66,7 +66,7 @@ final class MakeCommand extends Command
         $args['type'] = $input->getArgument('type');
 
         if (!in_array($args['type'], self::VALID_TYPES)) {
-            $output->writeln('⛔ <fg=red>This type is not currently supported.</> Available types are ' . implode("\n", self::VALID_TYPES));
+            $output->writeln('⛔ <fg=red>This type is not currently supported.</> Available types are ' . implode(', ', self::VALID_TYPES));
 
             return Command::FAILURE;
         }
