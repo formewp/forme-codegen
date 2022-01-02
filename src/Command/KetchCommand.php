@@ -112,8 +112,8 @@ final class KetchCommand extends Command
     protected function passThroughCommand(string $command, array $args, OutputInterface $output): int
     {
         $process = new Process(['bash', __DIR__ . '/../../src/Shell/ketch.sh', $command, ...$args]);
+        $process->setTty(true);
         if ($command === 'shell') {
-            $process->setTty(true);
             $process->setTimeout(null);
             $process->setIdleTimeout(null);
             $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
