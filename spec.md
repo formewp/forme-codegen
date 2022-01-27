@@ -2,7 +2,7 @@
 
 ## Spec/Moscow
 
-This is a working spec document that forms the basis for the documentation.
+This is a working spec document that forms a product roadmap, and a reference for eventual documentation.
 
 Specific requirements are bullet points and Moscow priority is shown by the verb used - Will/Should/Could/Won't
 
@@ -192,4 +192,5 @@ $ forme make
 ... etc
 ```
 
+- Bash autocompletion should be functional for all commands
 - Eventually `make` could work from the base WP installation with additional arguments
