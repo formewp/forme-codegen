@@ -6,6 +6,7 @@ namespace Forme\CodeGen\Command;
 
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
+use PhpPkg\CliMarkdown\CliMarkdown;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
@@ -21,12 +22,16 @@ final class BaseCommand extends Command
     /** @var FilesystemOperator */
     private $filesystem;
 
+    /** @var CliMarkdown */
+    private $cliMarkdown;
+
     /** @var array */
     private const AVAILABLE_COMMANDS = ['new', 'link', 'config', 'install', 'autoload', 'dotenv', 'setup'];
 
-    public function __construct(Filesystem $filesystem)
+    public function __construct(Filesystem $filesystem, CliMarkdown $cliMarkdown)
     {
         $this->filesystem        = $filesystem;
+        $this->cliMarkdown       = $cliMarkdown;
         parent::__construct();
     }
 
@@ -34,7 +39,7 @@ final class BaseCommand extends Command
     {
         $this
             ->setDescription('Base installation utilities')
-            ->setHelp('You can use base to set up your base WordPress installation')
+            ->setHelp($this->cliMarkdown->render(file_get_contents('help/base.md')))
             ->addArgument('baseCommand', InputArgument::REQUIRED, 'E.g. ' . implode(', ', self::AVAILABLE_COMMANDS))
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
