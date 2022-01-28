@@ -6,6 +6,7 @@ namespace Forme\CodeGen\Command;
 
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
+use PhpPkg\CliMarkdown\CliMarkdown;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -26,12 +27,16 @@ final class KetchCommand extends Command
     /** @var FilesystemOperator */
     private $codegenFilesystem;
 
+    /** @var CliMarkdown */
+    private $cliMarkdown;
+
     private const SUGGESTED_COMMANDS = ['init', 'up', 'down', 'restart', 'list', 'composer', 'npm', 'npx', 'wp', 'shell'];
 
-    public function __construct(ContainerInterface $container, Filesystem $filesystem)
+    public function __construct(ContainerInterface $container, Filesystem $filesystem, CliMarkdown $cliMarkdown)
     {
         $this->codegenFilesystem = $container->get('codegenFilesystem');
         $this->filesystem        = $filesystem;
+        $this->cliMarkdown       = $cliMarkdown;
         parent::__construct();
     }
 
@@ -39,7 +44,7 @@ final class KetchCommand extends Command
     {
         $this
             ->setDescription('A simple Docker cli for Forme')
-            ->setHelp('You can use ketch to configure a new docker container, as well as run simple docker-compose commands like `up`, `down`, `restart`, `list` etc. You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands')
+            ->setHelp($this->cliMarkdown->render(file_get_contents('help/ketch.md')))
             ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. ' . implode(', ', self::SUGGESTED_COMMANDS))
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;
