@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
-use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemOperator;
-use PhpPkg\CliMarkdown\CliMarkdown;
-use Psr\Container\ContainerInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,30 +16,13 @@ final class KetchCommand extends Command
 {
     protected static $defaultName = 'ketch';
 
-    /** @var FilesystemOperator */
-    private $filesystem;
-
-    /** @var FilesystemOperator */
-    private $codegenFilesystem;
-
-    /** @var CliMarkdown */
-    private $cliMarkdown;
-
     private const SUGGESTED_COMMANDS = ['init', 'up', 'down', 'restart', 'list', 'composer', 'npm', 'npx', 'wp', 'shell'];
-
-    public function __construct(ContainerInterface $container, Filesystem $filesystem, CliMarkdown $cliMarkdown)
-    {
-        $this->codegenFilesystem = $container->get('codegenFilesystem');
-        $this->filesystem        = $filesystem;
-        $this->cliMarkdown       = $cliMarkdown;
-        parent::__construct();
-    }
 
     protected function configure(): void
     {
         $this
             ->setDescription('A simple Docker cli for Forme')
-            ->setHelp($this->cliMarkdown->render(file_get_contents('help/ketch.md')))
+            ->setHelp($this->help(self::$defaultName))
             ->addArgument('ketchCommand', InputArgument::REQUIRED, 'E.g. ' . implode(', ', self::SUGGESTED_COMMANDS))
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;

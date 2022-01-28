@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
-use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemOperator;
-use PhpPkg\CliMarkdown\CliMarkdown;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -19,27 +15,14 @@ final class BaseCommand extends Command
 {
     protected static $defaultName = 'base';
 
-    /** @var FilesystemOperator */
-    private $filesystem;
-
-    /** @var CliMarkdown */
-    private $cliMarkdown;
-
     /** @var array */
     private const AVAILABLE_COMMANDS = ['new', 'link', 'config', 'install', 'autoload', 'dotenv', 'setup'];
-
-    public function __construct(Filesystem $filesystem, CliMarkdown $cliMarkdown)
-    {
-        $this->filesystem        = $filesystem;
-        $this->cliMarkdown       = $cliMarkdown;
-        parent::__construct();
-    }
 
     protected function configure(): void
     {
         $this
             ->setDescription('Base installation utilities')
-            ->setHelp($this->cliMarkdown->render(file_get_contents('help/base.md')))
+            ->setHelp($this->help(self::$defaultName))
             ->addArgument('baseCommand', InputArgument::REQUIRED, 'E.g. ' . implode(', ', self::AVAILABLE_COMMANDS))
             ->addArgument('args', InputArgument::IS_ARRAY, 'Arguments to pass to the command')
         ;

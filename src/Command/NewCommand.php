@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Forme\CodeGen\Command;
 
 use Jawira\CaseConverter\Convert;
-use League\Flysystem\FilesystemOperator;
-use PhpPkg\CliMarkdown\CliMarkdown;
-use Psr\Container\ContainerInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,24 +17,11 @@ final class NewCommand extends Command
 {
     protected static $defaultName = 'new';
 
-    /** @var FilesystemOperator */
-    private $filesystem;
-
-    /** @var CliMarkDown */
-    private $cliMarkdown;
-
-    public function __construct(ContainerInterface $container, CliMarkdown $cliMarkdown)
-    {
-        $this->filesystem  = $container->get('codegenFilesystem');
-        $this->cliMarkdown = $cliMarkdown;
-        parent::__construct();
-    }
-
     protected function configure(): void
     {
         $this
             ->setDescription('Generates a new forme boilerplate project')
-            ->setHelp($this->cliMarkdown->render(file_get_contents('help/new.md')))
+            ->setHelp($this->help(self::$defaultName))
             ->addArgument('type', InputArgument::REQUIRED, 'The type of project - plugin or theme')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the project in Title Case')
             ->addOption('host', null, InputOption::VALUE_REQUIRED, 'The github host name if non standard')
