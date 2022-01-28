@@ -2,7 +2,7 @@ You can use ketch to configure a new docker container, as well as run simple `do
 
 You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands.
 
-You'll need `docker` & `docker-compose` installed as well as `wp cli`.
+You'll need `docker` and `docker-compose` installed as well as `wp cli`.
 
 ```bash
 forme ketch init
@@ -30,7 +30,7 @@ forme ketch restart
 
 This stops and starts the running containers.
 
-``bash
+```bash
 forme ketch link /path/to/your/plugin/or/theme/repo
 ```
 
