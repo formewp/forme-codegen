@@ -1,3 +1,5 @@
+# 🧰 make
+
 Generates class and other boilerplate in the current working directory.
 
 You need to pass in the `type` of boilerplate you want to generate and a `name`.

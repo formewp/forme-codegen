@@ -1,6 +1,8 @@
+# 🏗️ base
+
 You can use `base` to set up your base WordPress installation.
 
-The available commands are `new`, `link`, `install`, `config`, `autoload`, `dotenv` and `setup`.
+The available `base` commands are `new`, `link`, `install`, `config`, `autoload`, `dotenv` and `setup`.
 
 Apart from `new`, these all need to be run from within your WordPress base installation directory.
 

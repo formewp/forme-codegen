@@ -1,3 +1,5 @@
+# 👊 bump
+
 You can use `bump` to increase plugin or theme version numbers according to [semver](https://semver.org) principles.
 
 This convenience command will bump your semver version tag, update the version number in your plugin's main file or theme `style.css`, render a new changelog (requires [git cliff](https://github.com/orhun/git-cliff)), commit and push for you all in one line.

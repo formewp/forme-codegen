@@ -1,3 +1,5 @@
+# 🌱 new
+
 Generates a new forme boilerplate plugin or theme project.
 
 You need to pass in the `type` of project you want to generate and a `name`.
