@@ -8,6 +8,7 @@ use Forme\CodeGen\Generators\BaseGenerator;
 use Forme\CodeGen\Utils\ClassFinder;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use League\Flysystem\Filesystem;
+use PhpPkg\CliMarkdown\CliMarkdown;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
@@ -36,12 +37,16 @@ final class MakeCommand extends Command
     /** @var Resolver */
     private $resolver;
 
-    public function __construct(Filesystem $filesystem, BaseGenerator $generator, ClassFinder $classFinder, Resolver $resolver)
+    /** @var CliMarkdown */
+    private $cliMarkdown;
+
+    public function __construct(Filesystem $filesystem, BaseGenerator $generator, ClassFinder $classFinder, Resolver $resolver, CliMarkdown $cliMarkdown)
     {
         $this->filesystem   = $filesystem;
         $this->generator    = $generator;
         $this->classFinder  = $classFinder;
         $this->resolver     = $resolver;
+        $this->cliMarkdown  = $cliMarkdown;
         parent::__construct();
     }
 
@@ -49,7 +54,7 @@ final class MakeCommand extends Command
     {
         $this
             ->setDescription('Generates class and other boilerplate in the current working directory')
-            ->setHelp('Pass in the name and type')
+            ->setHelp($this->cliMarkdown->render(file_get_contents('help/make.md')))
             ->addArgument('type', InputArgument::REQUIRED, 'The type of class or hook - available types are ' . implode(', ', self::VALID_TYPES))
             ->addArgument('name', InputArgument::REQUIRED, 'This could be the class prefix in PascalCase or the hook reference or custom post type in snake_case')
         ;
