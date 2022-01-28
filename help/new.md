@@ -1,4 +1,4 @@
-# 🌱 new
+#### 🌱 new
 
 Generates a new forme boilerplate plugin or theme project.
 

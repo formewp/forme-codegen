@@ -1,4 +1,4 @@
-# 👊 bump
+#### 👊 bump
 
 You can use `bump` to increase plugin or theme version numbers according to [semver](https://semver.org) principles.
 

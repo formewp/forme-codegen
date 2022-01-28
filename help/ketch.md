@@ -1,4 +1,4 @@
-# ⛵ ketch
+#### ⛵ ketch
 
 You can use ketch to configure a new docker container, as well as run simple `docker-compose` commands like `up`, `down`, `restart`, `list` etc.
 

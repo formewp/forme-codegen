@@ -1,4 +1,4 @@
-# 🧰 make
+#### 🧰 make
 
 Generates class and other boilerplate in the current working directory.
 
