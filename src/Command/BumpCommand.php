@@ -6,6 +6,7 @@ namespace Forme\CodeGen\Command;
 
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
+use PhpPkg\CliMarkdown\CliMarkdown;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Completion\CompletionInput;
@@ -25,16 +26,20 @@ final class BumpCommand extends Command
     /** @var FilesystemOperator */
     private $codegenFilesystem;
 
+    /** @var CliMarkdown */
+    private $cliMarkdown;
+
     private const BUMP_TYPES = [
         'major',
         'minor',
         'patch',
     ];
 
-    public function __construct(ContainerInterface $container, Filesystem $filesystem)
+    public function __construct(ContainerInterface $container, Filesystem $filesystem, CliMarkdown $cliMarkdown)
     {
         $this->codegenFilesystem = $container->get('codegenFilesystem');
         $this->filesystem        = $filesystem;
+        $this->cliMarkdown       = $cliMarkdown;
         parent::__construct();
     }
 
@@ -42,7 +47,7 @@ final class BumpCommand extends Command
     {
         $this
             ->setDescription('Bumps the version of a plugin or theme project')
-            ->setHelp('Pass in the scope major, minor or patch - defaults to patch')
+            ->setHelp($this->cliMarkdown->render(file_get_contents('help/bump.md')))
             ->addArgument('scope', InputArgument::OPTIONAL, 'The scope of the bump - major, minor or patch', 'patch')
         ;
     }
