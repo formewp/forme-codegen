@@ -24,3 +24,8 @@ composer test
 # requires findutils on OSX - you can drop the "g" xargs prefix on Linux
 forme list --raw | cut -d' ' -f1 | gxargs -n1 -d'\n' forme --format=md help | sed $'s/\x1b\\[91m\([A-Za-z\\._-]*\)\x1b\\[0m/`\\1`/g' | sed $'s/    \x1b\\[0\;33m\(.*\)\x1b\\[0m/```bash\\n\\1\\n```/g' | sed $'s,\x1b\\[[0-9;]*[a-zA-Z],,g' > codegen.md
 ```
+
+Manual steps:
+1. Check the section/command titles as this doesn't seem to output correct line breaks
+2. Find and replace home folder
+3. Copy into docs
