@@ -1,0 +1,4 @@
+{
+    "info": "If you have enabled this globally, you can enable tab completion by adding `eval \"$(forme completion)\"` to your .bashrc, bash_profile or zshrc.",
+    "info-versions": ">=0.0.0"
+}
