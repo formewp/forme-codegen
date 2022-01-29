@@ -192,5 +192,5 @@ $ forme make
 ... etc
 ```
 
-- Bash autocompletion should be functional for all commands
+- Bash autocompletion should be functional for all commands ✅
 - Eventually `make` could work from the base WP installation with additional arguments
