@@ -18,7 +18,7 @@ You'll need to run this from within an existing base installation. This will cre
 forme ketch up
 ```
 
-This will spin up your app and mysql containers. You should be able to access your project from the browser at http://localhost and install WordPress.
+This will spin up your app and mysql containers. You should be able to access your project from the browser at [http://localhost](http://localhost) and install WordPress.
 
 ```bash
 forme ketch down
