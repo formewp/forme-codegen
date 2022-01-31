@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.11] - 2022-01-31
+
+### Bug Fixes
+
+- Use correct filesystem instance
+
 ## [1.3.10] - 2022-01-31
 
 ### Bug Fixes
@@ -13,10 +19,12 @@ All notable changes to this project will be documented in this file.
 - Update spec
 - Add packages json with autocomplete instructions
 - Add manual steps for docs
+- Changelog
 
 ### Miscellaneous Tasks
 
 - Bump version
+- Fix bump version
 
 ## [1.3.9] - 2022-01-29
 
