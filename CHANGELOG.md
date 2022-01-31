@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.12] - 2022-01-31
+
+### Bug Fixes
+
+- More codegen file system issues
+
 ## [1.3.11] - 2022-01-31
 
 ### Bug Fixes
 
 - Use correct filesystem instance
+
+### Documentation
+
+- Changelog
 
 ## [1.3.10] - 2022-01-31
 
