@@ -50,13 +50,13 @@ final class NewCommand extends Command
         }
         $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
         $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
-        $this->filesystem->write($tmpScriptFile, $shellScript);
+        $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
         $process->setTimeout(null);
         $process->run(function ($type, $buffer) use ($output) {
             $output->writeln($buffer);
         });
-        $this->filesystem->delete($tmpScriptFile);
+        $this->codegenFilesystem->delete($tmpScriptFile);
         if (!$process->isSuccessful()) {
             $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues. We might have started writing some files into this directory so check and delete as appropriate');
 
