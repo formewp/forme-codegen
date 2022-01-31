@@ -46,6 +46,6 @@ abstract class Command extends SymfonyCommand
 
     protected function help(string $name): string
     {
-        return $this->cliMarkdown->render(file_get_contents('help/' . $name . '.md'));
+        return $this->cliMarkdown->render(file_get_contents(__DIR__ . '/../../help/' . $name . '.md'));
     }
 }
