@@ -41,7 +41,7 @@ final class NewCommand extends Command
 
             return Command::FAILURE;
         }
-        $shellScript = $this->filesystem->read('src/Shell/new_project.sh');
+        $shellScript = $this->codegenFilesystem->read('src/Shell/new_project.sh');
         $shellScript = str_replace('project-type', $type, $shellScript);
         $shellScript = str_replace('project-name', $nameConversion->toKebab(), $shellScript);
         $shellScript = str_replace('ProjectName', $nameConversion->toPascal(), $shellScript);
