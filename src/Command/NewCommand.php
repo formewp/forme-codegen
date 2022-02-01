@@ -15,6 +15,9 @@ use Symfony\Component\Process\Process;
 
 final class NewCommand extends Command
 {
+    public const VALID_TYPES = ['theme', 'plugin'];
+    public const VALID_VIEWS = ['plates-4', 'blade'];
+
     protected static $defaultName = 'new';
 
     protected function configure(): void
@@ -25,7 +28,8 @@ final class NewCommand extends Command
             ->addArgument('type', InputArgument::REQUIRED, 'The type of project - plugin or theme')
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the project in Title Case')
             ->addOption('host', null, InputOption::VALUE_REQUIRED, 'The github host name if non standard')
-            ->addOption('vendor', null, InputOption::VALUE_REQUIRED, 'The vendor namespace if not App')
+            ->addOption('vendor', null, InputOption::VALUE_REQUIRED, 'The vendor namespace - defaults to App')
+            ->addOption('view', null, InputOption::VALUE_REQUIRED, 'The view engine to use - currently plates-4 or blade - defaults to plates-4')
         ;
     }
 
@@ -35,9 +39,15 @@ final class NewCommand extends Command
         $type             = $input->getArgument('type');
         $host             = $input->getOption('host');
         $vendor           = $input->getOption('vendor') ?: 'App';
+        $view             = $input->getOption('view') ?: 'plates-4';
         $vendorConversion = new Convert($vendor);
-        if (!in_array($type, ['theme', 'plugin'])) {
-            $output->writeln('⛔ <fg=red>Not a valid project type.</> Try plugin or theme.');
+        if (!in_array($type, self::VALID_TYPES)) {
+            $output->writeln('⛔ <fg=red>Not a valid project type.</> Valid types are: ' . implode(', ', self::VALID_TYPES));
+
+            return Command::FAILURE;
+        }
+        if (!in_array($view, self::VALID_VIEWS)) {
+            $output->writeln('⛔ <fg=red>Not a valid view engine.</> Valid engines are: ' . implode(', ', self::VALID_VIEWS));
 
             return Command::FAILURE;
         }
@@ -49,7 +59,7 @@ final class NewCommand extends Command
             $shellScript = str_replace('github.com', $host, $shellScript);
         }
         $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
-        $shellScript     = str_replace('ViewEngine', 'plates-4', $shellScript);
+        $shellScript     = str_replace('ViewEngine', $view, $shellScript);
         $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
         $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
