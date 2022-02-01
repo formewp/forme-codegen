@@ -13,7 +13,7 @@ git clone git@github.com:formewp/forme-project-type.git project-name-project-typ
 cd project-name-project-type
 rm -rf .git
 npm i
-npx gulp --name="ProjectName" --vendor="VendorName"
+npx gulp --name="ProjectName" --vendor="VendorName" --view="ViewEngine"
 rm gulpfile.js
 rm -rf node_modules
 rm package.json

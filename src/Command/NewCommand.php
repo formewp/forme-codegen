@@ -49,6 +49,7 @@ final class NewCommand extends Command
             $shellScript = str_replace('github.com', $host, $shellScript);
         }
         $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
+        $shellScript     = str_replace('ViewEngine', 'plates-4', $shellScript);
         $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
         $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
