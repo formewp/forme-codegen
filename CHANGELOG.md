@@ -1,11 +1,30 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2022-01-31
+
+### Features
+
+- View engine extract
+- Configure view engine
+
+### Miscellaneous Tasks
+
+- Bump version
+
 ## [1.3.12] - 2022-01-31
 
 ### Bug Fixes
 
 - More codegen file system issues
+
+### Documentation
+
+- Changelog
+
+### Miscellaneous Tasks
+
+- Version bump
 
 ## [1.3.11] - 2022-01-31
 
