@@ -16,7 +16,7 @@ use Symfony\Component\Process\Process;
 final class NewCommand extends Command
 {
     public const VALID_TYPES = ['theme', 'plugin'];
-    public const VALID_VIEWS = ['plates-4', 'blade'];
+    public const VALID_VIEWS = ['plates-4', 'blade', 'twig', 'plates'];
 
     protected static $defaultName = 'new';
 
@@ -29,7 +29,7 @@ final class NewCommand extends Command
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the project in Title Case')
             ->addOption('host', null, InputOption::VALUE_REQUIRED, 'The github host name if non standard')
             ->addOption('vendor', null, InputOption::VALUE_REQUIRED, 'The vendor namespace - defaults to App')
-            ->addOption('view', null, InputOption::VALUE_REQUIRED, 'The view engine to use - currently plates-4 or blade - defaults to plates-4')
+            ->addOption('view', null, InputOption::VALUE_REQUIRED, 'The view engine to use - plates-4, blade, twig or plates - defaults to plates-4')
         ;
     }
 
