@@ -40,6 +40,6 @@ final class ClassFinder implements ClassFinderInterface
                 }
             });
 
-        return $results->toArray() ?? null;
+        return $results->toArray() ?: null;
     }
 }
