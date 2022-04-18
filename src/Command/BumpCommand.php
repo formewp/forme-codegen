@@ -15,6 +15,9 @@ final class BumpCommand extends Command
 {
     protected static $defaultName = 'bump';
 
+    /**
+     * @var string[]
+     */
     private const BUMP_TYPES = [
         'major',
         'minor',
@@ -61,6 +64,7 @@ final class BumpCommand extends Command
 
             return Command::FAILURE;
         }
+
         $output->writeln('🎉 <fg=green>Bumped version number successfully!');
 
         return Command::SUCCESS;

@@ -11,7 +11,14 @@ use Nette\PhpGenerator\PsrPrinter;
 
 class MigrationBuilder
 {
+    /**
+     * @var class-string<\Forme\CodeGen\Source\Migrations\Migration>
+     */
     private const SOURCE_CLASS     = "Forme\CodeGen\Source\Migrations\Migration";
+
+    /**
+     * @var string
+     */
     private const TARGET_DIRECTORY = 'app/Database/Migrations';
 
     public function __construct(private PsrPrinter $printer, private Resolver $resolver)
@@ -33,6 +40,7 @@ class MigrationBuilder
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
+
         $class = ClassType::withBodiesFrom(self::SOURCE_CLASS);
         // sort out the class name
         // add the prefix onto the class name

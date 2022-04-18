@@ -40,12 +40,15 @@ class HookBuilder
         if ($args['method']) {
             $newEntry['method'] = $args['method'];
         }
+
         if ($args['priority']) {
-            $newEntry['priority'] = intval($args['priority']);
+            $newEntry['priority'] = (int) $args['priority'];
         }
+
         if ($args['arguments']) {
-            $newEntry['arguments'] = intval($args['arguments']);
+            $newEntry['arguments'] = (int) $args['arguments'];
         }
+
         // pluralise the type and add the entry
         $data[$args['type'] . 's'][] = $newEntry;
 

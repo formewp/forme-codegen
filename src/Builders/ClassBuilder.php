@@ -35,6 +35,7 @@ class ClassBuilder
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
+
         $class = ClassType::withBodiesFrom($sourceClass);
         // add the prefix onto the class name
         $classPrefixConversion = new Convert($classPrefix);
@@ -44,17 +45,20 @@ class ClassBuilder
         $className             = $classPrefixPascal . $classSuffix;
         // if this is a TemplateController, we need to change it to just Controller
         $className = str_replace('TemplateController', 'Controller', $className);
+
         $class->setName($className);
         // if this is a service class, let's add the method
         if ($type === 'service') {
             $class->addMethod($method);
         }
+
         // if this is a template controller class, let's add the template name
         if ($type === 'template-controller') {
             $templateNameConversion = new Convert($classPrefix);
             $templateName           = $templateNameConversion->toTitle();
             $file->addComment('Template Name: ' . $templateName);
         }
+
         // if this is a job, add the trait and interface
         if ($type === 'job') {
             $class->addImplement(JobInterface::class);

@@ -15,7 +15,14 @@ use Symfony\Component\Process\Process;
 
 final class NewCommand extends Command
 {
+    /**
+     * @var string[]
+     */
     public const VALID_TYPES = ['theme', 'plugin'];
+
+    /**
+     * @var string[]
+     */
     public const VALID_VIEWS = ['plates-4', 'blade', 'twig', 'plates'];
 
     protected static $defaultName = 'new';
@@ -46,11 +53,13 @@ final class NewCommand extends Command
 
             return Command::FAILURE;
         }
+
         if (!in_array($view, self::VALID_VIEWS)) {
             $output->writeln('⛔ <fg=red>Not a valid view engine.</> Valid engines are: ' . implode(', ', self::VALID_VIEWS));
 
             return Command::FAILURE;
         }
+
         $shellScript = $this->codegenFilesystem->read('src/Shell/new_project.sh');
         $shellScript = str_replace('project-type', $type, $shellScript);
         $shellScript = str_replace('project-name', $nameConversion->toKebab(), $shellScript);
@@ -58,8 +67,10 @@ final class NewCommand extends Command
         if ($host) {
             $shellScript = str_replace('github.com', $host, $shellScript);
         }
+
         $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
         $shellScript     = str_replace('ViewEngine', $view, $shellScript);
+
         $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
         $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
@@ -73,6 +84,7 @@ final class NewCommand extends Command
 
             return Command::FAILURE;
         }
+
         $output->writeln('🎉 <fg=green>Created a new Forme ' . $type . ' project!</> You can cd into ' . $nameConversion->toKebab() . '-' . $type . ' and get coding!');
 
         return Command::SUCCESS;

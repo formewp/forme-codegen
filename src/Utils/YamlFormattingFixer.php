@@ -20,7 +20,8 @@ final class YamlFormattingFixer implements YamlFormattingFixerInterface
                 $flag = true;
                 continue;
             }
-            if ($flag === true) {
+
+            if ($flag) {
                 $result[] = '  -' . substr($line, 3);
                 $flag     = false;
             } else {

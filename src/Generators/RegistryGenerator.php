@@ -22,8 +22,7 @@ final class RegistryGenerator implements GeneratorInterface
                     'class' => $this->resolver->classFile()->getClassAndNamespace($mainClassFile),
                     'name'  => 'init',
                 ];
-        $messages = array_merge($messages, $this->hookGenerator->generate($hookArgs));
 
-        return $messages;
+        return array_merge($messages, $this->hookGenerator->generate($hookArgs));
     }
 }

@@ -6,6 +6,9 @@ namespace Forme\CodeGen\Utils\Resolvers;
 
 final class ClassTypeResolver
 {
+    /**
+     * @var array<string, string>
+     */
     private const MAP = [
         'controller'           => 'Controllers\Controller',
         'template-controller'  => 'Controllers\TemplateController',
@@ -19,8 +22,19 @@ final class ClassTypeResolver
         'middleware'           => 'Middleware\Middleware',
     ];
 
+    /**
+     * @var string
+     */
     private const NAME_SPACE              = 'Forme\CodeGen\Source';
+
+    /**
+     * @var string
+     */
     private const APP_DIR                 = 'app';
+
+    /**
+     * @var string
+     */
     private const TEMPLATE_CONTROLLER_DIR = 'template-controllers';
 
     public function getSourceClass(string $type): string

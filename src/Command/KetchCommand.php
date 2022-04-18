@@ -16,6 +16,9 @@ final class KetchCommand extends Command
 {
     protected static $defaultName = 'ketch';
 
+    /**
+     * @var string[]
+     */
     private const SUGGESTED_COMMANDS = ['init', 'up', 'down', 'restart', 'list', 'composer', 'npm', 'npx', 'wp', 'shell'];
 
     protected function configure(): void
@@ -61,9 +64,11 @@ final class KetchCommand extends Command
         if (!$args[0] || $args[0] === '.') {
             $args[0] = basename(getcwd());
         }
+
         // remove non alpha from the name and lowercase it
-        $projectName   = preg_replace('/[^a-zA-Z0-9]/', '', $args[0]);
+        $projectName   = preg_replace('#[^a-zA-Z0-9]#', '', $args[0]);
         $projectName   = strtolower($projectName);
+
         $dockerCompose = str_replace('{BASE_PROJECT_NAME}', $projectName, $dockerCompose);
 
         // save it to the project directory
@@ -101,6 +106,7 @@ final class KetchCommand extends Command
             $process->setIdleTimeout(null);
             $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
         }
+
         $process->run(function ($type, $buffer) use ($output) {
             $output->writeln($buffer);
         });
@@ -109,6 +115,7 @@ final class KetchCommand extends Command
 
             return Command::FAILURE;
         }
+
         $output->writeln('🎉 <fg=green>Ran ketch command successfully!');
 
         return Command::SUCCESS;
@@ -121,11 +128,7 @@ final class KetchCommand extends Command
         $pluginOrThemeName = basename($path);
         // $args[1] is the type of link (plugin or theme). if not set, we try to work it out from the path, and if that fails, we assume it's a plugin
         if (!$args[1]) {
-            if (str_contains($path, 'theme')) {
-                $type = 'theme';
-            } else {
-                $type = 'plugin';
-            }
+            $type = str_contains($path, 'theme') ? 'theme' : 'plugin';
         } else {
             $type = strtolower($args[1]);
         }

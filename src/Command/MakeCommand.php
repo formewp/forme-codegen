@@ -17,6 +17,9 @@ final class MakeCommand extends Command
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'make';
 
+    /**
+     * @var string[]
+     */
     private const VALID_TYPES = ['action', 'filter', 'field', 'controller', 'template-controller', 'registry', 'post-type', 'model', 'translator', 'service', 'migration', 'job', 'middleware'];
 
     protected function configure(): void

@@ -47,6 +47,7 @@ final class BaseCommand extends Command
 
                 return Command::FAILURE;
             }
+
             if ($command === 'link') {
                 return $this->linkCommand($args, $output);
             } else {
@@ -63,8 +64,9 @@ final class BaseCommand extends Command
 
             return Command::FAILURE;
         }
+
         // replace non alpha with hyphens and lowercase the name
-        $projectName   = preg_replace('/[^a-zA-Z0-9]/', '-', $args[0]);
+        $projectName   = preg_replace('#[^a-zA-Z0-9]#', '-', $args[0]);
         $projectName   = strtolower($projectName);
 
         // run composer create project
@@ -92,11 +94,7 @@ final class BaseCommand extends Command
         $pluginOrThemeName = basename($path);
         // $args[1] is the type of link (plugin or theme). if not set, we try to work it out from the path, and if that fails, we assume it's a plugin
         if (!$args[1]) {
-            if (str_contains($path, 'theme')) {
-                $type = 'theme';
-            } else {
-                $type = 'plugin';
-            }
+            $type = str_contains($path, 'theme') ? 'theme' : 'plugin';
         } else {
             $type = strtolower($args[1]);
         }

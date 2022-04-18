@@ -23,7 +23,7 @@ final class ClassFinder implements ClassFinderInterface
             ->filter(fn(StorageAttributes $attributes) => $attributes->isFile() && str_ends_with($attributes->path(), '.php'))
             ->map(function (StorageAttributes $attributes) {
                 $nameSpace = $this->resolver->classFile()->getNameSpace($attributes->path());
-                $isCore    = $nameSpace ? (str_ends_with($nameSpace, 'Core')) : false;
+                $isCore    = $nameSpace && str_ends_with($nameSpace, 'Core');
                 $class     = $this->resolver->classFile()->getClass($attributes->path());
                 if ($class && !$isCore) {
                     return $nameSpace . '\\' . $class;

@@ -11,8 +11,6 @@ final class Translator
      * */
     public function translate(array $args): array
     {
-        $result = [];
-
-        return $result;
+        return [];
     }
 }

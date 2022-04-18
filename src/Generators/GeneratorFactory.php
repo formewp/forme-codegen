@@ -8,6 +8,9 @@ use Psr\Container\ContainerInterface;
 
 final class GeneratorFactory implements GeneratorFactoryInterface
 {
+    /**
+     * @var array<string, string>
+     */
     public const STRATEGY_MAP = [
         'action'      => 'Hook',
         'filter'      => 'Hook',

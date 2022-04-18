@@ -32,20 +32,25 @@ final class ClassFileResolver
     {
         // todo: rewrite this to use flysystem
         $stream = $this->filesystem->readStream($file);
-        $class  = $buffer  = '';
+        $class = '';
+        $buffer  = '';
         $i      = 0;
         while (!$class) {
             if (feof($stream)) {
                 break;
             }
+
             $buffer .= fread($stream, 512);
             $tokens = \PhpToken::tokenize($buffer);
             if (!str_contains($buffer, '{')) {
                 continue;
             }
-            for (; $i < count($tokens); $i++) {
+
+            $tokensCount = count($tokens);
+            for (; $i < $tokensCount; ++$i) {
                 if ($tokens[$i][0] === T_CLASS) {
-                    for ($j = $i + 1; $j < count($tokens); $j++) {
+                    $tokensCount = count($tokens);
+                    for ($j = $i + 1; $j < $tokensCount; ++$j) {
                         if ($tokens[$j] === '{') {
                             $class = $tokens[$i + 2][1];
                         }

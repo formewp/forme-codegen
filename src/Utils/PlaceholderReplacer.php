@@ -25,6 +25,7 @@ final class PlaceholderReplacer implements PlaceholderReplacerInterface
         if ($type === 'post-type') {
             $fileContents = $this->replaceCptPlaceholders($fileContents, $name, $projectNameSpace);
         }
+
         // if this is a model file then we need to replace the instance of the name in snake_case
         if ($type === 'model') {
             $nameConversion = new Convert($name);
@@ -48,9 +49,8 @@ final class PlaceholderReplacer implements PlaceholderReplacerInterface
         $singular                = $this->inflector->singularize($name)[0];
         $fileContents            = $this->replaceSpecialCase($needle, $fileContents, $singular);
         $fileContents            = str_replace('cpt_placeholder', $nameConversion->toSnake(), $fileContents);
-        $fileContents            = str_replace('YOUR-TEXTDOMAIN', $newTextDomain, $fileContents);
 
-        return $fileContents;
+        return str_replace('YOUR-TEXTDOMAIN', $newTextDomain, $fileContents);
     }
 
     /**
@@ -60,7 +60,7 @@ final class PlaceholderReplacer implements PlaceholderReplacerInterface
     private function replaceSpecialCase(string $needle, string $haystack, string $replace): string
     {
         $replaceConversion = new Convert($replace);
-        preg_match_all("/$needle+/i", $haystack, $matches);
+        preg_match_all(sprintf('/%s+/i', $needle), $haystack, $matches);
         if (is_array($matches[0]) && count($matches[0]) >= 1) {
             foreach ($matches[0] as $match) {
                 // if there is a capital c at the front then let's make this title case, otherwise it's lower
