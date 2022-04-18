@@ -28,7 +28,8 @@
         "psy/psysh": "^0.11.2",
         "phpunit/phpunit": "^9.5",
         "mockery/mockery": "^1.4",
-        "nunomaduro/mock-final-classes": "^1.1"
+        "nunomaduro/mock-final-classes": "^1.1",
+        "rector/rector": "^0.12.20"
     },
     "scripts": {
         "tests": "./vendor/bin/phpunit tests --colors"
