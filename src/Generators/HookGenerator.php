@@ -9,16 +9,8 @@ use League\Flysystem\Filesystem;
 
 final class HookGenerator implements GeneratorInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    /** @var HookBuilder */
-    private $hookBuilder;
-
-    public function __construct(Filesystem $filesystem, HookBuilder $hookBuilder)
+    public function __construct(private Filesystem $filesystem, private HookBuilder $hookBuilder)
     {
-        $this->filesystem     = $filesystem;
-        $this->hookBuilder    = $hookBuilder;
     }
 
     public function generate(array $args): array

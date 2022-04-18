@@ -9,16 +9,8 @@ use League\Flysystem\Filesystem;
 
 final class ClassGenerator implements GeneratorInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    /** @var ClassBuilder */
-    private $classBuilder;
-
-    public function __construct(Filesystem $filesystem, ClassBuilder $classBuilder)
+    public function __construct(private Filesystem $filesystem, private ClassBuilder $classBuilder)
     {
-        $this->filesystem    = $filesystem;
-        $this->classBuilder  = $classBuilder;
     }
 
     public function generate(array $args): array

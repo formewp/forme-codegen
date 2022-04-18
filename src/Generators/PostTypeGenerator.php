@@ -5,12 +5,8 @@ namespace Forme\CodeGen\Generators;
 
 final class PostTypeGenerator implements GeneratorInterface
 {
-    /** @var ClassGenerator */
-    private $classGenerator;
-
-    public function __construct(ClassGenerator $classGenerator)
+    public function __construct(private ClassGenerator $classGenerator)
     {
-        $this->classGenerator = $classGenerator;
     }
 
     public function generate(array $args): array

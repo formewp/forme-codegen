@@ -7,12 +7,8 @@ use League\Flysystem\Filesystem;
 
 final class ClassFileResolver
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private Filesystem $filesystem)
     {
-        $this->filesystem   = $filesystem;
     }
 
     /**
@@ -43,8 +39,8 @@ final class ClassFileResolver
                 break;
             }
             $buffer .= fread($stream, 512);
-            $tokens = token_get_all($buffer);
-            if (strpos($buffer, '{') === false) {
+            $tokens = \PhpToken::tokenize($buffer);
+            if (!str_contains($buffer, '{')) {
                 continue;
             }
             for (; $i < count($tokens); $i++) {

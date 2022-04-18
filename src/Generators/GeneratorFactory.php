@@ -17,18 +17,14 @@ final class GeneratorFactory implements GeneratorFactoryInterface
         'default'     => 'Class',
     ];
 
-    /** @var ContainerInterface */
-    private $container;
-
-    public function __construct(ContainerInterface $container)
+    public function __construct(private ContainerInterface $container)
     {
-        $this->container = $container;
     }
 
     public function create(string $type): GeneratorInterface
     {
         $strategy       = self::STRATEGY_MAP[$type] ?? self::STRATEGY_MAP['default'];
-        $generatorClass = __NAMESPACE__ . '\\' . $strategy . 'Generator';
+        $generatorClass = __NAMESPACE__ . '\\' . $strategy . \Generator::class;
         /* @var GeneratorInterface */
         return $this->container->get($generatorClass);
     }

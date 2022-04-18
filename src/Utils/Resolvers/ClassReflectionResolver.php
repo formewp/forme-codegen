@@ -9,12 +9,8 @@ use ReflectionMethod;
 
 final class ClassReflectionResolver
 {
-    /** @var NameSpaceResolver */
-    private $nameSpaceResolver;
-
-    public function __construct(NameSpaceResolver $nameSpaceResolver)
+    public function __construct(private NameSpaceResolver $nameSpaceResolver)
     {
-        $this->nameSpaceResolver = $nameSpaceResolver;
     }
 
     /**

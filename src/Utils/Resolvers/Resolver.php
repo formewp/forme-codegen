@@ -7,12 +7,8 @@ use Forme\CodeGen\Utils\Resolvers\ResolverFactory as Factory;
 
 final class Resolver implements ResolverInterface
 {
-    /** @var Factory */
-    private $factory;
-
-    public function __construct(Factory $factory)
+    public function __construct(private Factory $factory)
     {
-        $this->factory = $factory;
     }
 
     public function classFile(): ClassFileResolver

@@ -8,16 +8,8 @@ use League\Flysystem\Filesystem;
 
 final class NameSpaceResolver
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    /** @var FileResolver */
-    private $fileResolver;
-
-    public function __construct(Filesystem $filesystem, FileResolver $fileResolver)
+    public function __construct(private Filesystem $filesystem, private FileResolver $fileResolver)
     {
-        $this->filesystem   = $filesystem;
-        $this->fileResolver = $fileResolver;
     }
 
     /**

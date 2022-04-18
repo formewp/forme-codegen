@@ -15,20 +15,8 @@ use Nette\PhpGenerator\PsrPrinter;
 
 class ClassBuilder
 {
-    /** @var PsrPrinter */
-    private $printer;
-
-    /** @var PlaceholderReplacerInterface */
-    private $replacer;
-
-    /** @var Resolver */
-    private $resolver;
-
-    public function __construct(PsrPrinter $printer, PlaceholderReplacerInterface $replacer, Resolver $resolver)
+    public function __construct(private PsrPrinter $printer, private PlaceholderReplacerInterface $replacer, private Resolver $resolver)
     {
-        $this->printer       = $printer;
-        $this->replacer      = $replacer;
-        $this->resolver      = $resolver;
     }
 
     public function build(string $type, string $classPrefix, ?string $method = null): array

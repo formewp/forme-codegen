@@ -10,16 +10,8 @@ use Symfony\Component\String\Inflector\InflectorInterface;
 
 final class PlaceholderReplacer implements PlaceholderReplacerInterface
 {
-    /** @var InflectorInterface */
-    private $inflector;
-
-    /** @var Resolver */
-    private $resolver;
-
-    public function __construct(InflectorInterface $inflector, Resolver $resolver)
+    public function __construct(private InflectorInterface $inflector, private Resolver $resolver)
     {
-        $this->inflector    = $inflector;
-        $this->resolver     = $resolver;
     }
 
     public function process(string $fileContents, string $type, string $name): string

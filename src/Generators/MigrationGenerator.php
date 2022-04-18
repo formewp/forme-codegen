@@ -9,16 +9,8 @@ use League\Flysystem\Filesystem;
 
 final class MigrationGenerator implements GeneratorInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    /** @var MigrationBuilder */
-    private $migrationBuilder;
-
-    public function __construct(Filesystem $filesystem, MigrationBuilder $migrationBuilder)
+    public function __construct(private Filesystem $filesystem, private MigrationBuilder $migrationBuilder)
     {
-        $this->filesystem       = $filesystem;
-        $this->migrationBuilder = $migrationBuilder;
     }
 
     public function generate(array $args): array

@@ -8,12 +8,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class TemplateController extends AbstractController
 {
-    /** @var View */
-    private $view;
-
-    public function __construct(View $view)
+    public function __construct(private View $view)
     {
-        $this->view = $view;
     }
 
     /**

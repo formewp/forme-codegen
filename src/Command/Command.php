@@ -16,31 +16,11 @@ use Symfony\Component\Console\Command\Command as SymfonyCommand;
 abstract class Command extends SymfonyCommand
 {
     /** @var FilesystemOperator */
-    protected $filesystem;
-
-    /** @var FilesystemOperator */
     protected $codegenFilesystem;
 
-    /** @var CliMarkdown */
-    protected $cliMarkdown;
-
-    /** @var BaseGenerator */
-    protected $generator;
-
-    /** @var ClassFinder */
-    protected $classFinder;
-
-    /** @var Resolver */
-    protected $resolver;
-
-    public function __construct(Filesystem $filesystem, BaseGenerator $generator, ClassFinder $classFinder, Resolver $resolver, CliMarkdown $cliMarkdown, ContainerInterface $container)
+    public function __construct(protected Filesystem $filesystem, protected BaseGenerator $generator, protected ClassFinder $classFinder, protected Resolver $resolver, protected CliMarkdown $cliMarkdown, ContainerInterface $container)
     {
-        $this->filesystem        = $filesystem;
-        $this->cliMarkdown       = $cliMarkdown;
         $this->codegenFilesystem = $container->get('codegenFilesystem');
-        $this->generator         = $generator;
-        $this->classFinder       = $classFinder;
-        $this->resolver          = $resolver;
         parent::__construct();
     }
 

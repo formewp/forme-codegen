@@ -6,12 +6,8 @@ namespace Forme\CodeGen\Generators;
 
 final class BaseGenerator implements GeneratorInterface
 {
-    /** @var GeneratorFactoryInterface */
-    private $factory;
-
-    public function __construct(GeneratorFactoryInterface $factory)
+    public function __construct(private GeneratorFactoryInterface $factory)
     {
-        $this->factory = $factory;
     }
 
     public function generate(array $args): array

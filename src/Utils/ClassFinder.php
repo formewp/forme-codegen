@@ -10,16 +10,8 @@ use League\Flysystem\StorageAttributes;
 
 final class ClassFinder implements ClassFinderInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    /** @var Resolver */
-    private $resolver;
-
-    public function __construct(Filesystem $filesystem, Resolver $resolver)
+    public function __construct(private Filesystem $filesystem, private Resolver $resolver)
     {
-        $this->filesystem   = $filesystem;
-        $this->resolver     = $resolver;
     }
 
     /**
@@ -28,12 +20,10 @@ final class ClassFinder implements ClassFinderInterface
     public function getClasses(): ?array
     {
         $results = $this->filesystem->listContents('/app', true)
-            ->filter(function (StorageAttributes $attributes) {
-                return $attributes->isFile() && str_ends_with($attributes->path(), '.php');
-            })
+            ->filter(fn(StorageAttributes $attributes) => $attributes->isFile() && str_ends_with($attributes->path(), '.php'))
             ->map(function (StorageAttributes $attributes) {
                 $nameSpace = $this->resolver->classFile()->getNameSpace($attributes->path());
-                $isCore    = $nameSpace ? (substr($nameSpace, -4) === 'Core') : false;
+                $isCore    = $nameSpace ? (str_ends_with($nameSpace, 'Core')) : false;
                 $class     = $this->resolver->classFile()->getClass($attributes->path());
                 if ($class && !$isCore) {
                     return $nameSpace . '\\' . $class;

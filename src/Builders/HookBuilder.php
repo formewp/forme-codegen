@@ -9,16 +9,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class HookBuilder
 {
-    /** @var Comments */
-    private $commentManager;
-
-    /** @var YamlFormattingFixerInterface */
-    private $fixer;
-
-    public function __construct(YamlFormattingFixerInterface $fixer, Comments $commentManager)
+    public function __construct(private YamlFormattingFixerInterface $fixer, private Comments $commentManager)
     {
-        $this->commentManager = $commentManager;
-        $this->fixer          = $fixer;
     }
 
     public function build(string $originalContents, array $args): string

@@ -7,20 +7,8 @@ use Forme\CodeGen\Utils\Resolvers\Resolver;
 
 final class RegistryGenerator implements GeneratorInterface
 {
-    /** @var ClassGenerator */
-    private $classGenerator;
-
-    /** @var HookGenerator */
-    private $hookGenerator;
-
-    /** @var Resolver */
-    private $resolver;
-
-    public function __construct(ClassGenerator $classGenerator, HookGenerator $hookGenerator, Resolver $resolver)
+    public function __construct(private ClassGenerator $classGenerator, private HookGenerator $hookGenerator, private Resolver $resolver)
     {
-        $this->classGenerator     = $classGenerator;
-        $this->hookGenerator      = $hookGenerator;
-        $this->resolver           = $resolver;
     }
 
     public function generate(array $args): array

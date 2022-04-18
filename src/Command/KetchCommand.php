@@ -121,7 +121,7 @@ final class KetchCommand extends Command
         $pluginOrThemeName = basename($path);
         // $args[1] is the type of link (plugin or theme). if not set, we try to work it out from the path, and if that fails, we assume it's a plugin
         if (!$args[1]) {
-            if (strpos($path, 'theme') !== false) {
+            if (str_contains($path, 'theme')) {
                 $type = 'theme';
             } else {
                 $type = 'plugin';

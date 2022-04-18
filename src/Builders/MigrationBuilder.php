@@ -14,16 +14,8 @@ class MigrationBuilder
     private const SOURCE_CLASS     = "Forme\CodeGen\Source\Migrations\Migration";
     private const TARGET_DIRECTORY = 'app/Database/Migrations';
 
-    /** @var PsrPrinter */
-    private $printer;
-
-    /** @var Resolver */
-    private $resolver;
-
-    public function __construct(PsrPrinter $printer, Resolver $resolver)
+    public function __construct(private PsrPrinter $printer, private Resolver $resolver)
     {
-        $this->printer        = $printer;
-        $this->resolver       = $resolver;
     }
 
     public function build(string $className): array
