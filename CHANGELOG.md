@@ -1,10 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.5.3] - 2022-04-18
+## [1.5.4] - 2022-04-19
+
+### Bug Fixes
+
+- Typing issue in getClass resolver
+
+### Miscellaneous Tasks
+
+- Bump version
+
+## [1.5.3] - 2022-04-19
 
 ### Documentation
 
+- Update changelog
 - Update changelog
 
 ### Miscellaneous Tasks
