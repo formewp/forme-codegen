@@ -31,10 +31,10 @@ final class ClassFileResolver
     public function getClass(string $file): ?string
     {
         // todo: rewrite this to use flysystem
-        $stream = $this->filesystem->readStream($file);
-        $class = '';
+        $stream  = $this->filesystem->readStream($file);
+        $class   = '';
         $buffer  = '';
-        $i      = 0;
+        $i       = 0;
         while (!$class) {
             if (feof($stream)) {
                 break;
@@ -47,11 +47,11 @@ final class ClassFileResolver
             }
 
             $tokensCount = count($tokens);
-            for (; $i < $tokensCount; ++$i) {
+            for (; $i < $tokensCount; $i++) {
                 if ($tokens[$i][0] === T_CLASS) {
                     $tokensCount = count($tokens);
-                    for ($j = $i + 1; $j < $tokensCount; ++$j) {
-                        if ($tokens[$j] === '{') {
+                    for ($j = $i + 1; $j < $tokensCount; $j++) {
+                        if ($tokens[$j] == '{') {
                             $class = $tokens[$i + 2][1];
                         }
                     }
