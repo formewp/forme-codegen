@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.3] - 2022-04-18
+
+### Documentation
+
+- Update changelog
+
+### Miscellaneous Tasks
+
+- Update composer deps
+- Bump version
+
 ## [1.5.2] - 2022-04-18
 
 ### Miscellaneous Tasks
