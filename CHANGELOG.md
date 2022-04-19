@@ -1,7 +1,53 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.4.0] - 2022-01-31
+## [1.5.2] - 2022-04-18
+
+### Miscellaneous Tasks
+
+- Bump version number
+
+### Refactor
+
+- More rector rules
+
+## [1.5.1] - 2022-04-18
+
+### Miscellaneous Tasks
+
+- Add rector to our dev toolkit
+- Update version number
+
+### Refactor
+
+- Rector php 8 updates
+
+## [1.5.0] - 2022-03-19
+
+### Bug Fixes
+
+- Null coalesce
+
+### Miscellaneous Tasks
+
+- Update deps
+- Update phpstan config
+
+## [1.4.1] - 2022-02-04
+
+### Features
+
+- Support twig and plates 3
+
+### Miscellaneous Tasks
+
+- Bump version
+
+## [1.4.0] - 2022-02-01
+
+### Documentation
+
+- Update changelog
 
 ### Features
 
