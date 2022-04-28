@@ -20,7 +20,7 @@ class ClassBuilderTest extends TestCase
     /**
      * This needs to be updated if the rendered controller file contents change.
      */
-    private const MD5_CHECK = '60981f8fd04dd459a981c98bca3beb23';
+    private const MD5_CHECK = '7b3212fb9b517fdba281a190bf02e15e';
 
     /**
      * @var ClassBuilder

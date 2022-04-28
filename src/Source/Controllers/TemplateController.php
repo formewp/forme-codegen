@@ -13,7 +13,7 @@ final class TemplateController extends AbstractController
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * @param array|ServerRequestInterface $request
      */
     public function __invoke($request)
     {
