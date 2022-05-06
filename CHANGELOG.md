@@ -1,11 +1,34 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.1] - 2022-04-28
+
+### Miscellaneous Tasks
+
+- Update controllers source
+- Bump version
+
+## [1.6.0] - 2022-04-28
+
+### Miscellaneous Tasks
+
+- Update forme framework and bump version
+
+## [1.5.5] - 2022-04-28
+
+### Miscellaneous Tasks
+
+- Update composer deps and bump version
+
 ## [1.5.4] - 2022-04-19
 
 ### Bug Fixes
 
 - Typing issue in getClass resolver
+
+### Documentation
+
+- Update changelog
 
 ### Miscellaneous Tasks
 
