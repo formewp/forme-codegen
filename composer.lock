@@ -660,16 +660,16 @@
         },
         {
             "name": "forme/framework",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/formewp/forme-framework.git",
-                "reference": "2c56d0570e291753494bcff9e333fb8fcf58a3fc"
+                "reference": "0e0cf78c15a27c71d0237e477a57011d581641d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/2c56d0570e291753494bcff9e333fb8fcf58a3fc",
-                "reference": "2c56d0570e291753494bcff9e333fb8fcf58a3fc",
+                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/0e0cf78c15a27c71d0237e477a57011d581641d1",
+                "reference": "0e0cf78c15a27c71d0237e477a57011d581641d1",
                 "shasum": ""
             },
             "require": {
@@ -732,9 +732,9 @@
             "description": "An MVC framework for WordPress.",
             "support": {
                 "issues": "https://github.com/formewp/forme-framework/issues",
-                "source": "https://github.com/formewp/forme-framework/tree/v2.0.2"
+                "source": "https://github.com/formewp/forme-framework/tree/v2.0.3"
             },
-            "time": "2022-05-06T19:58:01+00:00"
+            "time": "2022-05-07T06:55:00+00:00"
         },
         {
             "name": "graham-campbell/result-type",
