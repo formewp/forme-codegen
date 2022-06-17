@@ -48,11 +48,11 @@ final class ClassFileResolver
 
             $tokensCount = count($tokens);
             for (; $i < $tokensCount; $i++) {
-                if ($tokens[$i][0] === T_CLASS) {
+                if ($tokens[$i]->id === T_CLASS) {
                     $tokensCount = count($tokens);
                     for ($j = $i + 1; $j < $tokensCount; $j++) {
-                        if ($tokens[$j] == '{') {
-                            $class = $tokens[$i + 2][1];
+                        if ($tokens[$j]->text === '{') {
+                            $class = $tokens[$i + 2]->text;
                         }
                     }
                 }
