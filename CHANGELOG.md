@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.4] - 2022-06-17
+
+### Bug Fixes
+
+- Property syntax for phptoken
+
 ## [1.6.3] - 2022-05-07
 
 ### Miscellaneous Tasks
 
 - Update deps
+- Bump version
 
 ## [1.6.2] - 2022-05-06
 
