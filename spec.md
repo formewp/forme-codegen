@@ -194,3 +194,5 @@ $ forme make
 
 - Bash autocompletion should be functional for all commands ✅
 - Eventually `make` could work from the base WP installation with additional arguments
+= App directory should be configurable for all commands (e.g. `src` instead of `app`)
+- Public directory should be configurable for all commands (e.g `public_html` instead of `public`)
