@@ -36,7 +36,7 @@ Initialises `wp-config.php`, including adding the `FORME_PRIVATE_ROOT` const, se
 forme base autoload
 ```
 
-Adds the autoload require statament into `wp-config.php`
+Adds the autoload require statement into `wp-config.php`
 
 ```bash
 forme base dotenv
