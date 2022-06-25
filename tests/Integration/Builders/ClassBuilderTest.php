@@ -52,7 +52,7 @@ class ClassBuilderTest extends TestCase
     {
         parent::setUp();
 
-        $this->container        = include __DIR__ . '/../../../definitions/bootstrap.php';
+        $this->container        = bootstrap();
         $this->printer          = $this->container->get(PsrPrinter::class);
         $this->replacer         = $this->container->get(PlaceholderReplacerInterface::class);
         $this->resolver         = $this->container->get(Resolver::class);

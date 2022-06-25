@@ -30,7 +30,7 @@ class GeneratorFactoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->container        = include __DIR__ . '/../../../definitions/bootstrap.php';
+        $this->container        = bootstrap();
         $this->generatorFactory = new GeneratorFactory($this->container);
     }
 
