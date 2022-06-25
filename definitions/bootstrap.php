@@ -4,8 +4,10 @@
 
 use DI\ContainerBuilder;
 
-$builder = new ContainerBuilder();
-$builder->addDefinitions(include 'dependencies.php');
-$container = $builder->build();
+function bootstrap()
+{
+    $builder = new ContainerBuilder();
+    $builder->addDefinitions(dependencies());
 
-return $container;
+    return $builder->build();
+}

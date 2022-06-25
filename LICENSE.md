@@ -1,4 +1,4 @@
-Copyright © 2021 Moussa Clarke
+Copyright © 2021-2022 Moussa Clarke
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

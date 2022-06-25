@@ -17,7 +17,7 @@ use Forme\CodeGen\Command\MakeCommand;
 use Forme\CodeGen\Command\NewCommand;
 use Symfony\Component\Console\Application;
 
-$container = include 'definitions/bootstrap.php';
+$container = bootstrap();
 
 $application = new Application('Forme Code Generator', '1.6.4');
 

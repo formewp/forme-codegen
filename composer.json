@@ -21,7 +21,11 @@
     "autoload": {
         "psr-4": {
             "Forme\\CodeGen\\": "src/"
-        }
+        },
+        "files": [
+            "definitions/bootstrap.php",
+            "definitions/dependencies.php"
+        ]
     },
     "require-dev": {
         "symfony/var-dumper": "^6.0",

@@ -1,0 +1,13 @@
+{
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\PhpScoper"
+    ],
+    "banner": [
+        "This is file is part of the Forme Framework and is released under the MIT License.",
+        "(c) 2021-2022 Moussa Clarke"
+    ],
+    "force-autodiscovery": true,
+    "directories": [
+        "help"
+    ]
+}

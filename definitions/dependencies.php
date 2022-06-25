@@ -13,21 +13,24 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use Symfony\Component\String\Inflector\EnglishInflector;
 use Symfony\Component\String\Inflector\InflectorInterface;
 
-return [
-    LocalFilesystemAdapter::class => function () {
-        return new LocalFilesystemAdapter(getcwd());
-    },
-    Filesystem::class => function (LocalFilesystemAdapter $adapter) {
-        return new Filesystem($adapter);
-    },
-    'codegenFilesystem' => function () {
-        $adapter = new LocalFilesystemAdapter(__DIR__ . '/..');
+function dependencies()
+{
+    return [
+        LocalFilesystemAdapter::class => function () {
+            return new LocalFilesystemAdapter(getcwd());
+        },
+        Filesystem::class => function (LocalFilesystemAdapter $adapter) {
+            return new Filesystem($adapter);
+        },
+        'codegenFilesystem' => function () {
+            $adapter = new LocalFilesystemAdapter(__DIR__ . '/..');
 
-        return new Filesystem($adapter);
-    },
-    InflectorInterface::class           => DI\get(EnglishInflector::class),
-    GeneratorFactoryInterface::class    => DI\get(GeneratorFactory::class),
-    ClassFinderInterface::class         => DI\get(ClassFinder::class),
-    PlaceholderReplacerInterface::class => DI\get(PlaceholderReplacer::class),
-    YamlFormattingFixerInterface::class => DI\get(YamlFormattingFixer::class),
- ];
+            return new Filesystem($adapter);
+        },
+        InflectorInterface::class           => DI\get(EnglishInflector::class),
+        GeneratorFactoryInterface::class    => DI\get(GeneratorFactory::class),
+        ClassFinderInterface::class         => DI\get(ClassFinder::class),
+        PlaceholderReplacerInterface::class => DI\get(PlaceholderReplacer::class),
+        YamlFormattingFixerInterface::class => DI\get(YamlFormattingFixer::class),
+    ];
+}
