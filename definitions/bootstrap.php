@@ -2,12 +2,15 @@
 
 // Instantiate PHP-DI Container
 
+use DI\Container;
 use DI\ContainerBuilder;
 
-function bootstrap()
-{
-    $builder = new ContainerBuilder();
-    $builder->addDefinitions(dependencies());
+if (!function_exists('bootstrap')) {
+    function bootstrap(): Container
+    {
+        $builder = new ContainerBuilder();
+        $builder->addDefinitions(dependencies());
 
-    return $builder->build();
+        return $builder->build();
+    }
 }
