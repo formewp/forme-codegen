@@ -1,11 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2022-06-25
+
+### Features
+
+- Phar build poc
+
+### Miscellaneous Tasks
+
+- Add features to roadmap
+- Fix typo
+- Update version
+
 ## [1.6.4] - 2022-06-17
 
 ### Bug Fixes
 
 - Property syntax for phptoken
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.6.3] - 2022-05-07
 
