@@ -32,7 +32,7 @@ composer cs:fix # php cs fixer on src
 composer phar:build # build phar with box (experimental, some features don't work yet)
 composer changelog # run git cliff
 composer hooks # install git hooks (will run on composer install automatically)
-composer bump # bump to the next version
+composer bump # bump to the next patch version - can also take argument "minor" or "major"
 ```
 
 ## Output all help as markdown
