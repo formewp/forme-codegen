@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.4] - 2022-06-26
+
+### Bug Fixes
+
+- Bump syntax
+
 ## [1.7.3] - 2022-06-26
 
 ### Features
@@ -11,6 +17,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Make bump executable
+- Bump version
 
 ### Refactor
 
