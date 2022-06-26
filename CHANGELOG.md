@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.5] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Move forme to php so it lints
+
 ## [1.7.4] - 2022-06-26
 
 ### Bug Fixes
 
 - Bump syntax
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.7.3] - 2022-06-26
 
