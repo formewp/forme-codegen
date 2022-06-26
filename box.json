@@ -9,5 +9,8 @@
     "force-autodiscovery": true,
     "directories": [
         "help"
+    ],
+    "files": [
+        "forme.php"
     ]
 }

@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ERROR);
-
 const VERSION = '1.7.17';
 
 // include autoload for local or global context

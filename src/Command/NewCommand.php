@@ -106,7 +106,6 @@ final class NewCommand extends Command
             (new Notification())
                 ->setTitle('🎉 Forme Project Created')
                 ->setBody('A new Forme ' . $type . ' project has been created!')
-                ->setIcon(__DIR__ . '/../../icon.png')
             ;
 
         // Send it

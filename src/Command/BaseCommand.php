@@ -91,7 +91,6 @@ final class BaseCommand extends Command
             (new Notification())
                 ->setTitle('Forme Project Created')
                 ->setBody('A new Forme Base project has been created!')
-                ->setIcon(__DIR__ . '/../../icon.png')
             ;
 
         // Send it
