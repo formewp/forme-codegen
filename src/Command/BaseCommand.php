@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
+use Joli\JoliNotif\Notification;
+use Joli\JoliNotif\NotifierFactory;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -58,7 +60,7 @@ final class BaseCommand extends Command
 
     protected function newCommand(array $args, OutputInterface $output): int
     {
-        //$args[0] is required, error if not set
+        // $args[0] is required, error if not set
         if (!isset($args[0])) {
             $output->writeln('⛔ <fg=red>You must specify a project name</>');
 
@@ -83,6 +85,17 @@ final class BaseCommand extends Command
         }
 
         $output->writeln('🎉 <fg=green>Base created your new project successfully! </> You can now cd into ' . $projectName . ' and get coding!');
+
+        $notifier     = NotifierFactory::create();
+        $notification =
+            (new Notification())
+                ->setTitle('Forme Project Created')
+                ->setBody('A new Forme Base project has been created!')
+                ->setIcon(__DIR__ . '/../../icon.png')
+            ;
+
+        // Send it
+        $notifier->send($notification);
 
         return Command::SUCCESS;
     }

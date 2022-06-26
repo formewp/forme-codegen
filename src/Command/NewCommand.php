@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Forme\CodeGen\Command;
 
 use Jawira\CaseConverter\Convert;
+use Joli\JoliNotif\Notification;
+use Joli\JoliNotif\NotifierFactory;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -86,6 +88,17 @@ final class NewCommand extends Command
         }
 
         $output->writeln('🎉 <fg=green>Created a new Forme ' . $type . ' project!</> You can cd into ' . $nameConversion->toKebab() . '-' . $type . ' and get coding!');
+
+        $notifier     = NotifierFactory::create();
+        $notification =
+            (new Notification())
+                ->setTitle('Forme Project Created')
+                ->setBody('A new Forme ' . $type . ' project has been created!')
+                ->setIcon(__DIR__ . '/../../icon.png')
+            ;
+
+        // Send it
+        $notifier->send($notification);
 
         return Command::SUCCESS;
     }
