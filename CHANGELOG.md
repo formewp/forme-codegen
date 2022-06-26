@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.16] - 2022-06-26
+
+### Refactor
+
+- New command use temp directory
+- Bump use temp fs
+
 ## [1.7.15] - 2022-06-26
 
 ### Bug Fixes
 
 - Php env
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ### Styling
 
