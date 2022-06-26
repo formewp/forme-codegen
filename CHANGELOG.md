@@ -1,7 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.18] - 2022-06-26
+
+### Bug Fixes
+
+- Phar build without icon
+
 ## [1.7.17] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ### Refactor
 
