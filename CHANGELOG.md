@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.11] - 2022-06-26
+
+### Features
+
+- Notifications for bigger commands
+
 ## [1.7.10] - 2022-06-26
 
 ### Miscellaneous Tasks
 
 - Test script pest instead of phpunit
+- Bump version
 
 ## [1.7.9] - 2022-06-26
 
