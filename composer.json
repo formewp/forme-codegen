@@ -18,6 +18,12 @@
         "php-di/php-di": "^6.3",
         "phppkg/cli-markdown": "dev-main#3e1c2e2b"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/moussaclarke/mock-final-classes.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Forme\\CodeGen\\": "src/"
@@ -28,11 +34,12 @@
         ]
     },
     "require-dev": {
-        "symfony/var-dumper": "^6.0",
-        "psy/psysh": "^0.11.2",
         "mockery/mockery": "^1.4",
-        "nunomaduro/mock-final-classes": "^1.1",
-        "rector/rector": "^0.12.20"
+        "nunomaduro/mock-final-classes": "dev-master",
+        "pestphp/pest": "^1.21",
+        "psy/psysh": "^0.11.2",
+        "rector/rector": "^0.12.20",
+        "symfony/var-dumper": "^6.0"
     },
     "scripts": {
         "test": "./tools/phpunit tests --colors",
@@ -54,6 +61,9 @@
     "prefer-stable": true,
     "config": {
         "bin-dir": "tools",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
