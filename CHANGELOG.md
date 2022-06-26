@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.9] - 2022-06-26
+
+### Documentation
+
+- Update readme
+
+### Miscellaneous Tasks
+
+- Replace phpunit with pest
+
 ## [1.7.8] - 2022-06-26
 
 ### Miscellaneous Tasks
 
 - Suppress irrelevant bump error
+- Bump version
 
 ## [1.7.7] - 2022-06-26
 

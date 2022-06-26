@@ -3,7 +3,7 @@
 
 error_reporting(E_ERROR);
 
-const VERSION = '1.7.8';
+const VERSION = '1.7.9';
 
 // include autoload for local or global context
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
