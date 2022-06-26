@@ -31,7 +31,7 @@ NEW_VERSION="$MAJOR.$MINOR.$PATCH"
 if [ -z "$NEEDS_TAG" ]; then
     echo "Updating version to $NEW_VERSION"
     # find the line with "const VERSION" and replace it with the new version
-    sed -i '' -e "s/const VERSION.*/const VERSION = $NEW_VERSION/g" forme
+    sed -i '' -e "s/const VERSION.*/const VERSION = '$NEW_VERSION';/g" forme
     # if git cliff is installed Generate a changelog
     if command -v git-cliff &> /dev/null
     then
