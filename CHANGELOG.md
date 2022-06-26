@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.10] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Test script pest instead of phpunit
+
 ## [1.7.9] - 2022-06-26
 
 ### Documentation
@@ -10,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Replace phpunit with pest
+- Bump version
 
 ## [1.7.8] - 2022-06-26
 
