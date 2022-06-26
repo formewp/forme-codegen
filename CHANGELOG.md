@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.12] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Update composer deps
+
 ## [1.7.11] - 2022-06-26
 
 ### Features
 
 - Notifications for bigger commands
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.7.10] - 2022-06-26
 
