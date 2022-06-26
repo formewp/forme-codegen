@@ -45,13 +45,27 @@ class GeneratorFactoryTest extends TestCase
         unset($this->container);
     }
 
-    public function testCreatesAllConfiguredGeneratorTypes(): void
+    public function testCreatesOnlyConfiguredGeneratorTypes(): void
     {
         $types      = array_keys($this->generatorFactory::STRATEGY_MAP);
         $generators = array_map(function ($type) {
             return $this->generatorFactory->create($type);
         }, $types);
         $this->assertContainsOnlyInstancesOf(GeneratorInterface::class, $generators);
+    }
+
+    public function testCreatesOneOfEachConfiguredGeneratorTypes(): void
+    {
+        $types      = array_keys($this->generatorFactory::STRATEGY_MAP);
+        $generators = array_map(function ($type) {
+            return $this->generatorFactory->create($type);
+        }, $types);
+        // does not contain more than one instance of each type
+        $classCount = count(array_unique($this->generatorFactory::STRATEGY_MAP));
+        $classNames = array_map(function (GeneratorInterface $generator) {
+            return get_class($generator);
+        }, $generators);
+        $this->assertCount($classCount, array_unique($classNames));
     }
 
     public function testCorrectGeneratorTypesAreConfigured(): void
