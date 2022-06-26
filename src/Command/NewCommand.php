@@ -76,11 +76,12 @@ final class NewCommand extends Command
         $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
         $shellScript     = str_replace('ViewEngine', $view, $shellScript);
 
-        $tmpScriptFile   = 'src/Shell/tmp' . uniqid() . '.sh';
-        $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
-        $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
+        $tmpScriptFile   = 'tmp' . uniqid() . '.sh';
+        $this->tempFilesystem->write($tmpScriptFile, $shellScript);
+        $tempDirectory  = $this->tempFilesystemAdapter->getPath();
+        $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile]);
         $process->setTimeout(null);
-        $progressBar = new ProgressBar($output);
+        $progressBar = new ProgressBar($output, 80);
         $progressBar->start();
 
         $capturedOutput = '';

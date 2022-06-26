@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f48e86d0d0f3c489b1ebd517fc4cb3b",
+    "content-hash": "32f76e26f50c1f46412fd2bd5d928fe3",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -561,6 +561,52 @@
                 }
             ],
             "time": "2021-10-22T20:16:43+00:00"
+        },
+        {
+            "name": "emgag/flysystem-tempdir",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/emgag/flysystem-tempdir.git",
+                "reference": "d2281ba57ac35e75f503c070b75791d6e8f98a86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/emgag/flysystem-tempdir/zipball/d2281ba57ac35e75f503c070b75791d6e8f98a86",
+                "reference": "d2281ba57ac35e75f503c070b75791d6e8f98a86",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^2.0.0 || ^3.0.0",
+                "php": "^7.4 || ^8.0 || ^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.7",
+                "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.13.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Emgag\\Flysystem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Blaser",
+                    "email": "mb@emgag.com"
+                }
+            ],
+            "description": "Flysystem adapter for a self-destroying temporary directory",
+            "support": {
+                "issues": "https://github.com/emgag/flysystem-tempdir/issues",
+                "source": "https://github.com/emgag/flysystem-tempdir/tree/v3.0.0"
+            },
+            "time": "2022-06-02T10:17:22+00:00"
         },
         {
             "name": "forme/framework",

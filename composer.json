@@ -5,6 +5,7 @@
     "require": {
         "php": "^8.0",
         "consolidation/comments": "^1.0",
+        "emgag/flysystem-tempdir": "^3.0",
         "forme/framework": "^2.0",
         "jawira/case-converter": "^3.4",
         "jolicode/jolinotif": "^2.4",

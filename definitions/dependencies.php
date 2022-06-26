@@ -1,5 +1,6 @@
 <?php
 
+use Emgag\Flysystem\TempdirAdapter;
 use Forme\CodeGen\Generators\GeneratorFactory;
 use Forme\CodeGen\Generators\GeneratorFactoryInterface;
 use Forme\CodeGen\Utils\ClassFinder;
@@ -23,7 +24,11 @@ if (!function_exists('dependencies')) {
             Filesystem::class => function (LocalFilesystemAdapter $adapter) {
                 return new Filesystem($adapter);
             },
-            'codegenFilesystem' => function () {
+            TempdirAdapter::class => fn () => new TempdirAdapter(),
+            'tempFilesystem'      => function (TempdirAdapter $adapter) {
+                return new Filesystem($adapter);
+            },
+            'codegenFilesystem'   => function () {
                 $adapter = new LocalFilesystemAdapter(__DIR__ . '/..');
 
                 return new Filesystem($adapter);
