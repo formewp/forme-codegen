@@ -36,7 +36,7 @@ class ClassBuilder
             $namespace->addUse($use, $alias);
         }
 
-        $class = ClassType::withBodiesFrom($sourceClass);
+        $class = ClassType::from($sourceClass, withBodies: true);
         // add the prefix onto the class name
         $classPrefixConversion = new Convert($classPrefix);
         $classPrefixPascal     = $classPrefixConversion->toPascal();
