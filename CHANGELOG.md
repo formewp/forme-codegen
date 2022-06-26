@@ -1,7 +1,32 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.2] - 2022-06-26
+
+### Documentation
+
+- Update readme with dev tools
+
+### Miscellaneous Tasks
+
+- Move vendor/bin to tools
+
+## [1.7.1] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Wrap functions and type
+- Move some dev tools to phive
+
+### Testing
+
+- Fix tests
+
 ## [1.7.0] - 2022-06-25
+
+### Documentation
+
+- Changelog
 
 ### Features
 
