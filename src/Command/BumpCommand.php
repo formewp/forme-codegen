@@ -49,11 +49,8 @@ final class BumpCommand extends Command
             return Command::FAILURE;
         }
 
-        $shellScript       = $this->codegenFilesystem->read('src/Shell/bump.sh');
-        $tmpScriptFile     = 'tmp' . uniqid() . '.sh';
-        $this->tempFilesystem->write($tmpScriptFile, $shellScript);
-        $tempDirectory  = $this->tempFilesystemAdapter->getPath();
-        $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile], null, [
+        $scriptFile        = __DIR__ . '/../Shell/bump.sh';
+        $process           = new Process(['bash', $scriptFile], null, [
             'BUMP_SCOPE' => $scope,
         ]);
         $process->run(function ($type, $buffer) use ($output) {
