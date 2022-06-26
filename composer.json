@@ -41,7 +41,8 @@
         "rector:fix": "./tools/rector process src",
         "cs:check": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --dry-run --diff",
         "cs:fix": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --diff",
-        "phar:build": "./tools/box compile"
+        "phar:build": "./tools/box compile",
+        "changelog": "git cliff -o CHANGELOG.md"
     },
     "bin": [
         "forme"
