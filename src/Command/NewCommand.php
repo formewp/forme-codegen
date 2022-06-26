@@ -9,6 +9,7 @@ use Joli\JoliNotif\Notification;
 use Joli\JoliNotif\NotifierFactory;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -77,11 +78,21 @@ final class NewCommand extends Command
         $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
         $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile]);
         $process->setTimeout(null);
-        $process->run(function ($type, $buffer) use ($output) {
-            $output->writeln($buffer);
-        });
+        $progressBar = new ProgressBar($output);
+        $progressBar->start();
+
+        $capturedOutput = '';
+
+        $advance = function ($type, $buffer) use ($progressBar, $capturedOutput) {
+            $capturedOutput .= $buffer . PHP_EOL;
+            $progressBar->advance();
+        };
+
+        $process->run(fn ($type, $buffer) => $advance($type, $buffer));
+        $progressBar->finish();
         $this->codegenFilesystem->delete($tmpScriptFile);
         if (!$process->isSuccessful()) {
+            $output->writeln($capturedOutput);
             $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues. We might have started writing some files into this directory so check and delete as appropriate');
 
             return Command::FAILURE;
