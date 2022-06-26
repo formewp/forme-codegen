@@ -91,15 +91,13 @@ final class NewCommand extends Command
 
         $process->run(fn ($type, $buffer) => $advance($type, $buffer));
         $progressBar->finish();
-        $this->codegenFilesystem->delete($tmpScriptFile);
+        $output->writeln('');
         if (!$process->isSuccessful()) {
             $output->writeln($capturedOutput);
             $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues. We might have started writing some files into this directory so check and delete as appropriate');
 
             return Command::FAILURE;
         }
-
-        $output->writeln('');
         $output->writeln('🎉 <fg=green>Created a new Forme ' . $type . ' project!</> You can cd into ' . $nameConversion->toKebab() . '-' . $type . ' and get coding!');
 
         $notifier     = NotifierFactory::create();
