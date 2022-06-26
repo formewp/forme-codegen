@@ -23,7 +23,7 @@ You also need [git cliff](https://github.com/orhun/git-cliff).
 The useful ones are set up as composer scripts.
 
 ```sh
-composer test # run phpunit tests
+composer test # run pest
 composer stan # run phpstan on src
 composer rector:check # rector dry run on src
 composer rector:fix # rector on src

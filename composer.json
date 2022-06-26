@@ -42,7 +42,7 @@
         "symfony/var-dumper": "^6.0"
     },
     "scripts": {
-        "test": "./tools/phpunit tests --colors",
+        "test": "./tools/pest",
         "stan": "./tools/phpstan",
         "rector:check": "./tools/rector process src --dry-run",
         "rector:fix": "./tools/rector process src",
