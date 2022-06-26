@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.13] - 2022-06-26
+
+### Features
+
+- Progress bar instead of output
+
 ## [1.7.12] - 2022-06-26
 
 ### Miscellaneous Tasks
 
 - Update composer deps
+- Bump version
 
 ## [1.7.11] - 2022-06-26
 
