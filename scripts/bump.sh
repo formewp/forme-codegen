@@ -22,13 +22,13 @@ esac
 
 #Get current hash and see if it already has a tag
 GIT_COMMIT=`git rev-parse HEAD`
-NEEDS_TAG=`git describe --contains $GIT_COMMIT`
+HAS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
 
 #Create new tag
 NEW_VERSION="$MAJOR.$MINOR.$PATCH"
 
 # Only tag if no tag already
-if [ -z "$NEEDS_TAG" ]; then
+if [ -z "$HAS_TAG" ]; then
     echo "Updating version to $NEW_VERSION"
     # find the line with "const VERSION" and replace it with the new version
     sed -i '' -e "s/const VERSION.*/const VERSION = '$NEW_VERSION';/g" forme.php
