@@ -12,11 +12,13 @@ composer global require forme/codegen
 
 [Click here for Documentation](https://formewp.github.io)
 
-## Dev tools
+## Development
 
-For development run `phive install` as well as `composer install`
+For development run `phive install` followed by `composer install`.
 
 Tools are in `./tools` rather than `./vendor/bin`
+
+You also need `git cliff`.
 
 The useful ones are set up as composer scripts.
 
@@ -28,6 +30,8 @@ composer rector:fix # rector on src
 composer cs:check # php cs fixer dry run on src
 composer cs:fix # php cs fixer on src
 composer phar:build # build phar with box (experimental, some features don't work yet)
+composer changelog # run git cliff
+composer hooks # install git hooks (will run on composer install automatically)
 ```
 
 ## Output all help as markdown

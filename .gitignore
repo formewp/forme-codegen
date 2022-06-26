@@ -2,3 +2,4 @@ vendor
 .php-cs-fixer.cache
 phpstan.neon
 tools
+.phpunit.result.cache
