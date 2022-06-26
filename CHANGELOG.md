@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.14] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Tidy up new command output
+
 ## [1.7.13] - 2022-06-26
 
 ### Features
 
 - Progress bar instead of output
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.7.12] - 2022-06-26
 
