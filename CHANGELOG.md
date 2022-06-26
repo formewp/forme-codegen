@@ -1,15 +1,32 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.3] - 2022-06-26
+
+### Features
+
+- Add changelog composer script
+- Bump version
+
+### Miscellaneous Tasks
+
+- Make bump executable
+
+### Refactor
+
+- Replace githooks with captainhook
+
 ## [1.7.2] - 2022-06-26
 
 ### Documentation
 
 - Update readme with dev tools
+- Changelog
 
 ### Miscellaneous Tasks
 
 - Move vendor/bin to tools
+- Update version
 
 ## [1.7.1] - 2022-06-26
 
