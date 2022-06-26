@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.8] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Suppress irrelevant bump error
+
 ## [1.7.7] - 2022-06-26
 
 ### Miscellaneous Tasks
 
 - Suppress bump error
+- Bump version
 
 ## [1.7.6] - 2022-06-26
 
