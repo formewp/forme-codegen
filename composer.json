@@ -30,13 +30,18 @@
     "require-dev": {
         "symfony/var-dumper": "^6.0",
         "psy/psysh": "^0.11.2",
-        "phpunit/phpunit": "^9.5",
         "mockery/mockery": "^1.4",
         "nunomaduro/mock-final-classes": "^1.1",
         "rector/rector": "^0.12.20"
     },
     "scripts": {
-        "tests": "./vendor/bin/phpunit tests --colors"
+        "tests": "./tools/phpunit tests --colors",
+        "stan": "./tools/phpstan",
+        "rector:check": "./vendor/bin/rector process src --dry-run",
+        "rector:fix": "./vendor/bin/rector process src",
+        "cs:check": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --dry-run --diff",
+        "cs:fix": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --diff",
+        "phar:build": "./tools/box compile"
     },
     "bin": [
         "forme"
