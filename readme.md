@@ -12,10 +12,22 @@ composer global require forme/codegen
 
 [Click here for Documentation](https://formewp.github.io)
 
-## Tests
+## Dev tools
+
+For development run `phive install` as well as `composer install`
+
+Tools are in `./tools` rather than `./vendor/bin`
+
+The useful ones are set up as composer scripts.
 
 ```sh
-composer test
+composer test # run phpunit tests
+composer stan # run phpstan on src
+composer rector:check # rector dry run on src
+composer rector:fix # rector on src
+composer cs:check # php cs fixer dry run on src
+composer cs:fix # php cs fixer on src
+composer phar:build # build phar with box (experimental, some features don't work yet)
 ```
 
 ## Output all help as markdown
