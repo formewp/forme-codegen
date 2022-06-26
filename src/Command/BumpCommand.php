@@ -50,15 +50,15 @@ final class BumpCommand extends Command
         }
 
         $shellScript       = $this->codegenFilesystem->read('src/Shell/bump.sh');
-        $tmpScriptFile     = 'src/Shell/tmp' . uniqid() . '.sh';
-        $this->codegenFilesystem->write($tmpScriptFile, $shellScript);
-        $process = new Process(['bash', __DIR__ . '/../../' . $tmpScriptFile], null, [
+        $tmpScriptFile     = 'tmp' . uniqid() . '.sh';
+        $this->tempFilesystem->write($tmpScriptFile, $shellScript);
+        $tempDirectory  = $this->tempFilesystemAdapter->getPath();
+        $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile], null, [
             'BUMP_SCOPE' => $scope,
         ]);
         $process->run(function ($type, $buffer) use ($output) {
             $output->writeln($buffer);
         });
-        $this->codegenFilesystem->delete($tmpScriptFile);
         if (!$process->isSuccessful()) {
             $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
 
