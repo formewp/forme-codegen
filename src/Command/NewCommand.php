@@ -63,6 +63,8 @@ final class NewCommand extends Command
             return Command::FAILURE;
         }
 
+        $output->writeln('🌱 Generating new project...');
+
         $shellScript = $this->codegenFilesystem->read('src/Shell/new_project.sh');
         $shellScript = str_replace('project-type', $type, $shellScript);
         $shellScript = str_replace('project-name', $nameConversion->toKebab(), $shellScript);
@@ -82,8 +84,7 @@ final class NewCommand extends Command
         $progressBar->start();
 
         $capturedOutput = '';
-
-        $advance = function ($type, $buffer) use ($progressBar, $capturedOutput) {
+        $advance        = function ($type, $buffer) use ($progressBar, &$capturedOutput) {
             $capturedOutput .= $buffer . PHP_EOL;
             $progressBar->advance();
         };
@@ -98,12 +99,13 @@ final class NewCommand extends Command
             return Command::FAILURE;
         }
 
+        $output->writeln('');
         $output->writeln('🎉 <fg=green>Created a new Forme ' . $type . ' project!</> You can cd into ' . $nameConversion->toKebab() . '-' . $type . ' and get coding!');
 
         $notifier     = NotifierFactory::create();
         $notification =
             (new Notification())
-                ->setTitle('Forme Project Created')
+                ->setTitle('🎉 Forme Project Created')
                 ->setBody('A new Forme ' . $type . ' project has been created!')
                 ->setIcon(__DIR__ . '/../../icon.png')
             ;
