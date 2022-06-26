@@ -1,7 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.17] - 2022-06-26
+
+### Refactor
+
+- Temp dir not needed for bump
+
 ## [1.7.16] - 2022-06-26
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ### Refactor
 
