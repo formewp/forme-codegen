@@ -19,7 +19,7 @@ use Symfony\Component\Console\Application;
 
 $container = bootstrap();
 
-$application = new Application('Forme Code Generator', '1.7.0');
+$application = new Application('Forme Code Generator', '1.7.2');
 
 $application->add($container->get(MakeCommand::class));
 $application->add($container->get(NewCommand::class));
