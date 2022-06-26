@@ -54,7 +54,9 @@
         "changelog": "git cliff -o CHANGELOG.md",
         "hooks": "./tools/captainhook install",
         "post-install-cmd": "@hooks",
-        "bump": "./scripts/bump.sh"
+        "bump": "./scripts/bump.sh",
+        "infection": "./tools/infection",
+        "infection:log": "./tools/infection --logger-html=infection.html"
     },
     "bin": [
         "forme"
