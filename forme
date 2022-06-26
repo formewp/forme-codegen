@@ -3,6 +3,8 @@
 
 error_reporting(E_ERROR);
 
+const VERSION = '1.7.2';
+
 // include autoload for local or global context
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     require __DIR__ . '/vendor/autoload.php';
@@ -19,7 +21,7 @@ use Symfony\Component\Console\Application;
 
 $container = bootstrap();
 
-$application = new Application('Forme Code Generator', '1.7.2');
+$application = new Application('Forme Code Generator', VERSION);
 
 $application->add($container->get(MakeCommand::class));
 $application->add($container->get(NewCommand::class));

@@ -18,7 +18,7 @@ For development run `phive install` followed by `composer install`.
 
 Tools are in `./tools` rather than `./vendor/bin`
 
-You also need `git cliff`.
+You also need [git cliff](https://github.com/orhun/git-cliff).
 
 The useful ones are set up as composer scripts.
 
@@ -32,6 +32,7 @@ composer cs:fix # php cs fixer on src
 composer phar:build # build phar with box (experimental, some features don't work yet)
 composer changelog # run git cliff
 composer hooks # install git hooks (will run on composer install automatically)
+composer bump # bump to the next version
 ```
 
 ## Output all help as markdown
