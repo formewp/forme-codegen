@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.15] - 2022-06-26
+
+### Bug Fixes
+
+- Php env
+
+### Styling
+
+- Line before success output
+
 ## [1.7.14] - 2022-06-26
 
 ### Miscellaneous Tasks
 
 - Tidy up new command output
+- Bump version
 
 ## [1.7.13] - 2022-06-26
 
