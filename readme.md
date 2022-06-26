@@ -14,7 +14,7 @@ composer global require forme/codegen
 
 ## Development
 
-For development run `phive install` followed by `composer install`.
+For development run `phive install --force-accept-unsigned` followed by `composer install`.
 
 Tools are in `./tools` rather than `./vendor/bin`
 
