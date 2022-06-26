@@ -37,8 +37,8 @@
     "scripts": {
         "tests": "./tools/phpunit tests --colors",
         "stan": "./tools/phpstan",
-        "rector:check": "./vendor/bin/rector process src --dry-run",
-        "rector:fix": "./vendor/bin/rector process src",
+        "rector:check": "./tools/rector process src --dry-run",
+        "rector:fix": "./tools/rector process src",
         "cs:check": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --dry-run --diff",
         "cs:fix": "./tools/php-cs-fixer fix --config ./.php-cs-fixer.dist --diff",
         "phar:build": "./tools/box compile"
@@ -47,5 +47,9 @@
         "forme"
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "bin-dir": "tools",
+        "sort-packages": true
+    }
 }
