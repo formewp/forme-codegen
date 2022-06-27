@@ -4,7 +4,7 @@
     colors="true"
     bootstrap="vendor/autoload.php"
     executionOrder="depends,defects"
-    forceCoversAnnotation="true"
+    forceCoversAnnotation="false"
     verbose="true">
     <testsuites>
         <testsuite name="default">
