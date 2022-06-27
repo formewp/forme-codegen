@@ -25,7 +25,7 @@ abstract class Command extends SymfonyCommand
     /** @var TempdirAdapter */
     protected $tempFilesystemAdapter;
 
-    public function __construct(protected Filesystem $filesystem, protected BaseGenerator $generator, protected ClassFinder $classFinder, protected Resolver $resolver, protected CliMarkdown $cliMarkdown, ContainerInterface $container)
+    public function __construct(protected Filesystem $filesystem, protected BaseGenerator $generator, protected ClassFinder $classFinder, protected Resolver $resolver, protected CliMarkdown $cliMarkdown, protected ContainerInterface $container)
     {
         $this->codegenFilesystem     = $container->get('codegenFilesystem');
         $this->tempFilesystemAdapter = $container->get(TempdirAdapter::class);

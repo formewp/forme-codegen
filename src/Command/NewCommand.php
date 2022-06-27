@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
+use Forme\CodeGen\Utils\NewShellScriptReplacer;
 use Jawira\CaseConverter\Convert;
 use Joli\JoliNotif\Notification;
 use Joli\JoliNotif\NotifierFactory;
@@ -45,12 +46,12 @@ final class NewCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $nameConversion   = new Convert($input->getArgument('name'));
+        $name             = $input->getArgument('name');
+        $nameConversion   = new Convert($name);
         $type             = $input->getArgument('type');
         $host             = $input->getOption('host');
         $vendor           = $input->getOption('vendor') ?: 'App';
         $view             = $input->getOption('view') ?: 'plates-4';
-        $vendorConversion = new Convert($vendor);
         if (!in_array($type, self::VALID_TYPES)) {
             $output->writeln('⛔ <fg=red>Not a valid project type.</> Valid types are: ' . implode(', ', self::VALID_TYPES));
 
@@ -66,15 +67,8 @@ final class NewCommand extends Command
         $output->writeln('🌱 Generating new project...');
 
         $shellScript = $this->codegenFilesystem->read('src/Shell/new_project.sh');
-        $shellScript = str_replace('project-type', $type, $shellScript);
-        $shellScript = str_replace('project-name', $nameConversion->toKebab(), $shellScript);
-        $shellScript = str_replace('ProjectName', $nameConversion->toPascal(), $shellScript);
-        if ($host) {
-            $shellScript = str_replace('github.com', $host, $shellScript);
-        }
-
-        $shellScript     = str_replace('VendorName', $vendorConversion->toPascal(), $shellScript);
-        $shellScript     = str_replace('ViewEngine', $view, $shellScript);
+        $replacer    = $this->container->get(NewShellScriptReplacer::class);
+        $shellScript = $replacer->replace($shellScript, compact('type', 'name', 'host', 'vendor', 'view'));
 
         $tmpScriptFile   = 'tmp' . uniqid() . '.sh';
         $this->tempFilesystem->write($tmpScriptFile, $shellScript);

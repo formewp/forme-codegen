@@ -40,8 +40,8 @@ class YamlFormattingFixerTest extends TestCase
 
     public function testRepairsWeirdYaml(): void
     {
-        $weirdYaml = file_get_contents(__DIR__ . '/../../../stubs/weird-yaml.stub');
-        $goodYaml  = file_get_contents(__DIR__ . '/../../../stubs/good-yaml.stub');
+        $weirdYaml = file_get_contents(__DIR__ . '/../../../stubs/tests/weird-yaml.stub');
+        $goodYaml  = file_get_contents(__DIR__ . '/../../../stubs/tests/good-yaml.stub');
         $result    = $this->yamlFormattingFixer->repair($weirdYaml);
         $this->assertEquals($goodYaml, $result);
     }

@@ -8,9 +8,13 @@
     ],
     "force-autodiscovery": true,
     "directories": [
-        "help"
+        "help",
+        "stubs"
     ],
     "files": [
         "forme.php"
+    ],
+    "blacklist": [
+        "stubs/tests/*"
     ]
 }
