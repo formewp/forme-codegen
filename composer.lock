@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32f76e26f50c1f46412fd2bd5d928fe3",
+    "content-hash": "bf6fd71b106ed27f589b1dbffb2fd96f",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1500,21 +1500,21 @@
         },
         {
             "name": "jawira/case-converter",
-            "version": "v3.4.6",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jawira/case-converter.git",
-                "reference": "2f284c0760ee8085ab463f57275cf1f887fb78ae"
+                "reference": "f11ac9b097ca16af8aa1842947df2e6635c2675e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jawira/case-converter/zipball/2f284c0760ee8085ab463f57275cf1f887fb78ae",
-                "reference": "2f284c0760ee8085ab463f57275cf1f887fb78ae",
+                "url": "https://api.github.com/repos/jawira/case-converter/zipball/f11ac9b097ca16af8aa1842947df2e6635c2675e",
+                "reference": "f11ac9b097ca16af8aa1842947df2e6635c2675e",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": "^7.1 || ^8.0"
+                "php": ">=7.4"
             },
             "require-dev": {
                 "behat/behat": "^3.0",
@@ -1561,9 +1561,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jawira/case-converter/issues",
-                "source": "https://github.com/jawira/case-converter/tree/v3.4.6"
+                "source": "https://github.com/jawira/case-converter/tree/v3.5.0"
             },
-            "time": "2021-11-21T19:52:51+00:00"
+            "time": "2022-06-23T20:32:12+00:00"
         },
         {
             "name": "jolicode/jolinotif",
@@ -3611,16 +3611,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.0.9",
+            "version": "v6.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50"
+                "reference": "d8d41b93c16f1da2f2d4b9209b7de78c4d203642"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/9b190bc7a19d19add1dbb3382721973836e59b50",
-                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d8d41b93c16f1da2f2d4b9209b7de78c4d203642",
+                "reference": "d8d41b93c16f1da2f2d4b9209b7de78c4d203642",
                 "shasum": ""
             },
             "require": {
@@ -3686,7 +3686,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.0.9"
+                "source": "https://github.com/symfony/console/tree/v6.0.10"
             },
             "funding": [
                 {
@@ -3702,7 +3702,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-27T06:40:13+00:00"
+            "time": "2022-06-26T13:01:22+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4533,16 +4533,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.0.9",
+            "version": "v6.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc"
+                "reference": "1b3adf02a0fc814bd9118d7fd68a097a599ebc27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/df9f03d595aa2d446498ba92fe803a519b2c43cc",
-                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc",
+                "url": "https://api.github.com/repos/symfony/string/zipball/1b3adf02a0fc814bd9118d7fd68a097a599ebc27",
+                "reference": "1b3adf02a0fc814bd9118d7fd68a097a599ebc27",
                 "shasum": ""
             },
             "require": {
@@ -4598,7 +4598,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.0.9"
+                "source": "https://github.com/symfony/string/tree/v6.0.10"
             },
             "funding": [
                 {
@@ -4614,7 +4614,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-22T08:18:02+00:00"
+            "time": "2022-06-26T16:34:50+00:00"
         },
         {
             "name": "symfony/translation",
@@ -4791,16 +4791,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.0.3",
+            "version": "v6.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e77f3ea0b21141d771d4a5655faa54f692b34af5"
+                "reference": "3b039081c8a6ff8773db2fc11069f2da4960449c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e77f3ea0b21141d771d4a5655faa54f692b34af5",
-                "reference": "e77f3ea0b21141d771d4a5655faa54f692b34af5",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/3b039081c8a6ff8773db2fc11069f2da4960449c",
+                "reference": "3b039081c8a6ff8773db2fc11069f2da4960449c",
                 "shasum": ""
             },
             "require": {
@@ -4845,7 +4845,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.0.3"
+                "source": "https://github.com/symfony/yaml/tree/v6.0.10"
             },
             "funding": [
                 {
@@ -4861,7 +4861,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-26T17:23:29+00:00"
+            "time": "2022-06-20T11:58:32+00:00"
         },
         {
             "name": "toolkit/cli-utils",
@@ -5674,13 +5674,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/moussaclarke/mock-final-classes.git",
-                "reference": "7a209bd48a230be45ab9808fabc238d54c3360b9"
+                "url": "https://github.com/nunomaduro/mock-final-classes.git",
+                "reference": "61915f752aa4b3668d1ef595c3a9a56bc95fc90d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moussaclarke/mock-final-classes/zipball/7a209bd48a230be45ab9808fabc238d54c3360b9",
-                "reference": "7a209bd48a230be45ab9808fabc238d54c3360b9",
+                "url": "https://api.github.com/repos/nunomaduro/mock-final-classes/zipball/61915f752aa4b3668d1ef595c3a9a56bc95fc90d",
+                "reference": "61915f752aa4b3668d1ef595c3a9a56bc95fc90d",
                 "shasum": ""
             },
             "require": {
@@ -5697,18 +5697,14 @@
             "default-branch": true,
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "NunoMaduro\\MockFinalClasses\\": "src/"
-                },
                 "files": [
                     "autoload.php"
-                ]
-            },
-            "autoload-dev": {
+                ],
                 "psr-4": {
-                    "Tests\\": "tests/"
+                    "NunoMaduro\\MockFinalClasses\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5728,23 +5724,24 @@
                 "phpunit"
             ],
             "support": {
-                "source": "https://github.com/moussaclarke/mock-final-classes/tree/master"
+                "issues": "https://github.com/nunomaduro/mock-final-classes/issues",
+                "source": "https://github.com/nunomaduro/mock-final-classes/tree/master"
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/nunomaduro"
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
                 },
                 {
-                    "type": "patreon",
-                    "url": "https://www.patreon.com/nunomaduro"
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
                 },
                 {
-                    "type": "custom",
-                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L"
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
                 }
             ],
-            "time": "2022-06-26T11:14:35+00:00"
+            "time": "2022-06-26T21:52:17+00:00"
         },
         {
             "name": "pestphp/pest",

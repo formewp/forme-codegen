@@ -20,12 +20,6 @@
         "symfony/string": "^6.0",
         "symfony/yaml": "^6.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/moussaclarke/mock-final-classes.git"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Forme\\CodeGen\\": "src/"
