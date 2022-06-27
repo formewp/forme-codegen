@@ -1,69 +1,23 @@
 <?php
-
-namespace Tests\Unit\Forme\CodeGen\Utils\Resolvers;
-
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver;
 use Forme\CodeGen\Utils\Resolvers\NameSpaceResolver;
 use League\Flysystem\Filesystem;
-use Mockery;
-use Mockery\Mock;
-use PHPUnit\Framework\TestCase;
 
-/**
- * Class NameSpaceResolverTest.
- *
- * @covers \Forme\CodeGen\Utils\Resolvers\NameSpaceResolver
- */
-class NameSpaceResolverTest extends TestCase
-{
-    /**
-     * @var NameSpaceResolver
-     */
-    protected $nameSpaceResolver;
+test('get returns the project name space if set in the Main.php class', function () {
+    $fileSystem        = Mockery::mock(Filesystem::class)->shouldReceive('fileExists')->with('/app/Main.php')->andReturn(true)->getMock();
+    $resolver          = Mockery::mock(ClassFileResolver::class)->shouldReceive('getNameSpace')->with('/app/Main.php')->andReturn('Acme\\TestNameSpace')->getMock();
+    $nameSpaceResolver = new NameSpaceResolver($fileSystem, $resolver);
+    expect($nameSpaceResolver->get())->toBe('Acme\\TestNameSpace');
+});
 
-    /**
-     * @var Filesystem|Mock
-     */
-    protected $filesystem;
+test('get returns the default name space if no Main.php class is found', function () {
+    $fileSystem        = Mockery::mock(Filesystem::class)->shouldReceive('fileExists')->with('/app/Main.php')->andReturn(false)->getMock();
+    $resolver          = Mockery::mock(ClassFileResolver::class);
+    $nameSpaceResolver = new NameSpaceResolver($fileSystem, $resolver);
+    expect($nameSpaceResolver->get())->toBe('Foobar\\ProjectNameSpace');
+});
 
-    /**
-     * @var ClassFileResolver|Mock
-     */
-    protected $fileResolver;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->filesystem        = Mockery::mock(Filesystem::class);
-        $this->fileResolver      = Mockery::mock(ClassFileResolver::class);
-        $this->nameSpaceResolver = new NameSpaceResolver($this->filesystem, $this->fileResolver);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        unset($this->nameSpaceResolver);
-        unset($this->filesystem);
-        unset($this->fileResolver);
-    }
-
-    public function testGet(): void
-    {
-        /* @todo This test is incomplete. */
-        $this->markTestIncomplete();
-    }
-
-    public function testGetPlaceHolder(): void
-    {
-        /* @todo This test is incomplete. */
-        $this->markTestIncomplete();
-    }
-}
+test('getPlaceHolder returns the namespace placeholder', function () {
+    $nameSpaceResolver = new NameSpaceResolver(Mockery::mock(Filesystem::class), Mockery::mock(ClassFileResolver::class));
+    expect($nameSpaceResolver->getPlaceHolder())->toBe(NameSpaceResolver::PLACEHOLDER);
+});

@@ -8,6 +8,11 @@ use League\Flysystem\Filesystem;
 
 final class NameSpaceResolver
 {
+    /**
+     * The namespace placeholder used in the source classes.
+     */
+    public const PLACEHOLDER = 'NameSpacePlaceHolder';
+
     public function __construct(private Filesystem $filesystem, private FileResolver $fileResolver)
     {
     }
@@ -32,6 +37,6 @@ final class NameSpaceResolver
      */
     public function getPlaceHolder(): string
     {
-        return 'NameSpacePlaceHolder';
+        return self::PLACEHOLDER;
     }
 }
