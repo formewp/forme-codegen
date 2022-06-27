@@ -18,7 +18,7 @@ For development run `phive install --force-accept-unsigned` followed by `compose
 
 Tools are in `./tools` rather than `./vendor/bin`
 
-You also need [git cliff](https://github.com/orhun/git-cliff).
+You also need [git cliff](https://github.com/orhun/git-cliff) for generating changelogs and [pcov](https://github.com/krakjoe/pcov) to generate coverage stats for infection to measure against.
 
 The useful ones are set up as composer scripts.
 
@@ -37,7 +37,7 @@ composer infection # run infection on src
 composer infection:log # run infection on src and log to infection.html
 ```
 
-## Output all help as markdown
+### Output all help as markdown for docs
 
 ```bash
 # requires findutils on OSX - you can drop the "g" xargs prefix on Linux
