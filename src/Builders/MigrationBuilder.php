@@ -41,7 +41,7 @@ class MigrationBuilder
             $namespace->addUse($use, $alias);
         }
 
-        $class = ClassType::withBodiesFrom(self::SOURCE_CLASS);
+        $class = ClassType::from(self::SOURCE_CLASS, withBodies: true);
         // sort out the class name
         // add the prefix onto the class name
         $classNameConversion = new Convert($className);
