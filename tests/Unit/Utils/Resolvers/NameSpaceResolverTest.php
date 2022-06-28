@@ -1,7 +1,6 @@
 <?php
 
 use Forme\CodeGen\Constants\Files;
-use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver;
 use Forme\CodeGen\Utils\Resolvers\NameSpaceResolver;
 use League\Flysystem\Filesystem;
@@ -22,9 +21,4 @@ test('get returns the default name space if no Main.php class is found', functio
     $fileSystem        = $this->fileSystem->shouldReceive('fileExists')->with(Files::MAIN_CLASS)->andReturn(false)->getMock();
     $nameSpaceResolver = new NameSpaceResolver($fileSystem, $this->classFileResolver);
     expect($nameSpaceResolver->get())->toBe(NameSpaceResolver::DEFAULT_NAMESPACE);
-});
-
-test('getPlaceHolder returns the namespace placeholder', function () {
-    $nameSpaceResolver = new NameSpaceResolver($this->fileSystem, $this->classFileResolver);
-    expect($nameSpaceResolver->getPlaceHolder())->toBe(Placeholders::NAMESPACE);
 });
