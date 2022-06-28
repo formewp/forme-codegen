@@ -1,11 +1,45 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.19] - 2022-06-28
+
+### Documentation
+
+- Update readme
+
+### Miscellaneous Tasks
+
+- Add infection to composer scripts and phive
+- Update deps
+- Merge branch 'master'
+- Replace deprecated method call
+
+### Refactor
+
+- Extract new shell script replacer logic
+- Magic strings into constants
+- Remove redundant func
+- Delete unused func
+
+### Testing
+
+- Add infection and add generator factory test
+- Update infection to use pest
+- New shell script replacer
+- Show mutations when running infection
+- Name space resolver
+- Refactor resolver test
+- Remove broken phive phpstan
+
 ## [1.7.18] - 2022-06-26
 
 ### Bug Fixes
 
 - Phar build without icon
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.7.17] - 2022-06-26
 
