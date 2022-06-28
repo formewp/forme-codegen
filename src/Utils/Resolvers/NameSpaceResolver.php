@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Forme\CodeGen\Utils\Resolvers;
 
 use Forme\CodeGen\Constants\Files;
-use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver as FileResolver;
 use League\Flysystem\Filesystem;
 
@@ -28,13 +27,5 @@ final class NameSpaceResolver
         } else {
             return self::DEFAULT_NAMESPACE;
         }
-    }
-
-    /**
-     * Get the namespace placeholder used in the source classes.
-     */
-    public function getPlaceHolder(): string
-    {
-        return Placeholders::NAMESPACE;
     }
 }
