@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
+use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Jawira\CaseConverter\Convert;
 use Nette\PhpGenerator\ClassType;
@@ -12,7 +13,7 @@ use Nette\PhpGenerator\PsrPrinter;
 class MigrationBuilder
 {
     /**
-     * @var class-string<\Forme\CodeGen\Source\Migrations\Migration>
+     * @var class-string<\Forme\CodeGen\Source\Migrations\Migration>|string
      */
     private const SOURCE_CLASS     = "Forme\CodeGen\Source\Migrations\Migration";
 
@@ -27,14 +28,13 @@ class MigrationBuilder
 
     public function build(string $className): array
     {
-        $namespacePlaceHolder = $this->resolver->nameSpace()->getPlaceHolder();
         // create file
         $file = new PhpFile();
         $file->addComment('This boilerplate file is auto-generated.');
         $file->setStrictTypes(); // adds declare(strict_types=1)
 
         // we add the namespace but we need to remove it later
-        $namespace = $file->addNamespace($namespacePlaceHolder);
+        $namespace = $file->addNamespace(Placeholders::NAMESPACE);
         // we have to add the uses separately as the nette library won't read them from the file
         $useStatements = $this->resolver->classReflection()->getUseStatements(self::SOURCE_CLASS);
         foreach ($useStatements as $alias => $use) {
@@ -53,7 +53,7 @@ class MigrationBuilder
         // generate PHP code using the printer
         $fileContents = $this->printer->printFile($file);
         // remove the namespace
-        $fileContents = str_replace('namespace ' . $namespacePlaceHolder . ";\n\n", '', $fileContents);
+        $fileContents = str_replace('namespace ' . Placeholders::NAMESPACE . ";\n\n", '', $fileContents);
 
         // sort out the filename
         $timeString = gmdate('YmdHis');

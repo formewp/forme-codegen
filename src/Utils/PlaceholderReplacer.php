@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Utils;
 
+use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Jawira\CaseConverter\Convert;
 use Symfony\Component\String\Inflector\InflectorInterface;
@@ -16,10 +17,9 @@ final class PlaceholderReplacer implements PlaceholderReplacerInterface
 
     public function process(string $fileContents, string $type, string $name): string
     {
-        $namespacePlaceHolder = $this->resolver->nameSpace()->getPlaceHolder();
         $projectNameSpace     = $this->resolver->nameSpace()->get();
         // replace Placeholders - e.g. the ProjectNameSpace
-        $fileContents = str_replace($namespacePlaceHolder, $projectNameSpace, $fileContents);
+        $fileContents = str_replace(Placeholders::NAMESPACE, $projectNameSpace, $fileContents);
 
         // if this is a cpt file, then we need to replace the instances of the name (cptplaceholder or cptplaceholders), with the correct inflections to plural, maintaining the case, and also the translation setting (YOUR-TEXTDOMAIN).
         if ($type === 'post-type') {

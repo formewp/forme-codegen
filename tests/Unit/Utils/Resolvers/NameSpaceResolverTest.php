@@ -1,4 +1,7 @@
 <?php
+
+use Forme\CodeGen\Constants\Files;
+use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver;
 use Forme\CodeGen\Utils\Resolvers\NameSpaceResolver;
 use League\Flysystem\Filesystem;
@@ -9,19 +12,19 @@ beforeEach(function () {
 });
 
 test('get returns the project name space if set in the Main.php class', function () {
-    $fileSystem        = $this->fileSystem->shouldReceive('fileExists')->with('/app/Main.php')->andReturn(true)->getMock();
-    $resolver          = $this->classFileResolver->shouldReceive('getNameSpace')->with('/app/Main.php')->andReturn('Acme\\TestNameSpace')->getMock();
+    $fileSystem        = $this->fileSystem->shouldReceive('fileExists')->with(Files::MAIN_CLASS)->andReturn(true)->getMock();
+    $resolver          = $this->classFileResolver->shouldReceive('getNameSpace')->with(Files::MAIN_CLASS)->andReturn('Acme\\TestNameSpace')->getMock();
     $nameSpaceResolver = new NameSpaceResolver($fileSystem, $resolver);
     expect($nameSpaceResolver->get())->toBe('Acme\\TestNameSpace');
 });
 
 test('get returns the default name space if no Main.php class is found', function () {
-    $fileSystem        = $this->fileSystem->shouldReceive('fileExists')->with('/app/Main.php')->andReturn(false)->getMock();
+    $fileSystem        = $this->fileSystem->shouldReceive('fileExists')->with(Files::MAIN_CLASS)->andReturn(false)->getMock();
     $nameSpaceResolver = new NameSpaceResolver($fileSystem, $this->classFileResolver);
-    expect($nameSpaceResolver->get())->toBe('Foobar\\ProjectNameSpace');
+    expect($nameSpaceResolver->get())->toBe(NameSpaceResolver::DEFAULT_NAMESPACE);
 });
 
 test('getPlaceHolder returns the namespace placeholder', function () {
     $nameSpaceResolver = new NameSpaceResolver($this->fileSystem, $this->classFileResolver);
-    expect($nameSpaceResolver->getPlaceHolder())->toBe(NameSpaceResolver::PLACEHOLDER);
+    expect($nameSpaceResolver->getPlaceHolder())->toBe(Placeholders::NAMESPACE);
 });

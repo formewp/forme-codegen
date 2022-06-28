@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
+use Forme\CodeGen\Constants\Files;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -34,7 +35,7 @@ final class MakeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        if (!$this->filesystem->fileExists('/app/Main.php')) {
+        if (!$this->filesystem->fileExists(Files::MAIN_CLASS)) {
             $output->writeln("⛔ <fg=red>This doesn't look like a Forme project directory.</> Try cd-ing into a project first");
 
             return Command::FAILURE;

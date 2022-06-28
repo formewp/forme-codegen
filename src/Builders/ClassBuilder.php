@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
+use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\PlaceholderReplacerInterface;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Forme\Framework\Jobs\JobInterface;
@@ -21,15 +22,13 @@ class ClassBuilder
 
     public function build(string $type, string $classPrefix, ?string $method = null): array
     {
-        $namespacePlaceHolder = $this->resolver->nameSpace()->getPlaceHolder();
-
         $sourceClass   = $this->resolver->classType()->getSourceClass($type);
         $namespaceBase = $this->resolver->classType()->getNamespaceBase($type);
         $file          = new PhpFile();
         $file->addComment('This boilerplate file is auto-generated.');
         $file->setStrictTypes(); // adds declare(strict_types=1)
 
-        $namespace = $file->addNamespace($namespacePlaceHolder . '\\' . $namespaceBase);
+        $namespace = $file->addNamespace(Placeholders::NAMESPACE . '\\' . $namespaceBase);
         // we do have to add the uses separately as the nette library won't read them from the file
         $useStatements = $this->resolver->classReflection()->getUseStatements($sourceClass);
         foreach ($useStatements as $alias => $use) {

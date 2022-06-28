@@ -3,15 +3,14 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Utils\Resolvers;
 
+use Forme\CodeGen\Constants\Files;
+use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver as FileResolver;
 use League\Flysystem\Filesystem;
 
 final class NameSpaceResolver
 {
-    /**
-     * The namespace placeholder used in the source classes.
-     */
-    public const PLACEHOLDER = 'NameSpacePlaceHolder';
+    public const DEFAULT_NAMESPACE = 'Foobar\\ProjectNameSpace';
 
     public function __construct(private Filesystem $filesystem, private FileResolver $fileResolver)
     {
@@ -24,11 +23,10 @@ final class NameSpaceResolver
     {
         // TODO validate
         // our WP projects will have a Main.php class, we can get the name space from that.
-        $mainClassLocation = '/app/Main.php';
-        if ($this->filesystem->fileExists($mainClassLocation)) {
-            return $this->fileResolver->getNameSpace($mainClassLocation);
+        if ($this->filesystem->fileExists(Files::MAIN_CLASS)) {
+            return $this->fileResolver->getNameSpace(Files::MAIN_CLASS);
         } else {
-            return 'Foobar\\ProjectNameSpace';
+            return self::DEFAULT_NAMESPACE;
         }
     }
 
@@ -37,6 +35,6 @@ final class NameSpaceResolver
      */
     public function getPlaceHolder(): string
     {
-        return self::PLACEHOLDER;
+        return Placeholders::NAMESPACE;
     }
 }
