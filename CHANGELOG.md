@@ -1,11 +1,25 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.23] - 2022-07-02
+
+### Miscellaneous Tasks
+
+- Local php cs fixer
+
+### Dev
+
+- Add ramsey conventional
+
 ## [1.7.22] - 2022-07-02
 
 ### Bug Fixes
 
 - Explicitly call composer hooks after initial commit
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.7.21] - 2022-07-02
 
