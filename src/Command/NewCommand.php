@@ -75,7 +75,7 @@ final class NewCommand extends Command
         $tempDirectory  = $this->tempFilesystemAdapter->getPath();
         $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile]);
         $process->setTimeout(null);
-        $progressBar = new ProgressBar($output, 80);
+        $progressBar = new ProgressBar($output, 225);
         $progressBar->start();
 
         $capturedOutput = '';
