@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.22] - 2022-07-02
+
+### Bug Fixes
+
+- Explicitly call composer hooks after initial commit
+
 ## [1.7.21] - 2022-07-02
 
 ### Miscellaneous Tasks
 
 - Update new command amount
+- Bump version
 
 ## [1.7.20] - 2022-07-02
 
