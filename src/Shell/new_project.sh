@@ -36,4 +36,5 @@ composer install
 git init
 git add --all
 git commit --all -m "Initial Commit"
+composer hooks
 cd ..
