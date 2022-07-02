@@ -9,6 +9,11 @@ then
     echo "You need to install node and npm before running this"
     exit 1
 fi
+if ! command -v composer &> /dev/null
+then
+    echo "You need to install composer before running this"
+    exit 1
+fi
 git clone git@github.com:formewp/forme-project-type.git project-name-project-type
 cd project-name-project-type
 rm -rf .git
@@ -27,14 +32,8 @@ else
     echo "We couldn't initialise git cliff. You should install it with 'brew install git-cliff' or 'cargo install git-cliff'"
     echo "Then run 'git cliff --init' in the project directory"
 fi
+composer install
 git init
 git add --all
 git commit --all -m "Initial Commit"
-if command -v git-hooks &> /dev/null
-then
-    git hooks install # https://github.com/git-hooks/git-hooks
-else
-    echo "We couldn't initialise git hooks. You should install it with 'go get -u github.com/git-hooks/git-hooks' (you'll need go installed)"
-    echo "Then run 'git hooks install' in the project directory"
-fi
 cd ..
