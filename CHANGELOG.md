@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.21] - 2022-07-02
+
+### Miscellaneous Tasks
+
+- Update new command amount
+
 ## [1.7.20] - 2022-07-02
 
 ### Miscellaneous Tasks
 
 - Run composer install in new project
+- Bump version
 
 ## [1.7.19] - 2022-06-28
 
