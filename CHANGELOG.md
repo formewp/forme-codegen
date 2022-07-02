@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.20] - 2022-07-02
+
+### Miscellaneous Tasks
+
+- Run composer install in new project
+
 ## [1.7.19] - 2022-06-28
 
 ### Documentation
@@ -13,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - Update deps
 - Merge branch 'master'
 - Replace deprecated method call
+- Bump version
 
 ### Refactor
 
