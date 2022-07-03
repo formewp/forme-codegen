@@ -7,8 +7,6 @@ use Forme\CodeGen\Utils\ClassFinder;
 use Forme\CodeGen\Utils\ClassFinderInterface;
 use Forme\CodeGen\Utils\PlaceholderReplacer;
 use Forme\CodeGen\Utils\PlaceholderReplacerInterface;
-use Forme\CodeGen\Utils\YamlFormattingFixer;
-use Forme\CodeGen\Utils\YamlFormattingFixerInterface;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Symfony\Component\String\Inflector\EnglishInflector;
@@ -37,7 +35,6 @@ if (!function_exists('dependencies')) {
             GeneratorFactoryInterface::class    => DI\get(GeneratorFactory::class),
             ClassFinderInterface::class         => DI\get(ClassFinder::class),
             PlaceholderReplacerInterface::class => DI\get(PlaceholderReplacer::class),
-            YamlFormattingFixerInterface::class => DI\get(YamlFormattingFixer::class),
         ];
     }
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace Forme\CodeGen\Builders;
 
 use Consolidation\Comments\Comments;
-use Forme\CodeGen\Utils\YamlFormattingFixerInterface;
+use Forme\CodeGen\Utils\YamlFormattingFixer;
 use Symfony\Component\Yaml\Yaml;
 
 class HookBuilder
 {
-    public function __construct(private YamlFormattingFixerInterface $fixer, private Comments $commentManager)
+    public function __construct(private Comments $commentManager)
     {
     }
 
@@ -22,7 +22,7 @@ class HookBuilder
         $parsedData       = Yaml::parse($originalContents);
         $processedData    = $this->process($parsedData, $args);
         $updatedContents  = Yaml::dump($processedData, PHP_INT_MAX, 2);
-        $updatedContents  = $this->fixer->repair($updatedContents);
+        $updatedContents  = YamlFormattingFixer::repair($updatedContents);
 
         // Second step: collect comments from original document and inject them into result.
         $this->commentManager->collect(explode("\n", $originalContents));
@@ -37,15 +37,15 @@ class HookBuilder
             'hook'  => $args['name'],
             'class' => $args['class'],
         ];
-        if ($args['method']) {
+        if (isset($args['method'])) {
             $newEntry['method'] = $args['method'];
         }
 
-        if ($args['priority']) {
+        if (isset($args['priority'])) {
             $newEntry['priority'] = (int) $args['priority'];
         }
 
-        if ($args['arguments']) {
+        if (isset($args['arguments'])) {
             $newEntry['arguments'] = (int) $args['arguments'];
         }
 
