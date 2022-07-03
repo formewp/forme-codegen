@@ -2,8 +2,12 @@ parameters:
   level: 6
   ignoreErrors:
     - "#Unsafe usage of new static#"
+    -
+      message: '#^Undefined variable: \$this$#'
+      path: tests/*
   checkMissingIterableValueType: false
   paths:
     - src
+    - tests
   excludePaths:
     - src/Source
