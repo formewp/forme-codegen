@@ -1,11 +1,28 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [1.7.25] - 2022-07-03
 
 ### Dev Workflow
 
 - Update git cliff config
+- Update php stan config
+
+### Documentation
+
+- Update changelog
+
+### Miscellaneous Tasks
+
+- Move docker compose stub
+
+### Refactor
+
+- Yaml formatting fixer static
+
+### Testing
+
+- Add test for hook builder
 
 ## [1.7.24] - 2022-07-03
 
