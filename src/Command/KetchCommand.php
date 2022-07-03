@@ -59,7 +59,7 @@ final class KetchCommand extends Command
 
     protected function initCommand(array $args, OutputInterface $output): int
     {
-        $dockerCompose = $this->codegenFilesystem->read('stubs/docker-compose.yml.stub');
+        $dockerCompose = $this->codegenFilesystem->read('stubs/docker/docker-compose.yml.stub');
         // get the last part of the name of the directory we are in
         if (!$args[0] || $args[0] === '.') {
             $args[0] = basename(getcwd());
