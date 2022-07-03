@@ -1,63 +1,25 @@
 <?php
 
-namespace Tests\Integration\Forme\CodeGen\Builders;
-
 use Consolidation\Comments\Comments;
 use Forme\CodeGen\Builders\HookBuilder;
-use Forme\CodeGen\Utils\YamlFormattingFixerInterface;
-use Mockery;
-use Mockery\Mock;
-use PHPUnit\Framework\TestCase;
 
-/**
- * Class HookBuilderTest.
- *
- * @covers \Forme\CodeGen\Builders\HookBuilder
- */
-class HookBuilderTest extends TestCase
-{
-    /**
-     * @var HookBuilder
-     */
-    protected $hookBuilder;
+beforeEach(function () {
+    $this->commentManager = Mockery::mock(Comments::class);
+    $this->commentManager->shouldReceive('collect');
+    $this->commentManager->shouldReceive('inject')->andReturnArg(0);
+    $this->hookBuilder    = new HookBuilder($this->commentManager);
+});
 
-    /**
-     * @var YamlFormattingFixerInterface|Mock
-     */
-    protected $fixer;
-
-    /**
-     * @var Comments|Mock
-     */
-    protected $commentManager;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->fixer          = Mockery::mock(YamlFormattingFixerInterface::class);
-        $this->commentManager = Mockery::mock(Comments::class);
-        $this->hookBuilder    = new HookBuilder($this->fixer, $this->commentManager);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        unset($this->hookBuilder);
-        unset($this->fixer);
-        unset($this->commentManager);
-    }
-
-    public function testBuild(): void
-    {
-        /* @todo This test is incomplete. */
-        $this->markTestIncomplete();
-    }
-}
+test('adds a hook to a yaml config string', function () {
+    $originalContents = file_get_contents(__DIR__ . '/../../../stubs/tests/good-yaml.stub');
+    $hookToAdd        = [
+        'type'         => 'action',
+        'name'         => 'foo_action',
+        'class'        => 'stdClass',
+        'priority'     => 10,
+        'method'       => 'do_stuff',
+    ];
+    $expectedContents = file_get_contents(__DIR__ . '/../../../stubs/tests/yaml-with-hook.stub');
+    $result           = $this->hookBuilder->build($originalContents, $hookToAdd);
+    expect($result)->toEqual($expectedContents);
+});
