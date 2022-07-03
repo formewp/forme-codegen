@@ -1,26 +1,33 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### Dev Workflow
+
+- Update git cliff config
+
 ## [1.7.24] - 2022-07-03
+
+### Dev Workflow
+
+- Update conventional commit config
 
 ### Miscellaneous Tasks
 
 - Update composer deps
-
-### Dev
-
-- Update conventional commit config
+- Bump version
 
 ## [1.7.23] - 2022-07-02
+
+### Dev Workflow
+
+- Add ramsey conventional
 
 ### Miscellaneous Tasks
 
 - Local php cs fixer
 - Bump version
-
-### Dev
-
-- Add ramsey conventional
 
 ## [1.7.22] - 2022-07-02
 
