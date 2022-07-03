@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.7.24] - 2022-07-03
+
+### Miscellaneous Tasks
+
+- Update composer deps
+
+### Dev
+
+- Update conventional commit config
+
 ## [1.7.23] - 2022-07-02
 
 ### Miscellaneous Tasks
 
 - Local php cs fixer
+- Bump version
 
 ### Dev
 
