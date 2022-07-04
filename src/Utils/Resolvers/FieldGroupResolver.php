@@ -3,20 +3,31 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Utils\Resolvers;
 
+use Emgag\Flysystem\TempdirAdapter;
+use League\Flysystem\FilesystemOperator;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Expression;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use PhpParser\Parser;
 use PhpParser\ParserFactory;
+use Psr\Container\ContainerInterface;
 
 final class FieldGroupResolver
 {
     private Parser $parser;
 
-    public function __construct(ParserFactory $parserFactory, private NodeTraverser $traverser)
+    /** @var FilesystemOperator */
+    private $tempFilesystem;
+
+    /** @var TempdirAdapter */
+    private $tempFilesystemAdapter;
+
+    public function __construct(ParserFactory $parserFactory, private NodeTraverser $traverser, ContainerInterface $container)
     {
-        $this->parser = $parserFactory->create(ParserFactory::PREFER_PHP7);
+        $this->parser                = $parserFactory->create(ParserFactory::PREFER_PHP7);
+        $this->tempFilesystem        = $container->get('tempFilesystem');
+        $this->tempFilesystemAdapter = $container->get(TempdirAdapter::class);
     }
 
     public function getFromClassFile(string $class): array
@@ -46,9 +57,8 @@ final class FieldGroupResolver
 
         $result = [];
         foreach ($visitor->result as $group) {
-            file_put_contents(__DIR__ . '/test.php', '<?php return ' . $group . ';');
-            $group = include __DIR__ . '/test.php';
-            unlink(__DIR__ . '/test.php');
+            $this->tempFilesystem->write('group.php', '<?php return ' . $group . ';');
+            $group    = include $this->tempFilesystemAdapter->getPath() . '/group.php';
             $result[] = [$group['key'] => $group['title']];
         }
 
