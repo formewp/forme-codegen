@@ -9,6 +9,9 @@ use Forme\CodeGen\Utils\PlaceholderReplacer;
 use Forme\CodeGen\Utils\PlaceholderReplacerInterface;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use PhpParser\Parser;
+use PhpParser\ParserFactory;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\String\Inflector\EnglishInflector;
 use Symfony\Component\String\Inflector\InflectorInterface;
 
@@ -35,6 +38,7 @@ if (!function_exists('dependencies')) {
             GeneratorFactoryInterface::class    => DI\get(GeneratorFactory::class),
             ClassFinderInterface::class         => DI\get(ClassFinder::class),
             PlaceholderReplacerInterface::class => DI\get(PlaceholderReplacer::class),
+            Parser::class                       => fn (ContainerInterface $c) => $c->get(ParserFactory::class)->create(ParserFactory::PREFER_PHP7),
         ];
     }
 }
