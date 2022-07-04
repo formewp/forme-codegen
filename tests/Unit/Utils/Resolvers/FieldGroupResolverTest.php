@@ -8,6 +8,6 @@ beforeEach(function () {
 });
 
 test('gets field groups keys and titles from a field group class file', function () {
-    $result = $this->resolver->getFromClassFile(__DIR__ . '/../../../../stubs/tests/TestFieldGroup.php');
+    $result = $this->resolver->getFromClassFile(__DIR__ . '/../../../../stubs/tests/TestFieldGroup.stub');
     expect($result)->toBe([['group_62c3329e808ca' => 'Test Group']]);
 });

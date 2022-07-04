@@ -91,6 +91,7 @@ final class MakeCommand extends Command
             $args['file']      = $this->resolver->classReflection()->getFilePath($args['class']);
             // parse the class to get the field group name or names (if multiple)
             $groups = $this->resolver->fieldGroup()->getFromClassFile($args['file']);
+
             // if none found, it's an error
             if (empty($groups)) {
                 $output->writeln('⛔ <fg=red>No field groups found in the selected class.</>');
