@@ -13,7 +13,7 @@ final class FieldGroupVisitor extends NodeVisitorAbstract
 
     public function enterNode(Node $node)
     {
-        if ($node instanceof Expression) {
+        if ($node instanceof Expression && isset($node->expr->name)) {
             if ($node->expr->name->parts[0] === 'acf_add_local_field_group') {
                 $argumentNode   = $node->expr->args[0]->value;
                 // cycle through the arguments and find 'key', 'title' and 'fields'
@@ -23,14 +23,16 @@ final class FieldGroupVisitor extends NodeVisitorAbstract
                     } elseif ($item->key->value === 'title') {
                         $title = $item->value->value;
                     } elseif ($item->key->value === 'fields') {
-                        // for each field, we need to get the name, key and label
+                        // for each field, get the name, key and label as long as they are all strings
                         $fields = [];
                         foreach ($item->value->items as $field) {
-                            $fields[] = [
-                                'name'  => $field->value->items[0]->value->value,
-                                'key'   => $field->value->items[1]->value->value,
-                                'label' => $field->value->items[2]->value->value,
-                            ];
+                            if ($field->value->items[0]->value instanceof Node\Scalar\String_ && $field->value->items[1]->value instanceof Node\Scalar\String_ && $field->value->items[2]->value instanceof Node\Scalar\String_) {
+                                $fields[] = [
+                                    'key'     => $field->value->items[0]->value->value,
+                                    'label'   => $field->value->items[1]->value->value,
+                                    'name'    => $field->value->items[2]->value->value,
+                                ];
+                            }
                         }
                     }
                 }

@@ -21,11 +21,15 @@ final class FieldGroupResolver
         // traverse the ast and find acf_add_local_field_group() function calls
         $this->traverser->traverse($ast);
 
-        $result = [];
-        foreach ($this->visitor->result as $group) {
-            $result[] = [$group['key'] => $group['title']];
-        }
+        return $this->visitor->result;
+    }
 
-        return $result;
+    public function getOptionsFromClassFile(string $class): array
+    {
+        $result = $this->getFromClassFile($class);
+
+        return array_map(function ($group) {
+            return [$group['key'] => $group['title']];
+        }, $result);
     }
 }

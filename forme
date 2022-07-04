@@ -1,7 +1,4 @@
 #!/usr/bin/env php
 <?php
-// error_reporting(E_ERROR);
-// show all errors
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ERROR);
 require_once __DIR__ . '/forme.php';
