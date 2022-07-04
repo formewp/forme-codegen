@@ -12,4 +12,6 @@ interface ResolverInterface
     public function classType(): ClassTypeResolver;
 
     public function classReflection(): ClassReflectionResolver;
+
+    public function fieldGroup(): FieldGroupResolver;
 }

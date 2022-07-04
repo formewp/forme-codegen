@@ -17,10 +17,10 @@ final class ClassFinder implements ClassFinderInterface
     /**
      *  Returns all the classes declared in current directory's app folder.
      */
-    public function getClasses(): ?array
+    public function getClasses(?string $directory = ''): ?array
     {
-        $results = $this->filesystem->listContents('/app', true)
-            ->filter(fn(StorageAttributes $attributes) => $attributes->isFile() && str_ends_with($attributes->path(), '.php'))
+        $results = $this->filesystem->listContents('/app' . $directory, true)
+            ->filter(fn (StorageAttributes $attributes) => $attributes->isFile() && str_ends_with($attributes->path(), '.php'))
             ->map(function (StorageAttributes $attributes) {
                 $nameSpace = $this->resolver->classFile()->getNameSpace($attributes->path());
                 $isCore    = $nameSpace && str_ends_with($nameSpace, 'Core');

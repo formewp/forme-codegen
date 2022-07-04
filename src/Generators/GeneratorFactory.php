@@ -18,6 +18,7 @@ final class GeneratorFactory implements GeneratorFactoryInterface
         'post-type'   => 'PostType',
         'registry'    => 'Registry',
         'default'     => 'Class',
+        'field-enum'  => 'FieldEnum',
     ];
 
     public function __construct(private ContainerInterface $container)

@@ -21,7 +21,7 @@ final class MakeCommand extends Command
     /**
      * @var string[]
      */
-    private const VALID_TYPES = ['action', 'filter', 'field', 'controller', 'template-controller', 'registry', 'post-type', 'model', 'translator', 'service', 'migration', 'job', 'middleware'];
+    private const VALID_TYPES = ['action', 'filter', 'field', 'controller', 'template-controller', 'registry', 'post-type', 'model', 'translator', 'service', 'migration', 'job', 'middleware', 'field-enum'];
 
     protected function configure(): void
     {
@@ -77,6 +77,26 @@ final class MakeCommand extends Command
         if ($args['type'] === 'service') {
             $question       = new Question('🔧 Please enter the method name (optional, defaults to handle) ', 'handle');
             $args['method'] = $helper->ask($input, $output, $question);
+        }
+
+        if ($args['type'] === 'field-enum') {
+            $classes  = $this->classFinder->getClasses('/Fields');
+            $question = new ChoiceQuestion(
+                '📇 Please select the class that contains the field group to derive the enum from',
+                $classes,
+                null
+            );
+            $question->setErrorMessage('That class does not exist');
+            $args['class'] = $helper->ask($input, $output, $question);
+            // parse the class to get the field group name or names (if multiple)
+            $groups = $this->resolver->fieldGroup()->getFromClass($args['class']);
+            // if none found, it's an error
+            if (empty($groups)) {
+                $output->writeln('⛔ <fg=red>No field groups found in the selected class.</>');
+
+                return Command::FAILURE;
+            }
+            // if multiple, ask the user to select one
         }
 
         $messages  = $this->generator->generate($args);

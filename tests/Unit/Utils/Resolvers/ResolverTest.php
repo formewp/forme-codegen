@@ -5,6 +5,7 @@ namespace Tests\Unit\Forme\CodeGen\Utils\Resolvers;
 use Forme\CodeGen\Utils\Resolvers\ClassFileResolver;
 use Forme\CodeGen\Utils\Resolvers\ClassReflectionResolver;
 use Forme\CodeGen\Utils\Resolvers\ClassTypeResolver;
+use Forme\CodeGen\Utils\Resolvers\FieldGroupResolver;
 use Forme\CodeGen\Utils\Resolvers\NameSpaceResolver;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Forme\CodeGen\Utils\Resolvers\ResolverFactory;
@@ -78,6 +79,13 @@ class ResolverTest extends TestCase
         $this->factory->expects()->create('class-reflection')->andReturn(Mockery::mock(ClassReflectionResolver::class));
         $result = $this->resolver->classReflection();
         $this->assertInstanceOf(ClassReflectionResolver::class, $result);
+    }
+
+    public function testFieldGroup(): void
+    {
+        $this->factory->expects()->create('field-group')->andReturn(Mockery::mock(FieldGroupResolver::class));
+        $result = $this->resolver->fieldGroup();
+        $this->assertInstanceOf(FieldGroupResolver::class, $result);
     }
 
     public function testAllResolversHaveMethods(): void

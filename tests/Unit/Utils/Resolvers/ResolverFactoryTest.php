@@ -1,55 +1,30 @@
 <?php
 
-namespace Tests\Unit\Forme\CodeGen\Utils\Resolvers;
-
 use Forme\CodeGen\Utils\Resolvers\ResolverFactory;
-use Mockery;
-use Mockery\Mock;
-use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
+use Forme\CodeGen\Utils\Resolvers\ResolverInterface;
+use function Symfony\Component\String\u;
 
-/**
- * Class ResolverFactoryTest.
- *
- * @covers \Forme\CodeGen\Utils\Resolvers\ResolverFactory
- */
-class ResolverFactoryTest extends TestCase
-{
-    /**
-     * @var ResolverFactory
-     */
-    protected $resolverFactory;
+beforeEach(function () {
+    $container     = bootstrap();
+    $this->factory = $container->get(ResolverFactory::class);
+});
 
-    /**
-     * @var ContainerInterface|Mock
-     */
-    protected $container;
+test('successfully creates all the existing resolver class files', function () {
+    $classFiles = glob(__DIR__ . '/../../../src/Utils/Resolvers/*.php');
+    $classes    = array_map(function ($file) {
+        return basename($file, '.php');
+    }, $classFiles);
+    $classes    = array_filter($classes, function ($class) {
+        return u($class)->endsWith('Resolver');
+    });
+    $types = array_map(function ($class) {
+        return u($class)->replace('Resolver', '')->snake();
+    }, $classes);
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->container       = Mockery::mock(ContainerInterface::class);
-        $this->resolverFactory = new ResolverFactory($this->container);
+    foreach ($types as $type) {
+        $class = $this->factory->create($type);
+        expect($class)->toBeInstanceOf(ResolverInterface::class);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        unset($this->resolverFactory);
-        unset($this->container);
-    }
-
-    public function testCreate(): void
-    {
-        /* @todo This test is incomplete. */
-        $this->markTestIncomplete();
-    }
-}
+    expect(count($types))->toBe(count($classes));
+});

@@ -82,6 +82,6 @@ class GeneratorFactoryTest extends TestCase
 
             return !in_array($type, $configuredTypes) && $type !== 'Base';
         });
-        $this->assertEquals([], array_merge($notConfigured, $notFiles), 'Correct generator types are not not configured in generator factory.');
+        $this->assertEquals([], array_merge($notConfigured, $notFiles), 'Correct generator types are not configured in generator factory.');
     }
 }

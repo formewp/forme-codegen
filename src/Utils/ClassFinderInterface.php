@@ -5,5 +5,5 @@ namespace Forme\CodeGen\Utils;
 
 interface ClassFinderInterface
 {
-    public function getClasses(): ?array;
+    public function getClasses(?string $directory = ''): ?array;
 }

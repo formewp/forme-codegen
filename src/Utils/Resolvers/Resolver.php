@@ -30,4 +30,9 @@ final class Resolver implements ResolverInterface
     {
         return $this->factory->create('class-reflection');
     }
+
+    public function fieldGroup(): FieldGroupResolver
+    {
+        return $this->factory->create('field-group');
+    }
 }
