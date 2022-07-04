@@ -97,6 +97,17 @@ final class MakeCommand extends Command
                 return Command::FAILURE;
             }
             // if multiple, ask the user to select one
+            if (count($groups) > 1) {
+                $question = new ChoiceQuestion(
+                    '📇 Please select the field group to derive the enum from',
+                    $groups,
+                    null
+                );
+                $question->setErrorMessage('That field group does not exist');
+                $args['group'] = $helper->ask($input, $output, $question);
+            } else {
+                $args['group'] = $groups[0];
+            }
         }
 
         $messages  = $this->generator->generate($args);
