@@ -43,13 +43,23 @@ final class ClassReflectionResolver
      */
     public function getReflectionClass(string $class): object
     {
+        $file = $this->getFilePath($class);
+        require_once $file;
+
+        return new ReflectionClass($class);
+    }
+
+    /**
+     * get the file path of a class.
+     */
+    public function getFilePath(string $class): string
+    {
         $dir       = getcwd() . '/app';
         $nameSpace = $this->nameSpaceResolver->get();
         $file      = str_replace($nameSpace, '', $class);
         $file      = str_replace('\\', '/', $file);
         $file      = $dir . $file . '.php';
-        require_once $file;
 
-        return new ReflectionClass($class);
+        return $file;
     }
 }
