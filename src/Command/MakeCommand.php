@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
+use Forme\CodeGen\Command\Question\Make\FieldEnumQuestions;
 use Forme\CodeGen\Constants\Files;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -51,6 +53,7 @@ final class MakeCommand extends Command
             return Command::FAILURE;
         }
 
+        /** @var QuestionHelper */
         $helper = $this->getHelper('question');
         // the following types need additional interactive args
         // hooks
@@ -80,35 +83,10 @@ final class MakeCommand extends Command
         }
 
         if ($args['type'] === 'field-enum') {
-            $classes  = $this->classFinder->getClasses('/Fields');
-            $question = new ChoiceQuestion(
-                '📇 Please select the class that contains the field group to derive the enum from',
-                $classes,
-                null
-            );
-            $question->setErrorMessage('That class does not exist');
-            $args['class']     = $helper->ask($input, $output, $question);
-            $args['file']      = $this->resolver->classReflection()->getFilePath($args['class']);
-            // parse the class to get the field group name or names (if multiple)
-            $groups = $this->resolver->fieldGroup()->getOptionsFromClassFile($args['file']);
-
-            // if none found, it's an error
-            if (empty($groups)) {
-                $output->writeln('⛔ <fg=red>No field groups found in the selected class.</>');
-
+            $questions = $this->container->get(FieldEnumQuestions::class);
+            $args      = $questions->ask($args, $helper, $input, $output);
+            if (!$args) {
                 return Command::FAILURE;
-            }
-            // if multiple, ask the user to select one
-            if (count($groups) > 1) {
-                $question = new ChoiceQuestion(
-                    '📇 Please select the field group to derive the enum from',
-                    $groups,
-                    null
-                );
-                $question->setErrorMessage('That field group does not exist');
-                $args['group'] = $helper->ask($input, $output, $question);
-            } else {
-                $args['group'] = $groups[0];
             }
         }
 
