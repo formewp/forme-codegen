@@ -26,10 +26,14 @@ final class FieldGroupResolver
 
     public function getOptionsFromClassFile(string $class): array
     {
-        $result = $this->getFromClassFile($class);
+        $data = $this->getFromClassFile($class);
 
-        return array_map(function ($group) {
-            return [$group['key'] => $group['title']];
-        }, $result);
+        $result = [];
+
+        foreach ($data as $group) {
+            $result[$group['key']] = $group['title'];
+        }
+
+        return $result;
     }
 }
