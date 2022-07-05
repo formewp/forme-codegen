@@ -20,6 +20,7 @@ final class ClassTypeResolver
         'registry'             => 'Registry\Registry',
         'service'              => 'Services\Service',
         'middleware'           => 'Middleware\Middleware',
+        'field-enum'           => 'Enums\Field',
     ];
 
     /**

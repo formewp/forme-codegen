@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Utils\Resolvers;
 
-use Forme\CodeGen\Utils\FieldGroupVisitor;
+use Forme\CodeGen\Visitors\FieldGroupVisitor;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 

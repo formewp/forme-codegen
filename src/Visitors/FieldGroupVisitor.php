@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Forme\CodeGen\Utils;
+namespace Forme\CodeGen\Visitors;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Expression;
