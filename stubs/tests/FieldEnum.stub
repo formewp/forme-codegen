@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * This boilerplate file is auto-generated.
+ */
+declare (strict_types=1);
+namespace Foobar\ProjectNameSpace\Enums;
+
+use Forme\Framework\Enums\AcfEnum;
+class FooBarField extends AcfEnum
+{
+    protected $fieldNames = ['EJF95fA9n' => 'test'];
+    protected static function values() : array
+    {
+        return ['TEST' => 'EJF95fA9n'];
+    }
+    protected static function labels() : array
+    {
+        return ['TEST' => 'Test'];
+    }
+}
