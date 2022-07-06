@@ -18,11 +18,6 @@ use Psr\Container\ContainerInterface;
 class ClassBuilderTest extends TestCase
 {
     /**
-     * This needs to be updated if the rendered controller file contents change.
-     */
-    private const MD5_CHECK = '7b3212fb9b517fdba281a190bf02e15e';
-
-    /**
      * @var ClassBuilder
      */
     protected $classBuilder;
@@ -75,8 +70,8 @@ class ClassBuilderTest extends TestCase
     public function testBuildsExpectedControllerClass(): void
     {
         $result = $this->classBuilder->build('controller', 'FooBar');
-        dump(md5($result['content']));
+        // file_put_contents(__DIR__ . '/../../../stubs/tests/FooBarController.stub', $result['content']);
         $this->assertEquals('app/Controllers/FooBarController.php', $result['name']);
-        $this->assertEquals(self::MD5_CHECK, md5($result['content']));
+        $this->assertEquals(file_get_contents(__DIR__ . '/../../../stubs/tests/FooBarController.stub'), $result['content']);
     }
 }

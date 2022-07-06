@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * This boilerplate file is auto-generated.
+ */
+
+declare(strict_types=1);
+
+namespace Foobar\ProjectNameSpace\Controllers;
+
+use Forme\Framework\Controllers\AbstractController;
+use Foobar\ProjectNameSpace\Core\View;
+use Psr\Http\Message\ServerRequestInterface;
+
+class FooBarController extends AbstractController
+{
+    public function __construct(public View $view)
+    {
+    }
+
+    /**
+     * @param array|ServerRequestInterface $request
+     */
+    public function __invoke($request)
+    {
+        $context = [
+            'foo' => 'bar',
+        ];
+
+        return $this->view->render('example', $context);
+    }
+}
