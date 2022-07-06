@@ -3,6 +3,12 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
+use Forme\CodeGen\Constants\Placeholders;
+use Forme\CodeGen\Utils\PlaceholderReplacer;
+use Forme\CodeGen\Utils\Resolvers\Resolver;
+use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\PhpFile;
+use Nette\PhpGenerator\Printer;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Parser;
@@ -10,7 +16,7 @@ use PhpParser\PrettyPrinter\Standard;
 
 final class FieldEnumBuilder
 {
-    public function __construct(private ClassBuilder $classBuilder, private Parser $parser, private Standard $printer)
+    public function __construct(private ClassBuilder $classBuilder, private Parser $parser, private Standard $printer, private Printer $nettePrinter, private Resolver $resolver, private PlaceholderReplacer $replacer)
     {
     }
 
@@ -41,6 +47,31 @@ final class FieldEnumBuilder
         // pretty print it back to the class data
         $classData['content'] = $this->printer->prettyPrintFile($ast);
 
-        return $classData;
+        $class = ClassType::fromCode($classData['content']);
+        $class->setFinal();
+
+        // get the comments, namespace and use statements back from the original class
+
+        $sourceClass   = $this->resolver->classType()->getSourceClass('field-enum');
+        $namespaceBase = $this->resolver->classType()->getNamespaceBase('field-enum');
+        $file          = new PhpFile();
+        $file->addComment('This boilerplate file is auto-generated.');
+        $file->setStrictTypes(); // adds declare(strict_types=1)
+
+        $namespace     = $file->addNamespace(Placeholders::NAMESPACE . '\\' . $namespaceBase);
+        $useStatements = $this->resolver->classReflection()->getUseStatements($sourceClass);
+        foreach ($useStatements as $alias => $use) {
+            $namespace->addUse($use, $alias);
+        }
+        $namespace->add($class);
+
+        // to generate PHP code use the printer
+        $fileContents = $this->nettePrinter->printFile($file);
+        $fileContents = $this->replacer->process($fileContents, 'field-enum', $args['name']);
+
+        return [
+            'content' => $fileContents,
+            'name'    => $classData['name'],
+        ];
     }
 }
