@@ -10,6 +10,9 @@ namespace Foobar\ProjectNameSpace\Enums;
 
 use Forme\Framework\Enums\AcfEnum;
 
+/**
+ * @method static self TEST()
+ */
 final class FooBarField extends AcfEnum
 {
 	protected $fieldNames = ['EJF95fA9n' => 'test'];

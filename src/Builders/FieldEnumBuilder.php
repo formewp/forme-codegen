@@ -50,6 +50,11 @@ final class FieldEnumBuilder
         $class = ClassType::fromCode($classData['content']);
         $class->setFinal();
 
+        // add the enum name methods as phpdoc comments
+        foreach ($args['enum_names'] as $name) {
+            $class->addComment('@method static self ' . $name . '()');
+        }
+
         // get the comments, namespace and use statements back from the original class
 
         $sourceClass   = $this->resolver->classType()->getSourceClass('field-enum');
