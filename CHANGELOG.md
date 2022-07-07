@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.1] - 2022-07-07
+
+### Documentation
+
+- Update help and spec with field enum feat
+
 ## [1.8.0] - 2022-07-07
 
 ### Features
@@ -19,6 +25,7 @@ All notable changes to this project will be documented in this file.
 
 - Explicitly require php parser
 - Merge branch master
+- Bump version
 
 ### Refactor
 
