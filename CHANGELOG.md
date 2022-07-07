@@ -1,6 +1,40 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - 2022-07-07
+
+### Features
+
+- Scaffold out field enum feature
+- Field enum command flow
+- Field group parsing poc
+- Ask user for field enum names
+- Field enum class creation
+- Field enum formatting and class config
+- Add the static self enum methods
+- Acf enum mvp
+- Use alias for new enum
+
+### Miscellaneous Tasks
+
+- Explicitly require php parser
+- Merge branch master
+
+### Refactor
+
+- Use temp file system instead of ad hoc file
+- Extract out resolver logic
+- Extracts relevant data in visitor
+- Extract resolver into two methods
+- Extract field enum questions to separate class
+
+### Testing
+
+- Field enum builder test
+- Refactor class builder test to use stub
+- Remove empty tests
+- Enum field group builder test
+
 ## [1.7.25] - 2022-07-03
 
 ### Dev Workflow
@@ -15,6 +49,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Move docker compose stub
+- Bump version
 
 ### Refactor
 
