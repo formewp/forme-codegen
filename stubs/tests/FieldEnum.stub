@@ -15,17 +15,15 @@ use Forme\Framework\Enums\AcfEnum;
  */
 final class FooBarField extends AcfEnum
 {
-	protected $fieldNames = ['EJF95fA9n' => 'test'];
+    protected $fieldNames = ['EJF95fA9n' => 'test'];
 
+    protected static function values(): array
+    {
+        return ['TEST' => 'EJF95fA9n'];
+    }
 
-	protected static function values(): array
-	{
-		return ['TEST' => 'EJF95fA9n'];
-	}
-
-
-	protected static function labels(): array
-	{
-		return ['TEST' => 'Test'];
-	}
+    protected static function labels(): array
+    {
+        return ['TEST' => 'Test'];
+    }
 }

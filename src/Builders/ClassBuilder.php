@@ -30,7 +30,7 @@ class ClassBuilder
 
         $namespace = $file->addNamespace(Placeholders::NAMESPACE . '\\' . $namespaceBase);
         // we do have to add the uses separately as the nette library won't read them from the file
-        $useStatements = $this->resolver->classReflection()->getUseStatements($sourceClass);
+        $useStatements = $this->resolver->classReflection()->getUseStatementsFromLoadedClass($sourceClass);
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
@@ -80,6 +80,10 @@ class ClassBuilder
         $targetDirectory     = $this->resolver->classType()->getTargetDirectory($type);
         $fileName            = $targetDirectory . '/' . $className . '.php';
 
-        return ['name' => $fileName, 'content' => $fileContents];
+        return [
+            'name'     => $fileName,
+            'content'  => $fileContents,
+            'class'    => array_values($namespace->getClasses())[0],
+        ];
     }
 }

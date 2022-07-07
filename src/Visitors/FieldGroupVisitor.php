@@ -37,10 +37,10 @@ final class FieldGroupVisitor extends NodeVisitorAbstract
                     }
                 }
                 $this->result[] = [
-                    'key'    => $key,
-                    'title'  => $title,
-                    'fields' => $fields,
-                    'node'   => $node,
+                    'key'     => $key,
+                    'title'   => $title,
+                    'fields'  => $fields,
+                    'node'    => $node,
                 ];
             }
         }

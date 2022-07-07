@@ -8,7 +8,7 @@ use Forme\CodeGen\Utils\PlaceholderReplacer;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
-use Nette\PhpGenerator\Printer;
+use Nette\PhpGenerator\PsrPrinter;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Parser;
@@ -16,7 +16,7 @@ use PhpParser\PrettyPrinter\Standard;
 
 final class FieldEnumBuilder
 {
-    public function __construct(private ClassBuilder $classBuilder, private Parser $parser, private Standard $printer, private Printer $nettePrinter, private Resolver $resolver, private PlaceholderReplacer $replacer)
+    public function __construct(private ClassBuilder $classBuilder, private Parser $parser, private Standard $printer, private PsrPrinter $nettePrinter, private Resolver $resolver, private PlaceholderReplacer $replacer)
     {
     }
 
@@ -64,7 +64,7 @@ final class FieldEnumBuilder
         $file->setStrictTypes(); // adds declare(strict_types=1)
 
         $namespace     = $file->addNamespace(Placeholders::NAMESPACE . '\\' . $namespaceBase);
-        $useStatements = $this->resolver->classReflection()->getUseStatements($sourceClass);
+        $useStatements = $this->resolver->classReflection()->getUseStatementsFromLoadedClass($sourceClass);
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
@@ -77,6 +77,7 @@ final class FieldEnumBuilder
         return [
             'content' => $fileContents,
             'name'    => $classData['name'],
+            'class'   => array_values($namespace->getClasses())[0],
         ];
     }
 }

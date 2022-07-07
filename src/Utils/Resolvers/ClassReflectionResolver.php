@@ -14,9 +14,19 @@ final class ClassReflectionResolver
     }
 
     /**
-     * Get the use statements in a class.
+     * Get the use statements in an app class.
      */
     public function getUseStatements(string $class): array
+    {
+        $rc = $this->getReflectionClass($class);
+
+        return Reflection::getUseStatements($rc);
+    }
+
+    /**
+     * Get the use statements in an app class.
+     */
+    public function getUseStatementsFromLoadedClass(string $class): array
     {
         $rc = new ReflectionClass($class);
 
@@ -61,5 +71,16 @@ final class ClassReflectionResolver
         $file      = $dir . $file . '.php';
 
         return $file;
+    }
+
+    /**
+     * Get the file path of a class relative to the project root.
+     */
+    public function getRelativeFilePath(string $class): string
+    {
+        $dir      = getcwd() . '/';
+        $absolute = $this->getFilePath($class);
+
+        return str_replace($dir, '', $absolute);
     }
 }

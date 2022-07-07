@@ -10,12 +10,12 @@ beforeEach(function () {
 });
 
 test('gets field groups keys and titles options array from a field group class file', function () {
-    $result = $this->resolver->getOptionsFromClassFile(__DIR__ . '/../../../../stubs/tests/TestFieldGroup.stub');
+    $result = $this->resolver->getOptionsFromClassFile('stubs/tests/TestFieldGroup.stub');
     expect($result)->toBe(['group_62c3329e808ca' => 'Test Group']);
 });
 
 test('gets an array of field group data from a field group class file', function () {
-    $result = $this->resolver->getFromClassFile(__DIR__ . '/../../../../stubs/tests/TestFieldGroup.stub');
+    $result = $this->resolver->getFromClassFile('/stubs/tests/TestFieldGroup.stub');
     expect($result[0]['key'])->toBe('group_62c3329e808ca');
     expect($result[0]['title'])->toBe('Test Group');
     expect($result[0]['fields'])->toBe([

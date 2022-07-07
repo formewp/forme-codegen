@@ -36,7 +36,7 @@ class MigrationBuilder
         // we add the namespace but we need to remove it later
         $namespace = $file->addNamespace(Placeholders::NAMESPACE);
         // we have to add the uses separately as the nette library won't read them from the file
-        $useStatements = $this->resolver->classReflection()->getUseStatements(self::SOURCE_CLASS);
+        $useStatements = $this->resolver->classReflection()->getUseStatementsFromLoadedClass(self::SOURCE_CLASS);
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
