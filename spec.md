@@ -24,7 +24,12 @@ FieldGroup - `field`
 - ~~Could add FieldGroup to the Field Registry(no longer relevant)~~
 - ~~Won't create boilerplate ACF code programmatically (too complex/out of scope for now)~~
 
-Model - `model`~~
+Field Enum - `field-enum`
+
+- Will create a Field Enum class based on a field group class ✅
+- Will update the field group class to use the enum ✅
+
+Model - `model`
 
 - Will create a blank Model class ✅
 - Should set the post type using snake case of the name ✅

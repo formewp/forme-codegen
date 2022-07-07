@@ -4,7 +4,7 @@ Generates class and other boilerplate in the current working directory.
 
 You need to pass in the `type` of boilerplate you want to generate and a `name`.
 
-Available types are `action`, `filter`, `field`, `controller`, `template-controller`, `registry`, `post-type`, `model`, `translator`, `service`, `migration`, `job` and `middleware`
+Available types are `action`, `filter`, `field`, `field-enum`, `controller`, `template-controller`, `registry`, `post-type`, `model`, `translator`, `service`, `migration`, `job` and `middleware`
 
 For classes you should supply the `name` in PascalCase, for example:
 
@@ -18,4 +18,4 @@ For hooks and post types, the `name` should be in snake_case.
 forme make action wp_loaded
 ```
 
-Hooks will ask you for further configuration via an interactive cli.
+Hooks and field enums will ask you for further configuration via an interactive cli.
