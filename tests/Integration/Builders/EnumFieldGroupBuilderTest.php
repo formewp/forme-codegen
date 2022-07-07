@@ -14,7 +14,7 @@ beforeEach(function () {
         ->andReturn(
             mock(ClassFileResolver::class)
                 ->shouldReceive('getNameSpace')
-                ->andReturn('Foo\\Bar')
+                ->andReturn('Foo\\Bar\\Baz')
                 ->getMock()
         )->shouldReceive('classReflection')
         ->andReturn(
@@ -31,7 +31,7 @@ beforeEach(function () {
     $arguments       = [
         'name'   => 'FooBar',
         'class'  => 'Foo\\TestFieldGroup',
-        'file'   => 'stubs/tests/EnumFieldGroup.stub',
+        'file'   => 'stubs/tests/TestFieldGroup.stub',
         'fields' => [
             [
                 'name'         => 'text',
@@ -69,5 +69,5 @@ test('builds expected enum field group class', function () {
     $result = $this->builder->build($this->arguments);
     // file_put_contents(__DIR__ . '/../../../stubs/tests/EnumFieldGroup.stub', $result['content']);
     expect($result['content'])->toBe(file_get_contents(__DIR__ . '/../../../stubs/tests/EnumFieldGroup.stub'));
-    expect($result['name'])->toBe('stubs/tests/EnumFieldGroup.stub');
+    expect($result['name'])->toBe('stubs/tests/TestFieldGroup.stub');
 });

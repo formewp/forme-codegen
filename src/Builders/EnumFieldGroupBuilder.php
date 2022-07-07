@@ -39,6 +39,7 @@ final class EnumFieldGroupBuilder
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
+        $namespace->addUse($args['enum_file']['class']->getNamespace()->getName() . '\\' . $args['enum_file']['class']->getName(), $args['enum_file']['class']->getName());
         $namespace->add($class);
 
         // to generate PHP code use the printer
