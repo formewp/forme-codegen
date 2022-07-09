@@ -1,11 +1,25 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.2] - 2022-07-09
+
+### Features
+
+- Array formatting field group
+
+### Refactor
+
+- Push the formatting to builder scope
+
 ## [1.8.1] - 2022-07-07
 
 ### Documentation
 
 - Update help and spec with field enum feat
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.8.0] - 2022-07-07
 
