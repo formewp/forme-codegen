@@ -39,14 +39,12 @@ final class EnumFieldGroupBuilder
         foreach ($useStatements as $alias => $use) {
             $namespace->addUse($use, $alias);
         }
+        // add a use statement for the enum class
         $namespace->addUse($args['enum_file']['class']->getNamespace()->getName() . '\\' . $args['enum_file']['class']->getName(), $args['enum_file']['class']->getName());
         $namespace->add($class);
 
-        // to generate PHP code use the printer
         $contents = $this->nettePrinter->printFile($file);
 
-        // add a use statement for the enum class
-        // save it back to the original file
         return [
             'content'  => $contents,
             'name'     => $args['file'],
