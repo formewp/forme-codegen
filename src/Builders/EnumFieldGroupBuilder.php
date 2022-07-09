@@ -3,20 +3,27 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
+use Emgag\Flysystem\TempdirAdapter;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Forme\CodeGen\Visitors\FieldGroupReplaceVisitor;
+use League\Flysystem\FilesystemOperator;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PsrPrinter;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 use PhpParser\PrettyPrinter\Standard;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Process\Process;
 
 final class EnumFieldGroupBuilder
 {
-    public function __construct(private Parser $parser, private NodeTraverser $traverser, private FieldGroupReplaceVisitor $visitor, private Standard $printer, private Resolver $resolver, private PsrPrinter $nettePrinter)
+    private FilesystemOperator $tempFilesystem;
+
+    public function __construct(private Parser $parser, private NodeTraverser $traverser, private FieldGroupReplaceVisitor $visitor, private Standard $printer, private Resolver $resolver, private PsrPrinter $nettePrinter, ContainerInterface $container, private TempdirAdapter $tempFilesystemAdapter)
     {
         $this->traverser->addVisitor($this->visitor);
+        $this->tempFilesystem = $container->get('tempFilesystem');
     }
 
     public function build(array $args): array
@@ -44,6 +51,19 @@ final class EnumFieldGroupBuilder
         $namespace->add($class);
 
         $contents = $this->nettePrinter->printFile($file);
+
+        // save the file to a temporary location
+        $this->tempFilesystem->write($args['file'], $contents);
+
+        $fileLocation = $this->tempFilesystemAdapter->getPath() . '/' . $args['file'];
+        // use ecs cli via symfony process to format the array
+        $rootDir = __DIR__ . '/../..';
+        $command = [$rootDir . '/tools/ecs', 'check', $fileLocation, '--fix', '--config',  $rootDir . '/array_ecs.php'];
+        $process = new Process($command);
+        $process->run();
+
+        // load the formatted file back into contents
+        $contents = $this->tempFilesystem->read($args['file']);
 
         return [
             'content'  => $contents,
