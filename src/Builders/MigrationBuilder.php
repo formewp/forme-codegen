@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
+use Carbon\Carbon;
 use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Jawira\CaseConverter\Convert;
@@ -56,7 +57,7 @@ class MigrationBuilder
         $fileContents = str_replace('namespace ' . Placeholders::NAMESPACE . ";\n\n", '', $fileContents);
 
         // sort out the filename
-        $timeString = gmdate('YmdHis');
+        $timeString = Carbon::now()->format('YmdHis');
         $fileName   = $timeString . '_' . $classNameConversion->toSnake();
         $fileName   = self::TARGET_DIRECTORY . '/' . $fileName . '.php';
 
