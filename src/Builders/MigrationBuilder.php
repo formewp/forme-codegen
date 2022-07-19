@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Forme\CodeGen\Builders;
 
 use Carbon\Carbon;
+use Forme\CodeGen\Constants\Files;
 use Forme\CodeGen\Constants\Placeholders;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Jawira\CaseConverter\Convert;
@@ -21,7 +22,7 @@ class MigrationBuilder
     /**
      * @var string
      */
-    private const TARGET_DIRECTORY = 'app/Database/Migrations';
+    private const TARGET_DIRECTORY = Files::APP_DIR . '/Database/Migrations';
 
     public function __construct(private PsrPrinter $printer, private Resolver $resolver)
     {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Utils\Resolvers;
 
+use Forme\CodeGen\Constants\Files;
+
 final class ClassTypeResolver
 {
     /**
@@ -31,11 +33,6 @@ final class ClassTypeResolver
     /**
      * @var string
      */
-    private const APP_DIR                 = 'app';
-
-    /**
-     * @var string
-     */
     private const TEMPLATE_CONTROLLER_DIR = 'template-controllers';
 
     public function getSourceClass(string $type): string
@@ -57,7 +54,7 @@ final class ClassTypeResolver
         } else {
             $directoryEnd = str_replace('\\', '/', $this->getNamespaceBase($type));
 
-            return self::APP_DIR . '/' . $directoryEnd;
+            return Files::APP_DIR . '/' . $directoryEnd;
         }
     }
 }
