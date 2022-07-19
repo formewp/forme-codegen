@@ -9,6 +9,9 @@ use Symfony\Component\Yaml\Yaml;
 
 class HookBuilder
 {
+    private const DEFAULT_PRIORITY  = 10;
+    private const DEFAULT_ARGUMENTS = 1;
+
     public function __construct(private Comments $commentManager)
     {
     }
@@ -41,11 +44,11 @@ class HookBuilder
             $newEntry['method'] = $args['method'];
         }
 
-        if (isset($args['priority'])) {
+        if (isset($args['priority']) && $args['priority'] !== '' && $args['priority'] !== self::DEFAULT_PRIORITY) {
             $newEntry['priority'] = (int) $args['priority'];
         }
 
-        if (isset($args['arguments'])) {
+        if (isset($args['arguments']) && $args['arguments'] !== '' && $args['arguments'] !== self::DEFAULT_ARGUMENTS) {
             $newEntry['arguments'] = (int) $args['arguments'];
         }
 

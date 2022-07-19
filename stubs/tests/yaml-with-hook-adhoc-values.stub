@@ -23,6 +23,8 @@ actions:
   - hook: foo_action
     class: stdClass
     method: do_stuff
+    priority: 100
+    arguments: 3
 filters:
   - hook: template_include
     class: VendorName\ReplaceMeTheme\Core\TemplateHandler
