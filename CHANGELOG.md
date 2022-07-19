@@ -1,11 +1,29 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.3] - 2022-07-19
+
+### Miscellaneous Tasks
+
+- Better args handling
+
+### Refactor
+
+- Add a constant for the app dir
+
+### Testing
+
+- Test migration builder
+
 ## [1.8.2] - 2022-07-09
 
 ### Features
 
 - Array formatting field group
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ### Refactor
 
