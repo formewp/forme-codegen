@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Foobar\ProjectNameSpace\Controllers;
 
 use Forme\Framework\Controllers\AbstractController;
+use Forme\Framework\Http\ServerRequest;
 use Foobar\ProjectNameSpace\Core\View;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -19,7 +20,7 @@ class FooBarController extends AbstractController
     }
 
     /**
-     * @param array|ServerRequestInterface $request
+     * @param array|ServerRequestInterface|ServerRequest $request
      */
     public function __invoke($request)
     {
