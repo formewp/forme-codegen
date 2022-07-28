@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.5] - 2022-07-28
+
+### Miscellaneous Tasks
+
+- Use global ecs if global forme install
+
 ## [1.8.4] - 2022-07-27
 
 ### Miscellaneous Tasks
 
 - Update controllers sig to match abstract
+- Bump version
 
 ## [1.8.3] - 2022-07-19
 
