@@ -57,8 +57,15 @@ final class EnumFieldGroupBuilder
 
         $fileLocation = $this->tempFilesystemAdapter->getPath() . '/' . $args['file'];
         // use ecs cli via symfony process to format the array
-        $rootDir = __DIR__ . '/../..';
-        $command = [$rootDir . '/tools/ecs', 'check', $fileLocation, '--fix', '--config',  $rootDir . '/array_ecs.php'];
+        $rootDir     = __DIR__ . '/../..';
+        $ecsCommand  = $rootDir . '/tools/ecs';
+        if (!file_exists($ecsCommand)) {
+            // try global
+            $process = new Process(['composer', '-n', 'config', '--global', 'home']);
+            $process->run();
+            $ecsCommand = $process->getOutput() . '/vendor/bin/ecs';
+        }
+        $command = [$ecsCommand, 'check', $fileLocation, '--fix', '--config',  $rootDir . '/array_ecs.php'];
         $process = new Process($command);
         $process->run();
 
