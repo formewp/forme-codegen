@@ -63,7 +63,10 @@ final class EnumFieldGroupBuilder
             // try global
             $process = new Process(['composer', '-n', 'config', '--global', 'home']);
             $process->run();
-            $ecsCommand = $process->getOutput() . '/vendor/bin/ecs';
+            $composerLocation = $process->getOutput();
+            // remove the line ending
+            $composerLocation = substr($composerLocation, 0, -1);
+            $ecsCommand       = $composerLocation . '/vendor/bin/ecs';
         }
         $command = [$ecsCommand, 'check', $fileLocation, '--fix', '--config',  $rootDir . '/array_ecs.php'];
         $process = new Process($command);
