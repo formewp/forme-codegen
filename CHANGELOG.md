@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.6] - 2022-07-30
+
+### Bug Fixes
+
+- Composer location remove line ending
+
 ## [1.8.5] - 2022-07-28
 
 ### Miscellaneous Tasks
 
 - Use global ecs if global forme install
+- Bump version
 
 ## [1.8.4] - 2022-07-27
 
