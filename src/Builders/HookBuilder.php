@@ -9,6 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class HookBuilder
 {
+    private const DEFAULT_METHODS   = ['__invoke', 'handle'];
     private const DEFAULT_PRIORITY  = 10;
     private const DEFAULT_ARGUMENTS = 1;
 
@@ -40,7 +41,7 @@ class HookBuilder
             'hook'  => $args['name'],
             'class' => $args['class'],
         ];
-        if (isset($args['method'])) {
+        if (isset($args['method']) && $args['method'] !== '' && !in_array($args['method'], self::DEFAULT_METHODS)) {
             $newEntry['method'] = $args['method'];
         }
 
