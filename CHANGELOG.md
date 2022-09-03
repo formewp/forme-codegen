@@ -1,11 +1,29 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.8.7] - 2022-09-03
+
+### Bug Fixes
+
+- Hook builder method check
+
+### Dev Workflow
+
+- Fix bump script
+
+### Features
+
+- Hook method default to __invoke
+
 ## [1.8.6] - 2022-07-30
 
 ### Bug Fixes
 
 - Composer location remove line ending
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.8.5] - 2022-07-28
 
@@ -162,7 +180,6 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Run composer install in new project
 - Bump version
 
 ## [1.7.19] - 2022-06-28
@@ -358,7 +375,6 @@ All notable changes to this project will be documented in this file.
 
 ### Documentation
 
-- Update readme with dev tools
 - Changelog
 
 ### Miscellaneous Tasks
@@ -541,10 +557,6 @@ All notable changes to this project will be documented in this file.
 ### Bug Fixes
 
 - Use correct filesystem instance
-
-### Documentation
-
-- Changelog
 
 ## [1.3.10] - 2022-01-31
 
