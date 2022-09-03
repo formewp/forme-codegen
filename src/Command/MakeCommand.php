@@ -78,7 +78,7 @@ final class MakeCommand extends Command
         }
 
         if ($args['type'] === 'service') {
-            $question       = new Question('🔧 Please enter the method name (optional, defaults to handle) ', 'handle');
+            $question       = new Question('🔧 Please enter the method name (optional, defaults to __invoke) ', '__invoke');
             $args['method'] = $helper->ask($input, $output, $question);
         }
 
