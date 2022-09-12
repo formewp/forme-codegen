@@ -23,7 +23,7 @@ final class MakeCommand extends Command
     /**
      * @var string[]
      */
-    private const VALID_TYPES = ['action', 'filter', 'field', 'controller', 'template-controller', 'registry', 'post-type', 'model', 'translator', 'service', 'migration', 'job', 'middleware', 'field-enum'];
+    private const VALID_TYPES = ['action', 'filter', 'field', 'controller', 'template-controller', 'registry', 'post-type', 'model', 'transformer', 'service', 'migration', 'job', 'middleware', 'field-enum'];
 
     protected function configure(): void
     {

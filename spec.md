@@ -75,9 +75,9 @@ Service - `service`
 - Will add named method to the class ✅
 - Could add an optional entry to hooks.yaml
 
-Translator - `translator`
+Transformer - `transformer`
 
-- Will add a blank Translator class ✅
+- Will add a blank Transformer class ✅
 
 Migration - `migration`
 - Should create a blank migration in the style of phinx ✅

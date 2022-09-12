@@ -18,7 +18,7 @@ final class ClassTypeResolver
         'field'                => 'Fields\FieldGroup',
         'post-type'            => 'Models\PostType',
         'model'                => 'Models\Model',
-        'translator'           => 'Translators\Translator',
+        'transformer'          => 'Transformers\Transformer',
         'registry'             => 'Registry\Registry',
         'service'              => 'Services\Service',
         'middleware'           => 'Middleware\Middleware',
