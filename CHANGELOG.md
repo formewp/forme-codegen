@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2022-09-12
+
+### Refactor
+
+- Rename translators to transformers
+
 ## [1.8.7] - 2022-09-03
 
 ### Bug Fixes
@@ -14,6 +20,10 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - Hook method default to __invoke
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [1.8.6] - 2022-07-30
 
