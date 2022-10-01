@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.9.2] - 2022-10-01
+
+### Miscellaneous Tasks
+
+- Update framework dep
+
 ## [1.9.1] - 2022-10-01
 
 ### Documentation
@@ -10,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Update composer deps
+- Bump version
 
 ## [1.9.0] - 2022-09-12
 
