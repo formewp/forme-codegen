@@ -14,7 +14,7 @@ This very simply runs `./tools/pest` under the hood. If you need to pass any arg
 forme test setup
 ```
 
-This will create a new `wp-test` directory if it doesn't already exist, containing a WordPress installation set up for integration and end to end tests, hooked up to an SQLite database, and with your plugin or theme installed via the magic of symlinks.
+This will create a new `wp-test` directory if it doesn't already exist, containing a WordPress installation set up for integration and end to end tests, hooked up to an SQLite database, and with your plugin or theme installed via the magic of symlinks. The admin user is `admin` and the password is `password`.
 
 ```bash
 forme test server start

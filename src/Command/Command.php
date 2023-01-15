@@ -13,6 +13,7 @@ use League\Flysystem\FilesystemOperator;
 use PhpPkg\CliMarkdown\CliMarkdown;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
@@ -43,6 +44,31 @@ abstract class Command extends SymfonyCommand
         });
         if (!$process->isSuccessful()) {
             $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
+
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function runProcessWithProgress(Process $process, OutputInterface $output, int $maxSteps = 0): bool
+    {
+        $process->setTimeout(null);
+        $progressBar = new ProgressBar($output, $maxSteps);
+        $progressBar->start();
+
+        $capturedOutput = '';
+        $advance        = function ($type, $buffer) use ($progressBar, &$capturedOutput) {
+            $capturedOutput .= $buffer . PHP_EOL;
+            $progressBar->advance();
+        };
+
+        $process->run(fn ($type, $buffer) => $advance($type, $buffer));
+        $progressBar->finish();
+        $output->writeln('');
+        if (!$process->isSuccessful()) {
+            $output->writeln($capturedOutput);
+            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues. We might have started writing some files into this directory so check and delete as appropriate');
 
             return false;
         }

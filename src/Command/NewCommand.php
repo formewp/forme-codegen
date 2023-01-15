@@ -10,7 +10,6 @@ use Joli\JoliNotif\Notification;
 use Joli\JoliNotif\NotifierFactory;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -74,23 +73,8 @@ final class NewCommand extends Command
         $this->tempFilesystem->write($tmpScriptFile, $shellScript);
         $tempDirectory  = $this->tempFilesystemAdapter->getPath();
         $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile]);
-        $process->setTimeout(null);
-        $progressBar = new ProgressBar($output, 350);
-        $progressBar->start();
-
-        $capturedOutput = '';
-        $advance        = function ($type, $buffer) use ($progressBar, &$capturedOutput) {
-            $capturedOutput .= $buffer . PHP_EOL;
-            $progressBar->advance();
-        };
-
-        $process->run(fn ($type, $buffer) => $advance($type, $buffer));
-        $progressBar->finish();
-        $output->writeln('');
-        if (!$process->isSuccessful()) {
-            $output->writeln($capturedOutput);
-            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues. We might have started writing some files into this directory so check and delete as appropriate');
-
+        $success        = $this->runProcessWithProgress($process, $output, 350);
+        if (!$success) {
             return Command::FAILURE;
         }
         $output->writeln('🎉 <fg=green>Created a new Forme ' . $type . ' project!</> You can cd into ' . $nameConversion->toKebab() . '-' . $type . ' and get coding!');

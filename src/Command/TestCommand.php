@@ -124,24 +124,26 @@ final class TestCommand extends Command
             $output->writeln('⚠️ <fg=orange>Couldn\'t figure out if this is a plugin or a theme project, defaulting to plugin.');
         }
 
+        $output->writeln('🧪 Setting up a new test instance for this project...');
+
         $dbFile     = $this->codegenFilesystem->read('stubs/wp-test/db.php.stub');
         $serverFile = $this->codegenFilesystem->read('stubs/wp-test/server.php.stub');
-        $tmpFolder  = 'tmp' . uniqid();
-        $this->filesystem->write($tmpFolder . '/db.php', $dbFile);
-        $this->filesystem->write($tmpFolder . '/server.php', $serverFile);
+
+        $this->tempFilesystem->write('db.php', $dbFile);
+        $this->tempFilesystem->write('server.php', $serverFile);
 
         $scriptFile        = __DIR__ . '/../Shell/test_setup.sh';
         $process           = new Process(['bash', $scriptFile], null, [
             'PROJECT_TYPE' => $projectType,
             'PROJECT_NAME' => $projectName,
-            'TMP_STUB_DIR' => $tmpFolder,
+            'TMP_DIR'      => $this->tempFilesystemAdapter->getPath(),
         ]);
-        $success = $this->runProcess($process, $output);
+        $success = $this->runProcessWithProgress($process, $output, 120);
         if (!$success) {
             return Command::FAILURE;
         }
 
-        $output->writeln('🎉 <fg=green>Set up test instance successfully!');
+        $output->writeln('🎉 <fg=green>Set up test instance successfully! It\'s in `wp-test`');
 
         return Command::SUCCESS;
     }
