@@ -3,7 +3,7 @@
 # check if php.pid already exists
 if [ -f "wp-test/php.pid" ]; then
   echo "It looks like you already have a server running. Try running forme test server stop first if you need to restart it."
-  exit 0
+  exit 1
 fi
 
 # todo: make sure the process is not already running

@@ -5,7 +5,7 @@ WPCLI_EXISTS='command -v wp'
 if ! $WPCLI_EXISTS &> /dev/null
 then
 echo "You need to install wp-cli globally to run the configuration script"
-exit 0
+exit 1
 fi
 
 # and jq
@@ -13,7 +13,7 @@ JQ_EXISTS='command -v jq'
 if ! $JQ_EXISTS &> /dev/null
 then
 echo "You need to install jq to run the configuration script"
-exit 0
+exit 1
 fi
 
 # install forme base feeding via composer create-project with --no-script so it doesn't run all the scripts
