@@ -124,10 +124,17 @@ final class TestCommand extends Command
             $output->writeln('⚠️ <fg=orange>Couldn\'t figure out if this is a plugin or a theme project, defaulting to plugin.');
         }
 
+        $dbFile     = $this->codegenFilesystem->read('stubs/wp-test/db.php.stub');
+        $serverFile = $this->codegenFilesystem->read('stubs/wp-test/server.php.stub');
+        $tmpFolder  = 'tmp' . uniqid();
+        $this->filesystem->write($tmpFolder . '/db.php', $dbFile);
+        $this->filesystem->write($tmpFolder . '/server.php', $serverFile);
+
         $scriptFile        = __DIR__ . '/../Shell/test_setup.sh';
         $process           = new Process(['bash', $scriptFile], null, [
             'PROJECT_TYPE' => $projectType,
             'PROJECT_NAME' => $projectName,
+            'TMP_STUB_DIR' => $tmpFolder,
         ]);
         $success = $this->runProcess($process, $output);
         if (!$success) {

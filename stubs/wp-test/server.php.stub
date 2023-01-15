@@ -1,0 +1,46 @@
+<?php
+// driver for built in php web server
+// based on https://stackoverflow.com/questions/27381520/php-built-in-server-and-htaccess-mod-rewrites
+// also on https://github.com/laravel/valet/blob/master/cli/Valet/Drivers/WordPressValetDriver.php
+chdir(__DIR__);
+$queryString = $_SERVER['QUERY_STRING'] ?? null;
+
+if (substr($_SERVER['REQUEST_URI'], -1 * strlen('/wp-admin')) == '/wp-admin') {
+    header('Location: ' . $_SERVER['REQUEST_URI'] . '/');
+    exit;
+}
+
+$path    = ltrim($queryString ? $_SERVER['SCRIPT_NAME'] : $_SERVER['REQUEST_URI'], '/');
+
+$filePath    = realpath($path);
+if ($filePath && is_dir($filePath)) {
+    // attempt to find an index file
+    foreach (['index.php', 'index.html'] as $indexFile) {
+        if ($filePath = realpath($filePath . DIRECTORY_SEPARATOR . $indexFile)) {
+            break;
+        }
+    }
+}
+if ($filePath && is_file($filePath)) {
+    // we don't bother checking that file is not outside of this directory because we need symlinks to work
+    // also let's not worry about exposing dotfiles etc
+    // ^ this isn't secure but we don't care as this is for testing only
+    // so the only thing we need to do is
+    // 1. check for circular reference to server.php
+    if ($filePath != __DIR__ . DIRECTORY_SEPARATOR . 'server.php') {
+        if (strtolower(substr($filePath, -4)) == '.php') {
+            // php file; serve through interpreter
+            include $filePath;
+        } else {
+            // asset file; serve from filesystem
+            return false;
+        }
+    } else {
+        // disallowed file
+        header('HTTP/1.1 404 Not Found');
+        echo '404 Not Found ';
+    }
+} else {
+    // rewrite to our index file
+    include __DIR__ . DIRECTORY_SEPARATOR . 'index.php';
+}

@@ -88,8 +88,9 @@ composer init-dot-env
 cd ..
 
 # copy over server.php and db.php files
-cp stubs/server.php wp-test/public/server.php
-cp stubs/db.php wp-test/public/wp-content/db.php
+mv $TMP_STUB_DIR/server.php wp-test/public/server.php
+mv $TMP_STUB_DIR/db.php wp-test/public/wp-content/db.php
+rmdir $TMP_STUB_DIR
 
 # symlink the parent directory (like forme base link)
 ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/plugins/test-plugin"
