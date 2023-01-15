@@ -90,7 +90,6 @@ cd ..
 # copy over server.php and db.php files
 mv $TMP_DIR/server.php wp-test/public/server.php
 mv $TMP_DIR/db.php wp-test/public/wp-content/db.php
-rmdir $TMP_DIR
 
 # symlink the parent directory (like forme base link)
 if [ $PROJECT_TYPE = 'plugin' ]; then
