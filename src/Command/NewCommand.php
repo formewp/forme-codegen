@@ -75,7 +75,7 @@ final class NewCommand extends Command
         $tempDirectory  = $this->tempFilesystemAdapter->getPath();
         $process        = new Process(['bash', $tempDirectory . '/' . $tmpScriptFile]);
         $process->setTimeout(null);
-        $progressBar = new ProgressBar($output, 225);
+        $progressBar = new ProgressBar($output, 350);
         $progressBar->start();
 
         $capturedOutput = '';
@@ -100,7 +100,7 @@ final class NewCommand extends Command
             (new Notification())
                 ->setTitle('🎉 Forme Project Created')
                 ->setBody('A new Forme ' . $type . ' project has been created!')
-            ;
+        ;
 
         // Send it
         $notifier->send($notification);

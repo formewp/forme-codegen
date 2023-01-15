@@ -93,7 +93,7 @@ mv $TMP_STUB_DIR/db.php wp-test/public/wp-content/db.php
 rmdir $TMP_STUB_DIR
 
 # symlink the parent directory (like forme base link)
-if [ $PROJECT_TYPE -eq 'plugin' ]; then
+if [ $PROJECT_TYPE = 'plugin' ]; then
 ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/plugins/$PROJECT_NAME"
 else
 ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/themes/$PROJECT_NAME"
@@ -105,7 +105,7 @@ wp core install --url="http://localhost:8000" --title="Test Site" --admin_user="
 # activate required plugins
 wp plugin activate advanced-custom-fields
 
-if [ $PROJECT_TYPE -eq 'plugin' ]; then
+if [ $PROJECT_TYPE = 'plugin' ]; then
 wp plugin activate $PROJECT_NAME
 else
 wp theme activate $PROJECT_NAME
