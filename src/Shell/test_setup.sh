@@ -93,7 +93,11 @@ mv $TMP_STUB_DIR/db.php wp-test/public/wp-content/db.php
 rmdir $TMP_STUB_DIR
 
 # symlink the parent directory (like forme base link)
-ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/plugins/test-plugin"
+if [ $PROJECT_TYPE = 'plugin' ]; then
+ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/plugins/$PROJECT_NAME"
+else
+ln -s $(pwd) $(pwd)"/wp-test/public/wp-content/themes/$PROJECT_NAME"
+fi
 
 # wp core install
 wp core install --url="http://localhost:8000" --title="Test Site" --admin_user="admin" --admin_password="password" --admin_email="test@example.com"
