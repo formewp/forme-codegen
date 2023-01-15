@@ -74,13 +74,8 @@ final class BaseCommand extends Command
         // run composer create project
         $process = new Process(['composer', 'create-project', 'forme/base', $projectName]);
         $process->setTty(true);
-        $process->run(function ($type, $buffer) use ($output) {
-            $output->writeln($buffer);
-        });
-
-        if (!$process->isSuccessful()) {
-            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
-
+        $success = $this->runProcess($process, $output);
+        if (!$success) {
             return Command::FAILURE;
         }
 
@@ -91,7 +86,7 @@ final class BaseCommand extends Command
             (new Notification())
                 ->setTitle('Forme Project Created')
                 ->setBody('A new Forme Base project has been created!')
-            ;
+        ;
 
         // Send it
         $notifier->send($notification);
@@ -140,13 +135,8 @@ final class BaseCommand extends Command
 
         $process = new Process(['composer', $command]);
         $process->setTty(true);
-        $process->run(function ($type, $buffer) use ($output) {
-            $output->writeln($buffer);
-        });
-
-        if (!$process->isSuccessful()) {
-            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
-
+        $success = $this->runProcess($process, $output);
+        if (!$success) {
             return Command::FAILURE;
         }
 

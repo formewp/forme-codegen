@@ -13,6 +13,8 @@ use League\Flysystem\FilesystemOperator;
 use PhpPkg\CliMarkdown\CliMarkdown;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 abstract class Command extends SymfonyCommand
 {
@@ -32,5 +34,19 @@ abstract class Command extends SymfonyCommand
     protected function help(string $name): string
     {
         return $this->cliMarkdown->render(file_get_contents(__DIR__ . '/../../help/' . $name . '.md'));
+    }
+
+    protected function runProcess(Process $process, OutputInterface $output): bool
+    {
+        $process->run(function ($type, $buffer) use ($output) {
+            $output->writeln($buffer);
+        });
+        if (!$process->isSuccessful()) {
+            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
+
+            return false;
+        }
+
+        return true;
     }
 }

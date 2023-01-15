@@ -107,12 +107,8 @@ final class KetchCommand extends Command
             $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
         }
 
-        $process->run(function ($type, $buffer) use ($output) {
-            $output->writeln($buffer);
-        });
-        if (!$process->isSuccessful()) {
-            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
-
+        $success = $this->runProcess($process, $output);
+        if (!$success) {
             return Command::FAILURE;
         }
 

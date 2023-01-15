@@ -54,12 +54,8 @@ final class BumpCommand extends Command
         $process           = new Process(['bash', $scriptFile], null, [
             'BUMP_SCOPE' => $scope,
         ]);
-        $process->run(function ($type, $buffer) use ($output) {
-            $output->writeln($buffer);
-        });
-        if (!$process->isSuccessful()) {
-            $output->writeln('⛔ <fg=red>Something went wrong.</> You can check the output above for clues.');
-
+        $success = $this->runProcess($process, $output);
+        if (!$success) {
             return Command::FAILURE;
         }
 
