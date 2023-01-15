@@ -1,11 +1,38 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.10.0] - 2023-01-15
+
+### Bug Fixes
+
+- Errors should error
+- Remove hardcoded test symlink
+- Bash equals syntax
+- Reverse bash error
+
+### Documentation
+
+- Test command help text
+
+### Features
+
+- Test commands
+
+### Miscellaneous Tasks
+
+- Add the test setup stubs
+- Redundant tmp dir rm
+
+### Refactor
+
+- A bit of sugar and refactor
+
 ## [1.9.2] - 2022-10-01
 
 ### Miscellaneous Tasks
 
 - Update framework dep
+- Bump version
 
 ## [1.9.1] - 2022-10-01
 
