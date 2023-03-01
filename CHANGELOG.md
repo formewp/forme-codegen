@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.10.2] - 2023-03-01
+
+### Bug Fixes
+
+- Subst syntax
+
+### Miscellaneous Tasks
+
+- Update deps
+
 ## [1.10.1] - 2023-03-01
 
 ### Miscellaneous Tasks
 
 - Don't add Service to service class names
+- Bump version
 
 ## [1.10.0] - 2023-01-15
 
