@@ -18,6 +18,7 @@ final class Controller extends AbstractController
      */
     public function __invoke($request)
     {
+        // sort out the context
         $context = [
             'foo' => 'bar',
         ];

@@ -44,6 +44,8 @@ class ClassBuilder
         $className             = $classPrefixPascal . $classSuffix;
         // if this is a TemplateController, we need to change it to just Controller
         $className = str_replace('TemplateController', 'Controller', $className);
+        // if this is a Service, we need to remove Service from the end as it's redundant
+        $className = str_ends_with($className, 'Service') ? substr($className, 0, -strlen('Service')) : $className;
 
         $class->setName($className);
         // if this is a service class, let's add the method
