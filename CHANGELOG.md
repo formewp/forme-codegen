@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2023-03-11
+
+### Miscellaneous Tasks
+
+- Update deps and ketch/docker
+- Merge branch 'master'
+- Bump dependencies
+
 ## [1.10.2] - 2023-03-01
 
 ### Bug Fixes
@@ -10,6 +18,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Update deps
+- Bump version
 
 ## [1.10.1] - 2023-03-01
 
