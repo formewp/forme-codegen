@@ -11,7 +11,7 @@ if [ $# -gt 0 ];then
         $COMPOSE run --rm \
             -w /var/www/html \
             app \
-            wp "$@"
+            wp --allow-root "$@"
 
     # composer
     elif [ "$1" == "composer" ]; then

@@ -104,7 +104,7 @@ final class KetchCommand extends Command
         if ($command === 'shell') {
             $process->setTimeout(null);
             $process->setIdleTimeout(null);
-            $process->setEnv(['CONTAINER' => basename(getcwd()) . '_app_1']);
+            $process->setEnv(['CONTAINER' => basename(getcwd()) . '-app-1']);
         }
 
         $success = $this->runProcess($process, $output);
