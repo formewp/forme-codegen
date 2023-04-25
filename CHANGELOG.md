@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2023-04-25
+
+### Miscellaneous Tasks
+
+- Add vscode settings and recommendations
+- Fix phpstan setting
+- Update deps
+
 ## [2.0.0] - 2023-03-11
 
 ### Miscellaneous Tasks
@@ -8,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - Update deps and ketch/docker
 - Merge branch 'master'
 - Bump dependencies
+- Bump version
 
 ## [1.10.2] - 2023-03-01
 
