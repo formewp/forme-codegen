@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2023-04-25
+
+### Miscellaneous Tasks
+
+- Update forme framework
+
 ## [2.0.1] - 2023-04-25
 
 ### Miscellaneous Tasks
@@ -8,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Add vscode settings and recommendations
 - Fix phpstan setting
 - Update deps
+- Bump version
 
 ## [2.0.0] - 2023-03-11
 
