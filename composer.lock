@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "397fbb1d60cb75b96f00770b41d4569c",
+    "content-hash": "ff39b8186f7070be9b7d972bd20f4672",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -980,16 +980,16 @@
         },
         {
             "name": "forme/framework",
-            "version": "v3.2.4",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/formewp/forme-framework.git",
-                "reference": "4ef36b8926804804b42b4aed2f8b8f4e013f11fe"
+                "reference": "b65377cc7864591890cf3cbf4d7601461cd04fbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/4ef36b8926804804b42b4aed2f8b8f4e013f11fe",
-                "reference": "4ef36b8926804804b42b4aed2f8b8f4e013f11fe",
+                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/b65377cc7864591890cf3cbf4d7601461cd04fbf",
+                "reference": "b65377cc7864591890cf3cbf4d7601461cd04fbf",
                 "shasum": ""
             },
             "require": {
@@ -998,7 +998,7 @@
                 "illuminate/config": "^9.52",
                 "illuminate/database": "^9.52",
                 "illuminate/view": "^9.52",
-                "laminas/laminas-diactoros": "^2.5",
+                "laminas/laminas-diactoros": "^2.5.2",
                 "league/plates": "^3.4",
                 "log1x/sage-directives": "^1.1",
                 "monolog/monolog": "^2.9",
@@ -1062,9 +1062,9 @@
             "description": "An MVC framework for WordPress.",
             "support": {
                 "issues": "https://github.com/formewp/forme-framework/issues",
-                "source": "https://github.com/formewp/forme-framework/tree/v3.2.4"
+                "source": "https://github.com/formewp/forme-framework/tree/v3.3.0"
             },
-            "time": "2023-04-25T07:20:44+00:00"
+            "time": "2023-04-25T07:51:35+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
