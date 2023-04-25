@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Update forme framework
+- Bump version
+- Update forme
 
 ## [2.0.1] - 2023-04-25
 
