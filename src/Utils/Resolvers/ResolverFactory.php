@@ -14,8 +14,8 @@ final class ResolverFactory
 
     public function create(string $type): object
     {
-        $camel          = (new Convert($type))->toCamel();
-        $resolverClass  = __NAMESPACE__ . '\\' . $camel . 'Resolver';
+        $pascal          = (new Convert($type))->toPascal();
+        $resolverClass   = __NAMESPACE__ . '\\' . $pascal . 'Resolver';
 
         return $this->container->get($resolverClass);
     }
