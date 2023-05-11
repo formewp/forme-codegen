@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Forme\CodeGen\Builders;
+namespace Tests\Integration\Forme\CodeGen\Builders;
 
 use Forme\CodeGen\Builders\ClassBuilder;
 use Forme\CodeGen\Utils\PlaceholderReplacerInterface;
