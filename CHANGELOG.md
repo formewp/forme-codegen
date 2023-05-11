@@ -1,6 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2023-05-11
+
+### Bug Fixes
+
+- Casing fix - pascal not camel
+
+### Miscellaneous Tasks
+
+- Move some deps from phive to composer dev
+
+### Testing
+
+- Minor import namespace fix
+
 ## [2.1.0] - 2023-04-25
 
 ### Miscellaneous Tasks
@@ -8,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - Update forme framework
 - Bump version
 - Update forme
+- Bump version
 
 ## [2.0.1] - 2023-04-25
 
