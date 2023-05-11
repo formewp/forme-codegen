@@ -32,6 +32,8 @@
         ]
     },
     "require-dev": {
+        "captainhook/captainhook": "^5.16",
+        "friendsofphp/php-cs-fixer": "^3.16",
         "mockery/mockery": "^1.4",
         "nunomaduro/mock-final-classes": "dev-master",
         "pestphp/pest": "^1.21",
