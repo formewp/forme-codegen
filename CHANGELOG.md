@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.2] - 2023-05-15
+
+### Miscellaneous Tasks
+
+- Update php deps
+
 ## [2.1.1] - 2023-05-11
 
 ### Bug Fixes
@@ -10,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous Tasks
 
 - Move some deps from phive to composer dev
+- Bump version
 
 ### Testing
 
