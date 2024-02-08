@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.3] - 2024-02-08
+
+### Miscellaneous Tasks
+
+- Update composer
+
 ## [2.1.2] - 2023-05-15
 
 ### Miscellaneous Tasks
 
 - Update php deps
+- Bump version
 
 ## [2.1.1] - 2023-05-11
 
