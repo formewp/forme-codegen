@@ -3,3 +3,4 @@ vendor
 phpstan.neon
 tools
 .phpunit.result.cache
+.phpunit.cache
