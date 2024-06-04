@@ -2786,7 +2786,7 @@ HTML
          */
         public function db_version()
         {
-            return '5.5';
+            return '8.0';
         }
     }
 
