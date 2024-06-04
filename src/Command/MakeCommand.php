@@ -6,6 +6,7 @@ namespace Forme\CodeGen\Command;
 
 use Forme\CodeGen\Command\Question\Make\FieldEnumQuestions;
 use Forme\CodeGen\Constants\Files;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Helper\QuestionHelper;
@@ -15,10 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 
+#[AsCommand(name: 'make')]
 final class MakeCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'make';
+    protected static string $defaultName = 'make';
 
     /**
      * @var string[]

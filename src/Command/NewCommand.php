@@ -8,6 +8,7 @@ use Forme\CodeGen\Utils\NewShellScriptReplacer;
 use Jawira\CaseConverter\Convert;
 use Joli\JoliNotif\Notification;
 use Joli\JoliNotif\NotifierFactory;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Completion\CompletionInput;
 use Symfony\Component\Console\Completion\CompletionSuggestions;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,6 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
+#[AsCommand(name: 'new')]
 final class NewCommand extends Command
 {
     /**
@@ -28,7 +30,7 @@ final class NewCommand extends Command
      */
     public const VALID_VIEWS = ['plates-4', 'blade', 'twig', 'plates'];
 
-    protected static $defaultName = 'new';
+    protected static string $defaultName = 'new';
 
     protected function configure(): void
     {
