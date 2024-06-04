@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - 2024-06-04
+
+### Bug Fixes
+
+- Command name annotations
+
 ## [2.2.0] - 2024-06-04
 
 ### Miscellaneous Tasks
 
 - Upgrade pest and other deps
+- Bump version
 
 ## [2.1.4] - 2024-06-04
 
