@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.4] - 2024-06-04
+
+### Miscellaneous Tasks
+
+- Update deps
+
 ## [2.1.3] - 2024-02-08
 
 ### Miscellaneous Tasks
 
 - Update composer
+- Bump version
 
 ## [2.1.2] - 2023-05-15
 
@@ -51,7 +58,6 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Update deps and ketch/docker
 - Merge branch 'master'
 - Bump dependencies
 - Bump version
@@ -71,6 +77,7 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
+- Update deps and ketch/docker
 - Don't add Service to service class names
 - Bump version
 
@@ -332,8 +339,8 @@ All notable changes to this project will be documented in this file.
 
 - Extract new shell script replacer logic
 - Magic strings into constants
-- Remove redundant func
 - Delete unused func
+- Remove redundant func
 
 ### Testing
 
