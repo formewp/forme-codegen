@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.2] - 2024-06-04
+
+### Bug Fixes
+
+- Spoof 8.0 for later versions of wordpress
+
 ## [2.2.1] - 2024-06-04
 
 ### Bug Fixes
 
 - Command name annotations
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.2.0] - 2024-06-04
 
