@@ -770,8 +770,6 @@ HTML
          * Method to emulate MySQL LEAST() function.
          *
          * This function rewrites the function name to SQLite compatible function name.
-         *
-         * @return mixed
          */
         public function least()
         {
@@ -784,8 +782,6 @@ HTML
          * Method to emulate MySQL GREATEST() function.
          *
          * This function rewrites the function name to SQLite compatible function name.
-         *
-         * @return mixed
          */
         public function greatest()
         {
@@ -980,7 +976,7 @@ HTML
         {
             // global $required_mysql_version;
             // return $required_mysql_version;
-            return '5.5';
+            return '8.0';
         }
     }
 
@@ -1003,13 +999,13 @@ HTML
          *
          * @var unsigned integer
          */
-        public $found_rows_result = null;
+        public $found_rows_result;
         /**
          * Class variable used for query with ORDER BY FIELD().
          *
          * @var array of the object
          */
-        public $pre_ordered_results = null;
+        public $pre_ordered_results;
         /**
          * Class variable to store the rewritten queries.
          *
@@ -1027,7 +1023,7 @@ HTML
          *
          * @var array reference to the PHP object
          */
-        private $results = null;
+        private $results;
         /**
          * Class variable to store the results of the query.
          *
@@ -1035,7 +1031,7 @@ HTML
          *
          * @var array reference to the PHP object
          */
-        private $_results = null;
+        private $_results;
         /**
          * Class variable to reference to the PDO instance.
          *
@@ -1100,8 +1096,6 @@ HTML
          * Return value from query().
          *
          * Each query has its own return value.
-         *
-         * @var mixed
          */
         private $return_value;
         /**
@@ -1484,8 +1478,6 @@ HTML
 
         /**
          * Method to return the queried result data.
-         *
-         * @return mixed
          */
         public function get_query_results()
         {
@@ -1502,8 +1494,6 @@ HTML
 
         /**
          * Method to return the queried results according to the query types.
-         *
-         * @return mixed
          */
         public function get_return_value()
         {
@@ -1810,6 +1800,7 @@ HTML
             // $this->extracted_variables[] = $param;
             $key                         = ':param_' . $this->param_num++;
             $this->extracted_variables[] = $param;
+
             // return the placeholder
             // return ' ? ';
             return ' ' . $key . ' ';
@@ -4009,7 +4000,7 @@ HTML
          *
          * @var string
          */
-        public $_query = null;
+        public $_query;
 
         /**
          * Function to split the query string to the tokens and call appropriate functions.
