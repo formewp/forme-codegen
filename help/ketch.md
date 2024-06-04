@@ -48,7 +48,7 @@ Lists running containers (equivalent to `docker-compose ps`)
 forme ketch composer require foo/bar
 forme ketch wp forme-queue
 forme ketch npm install
-forme ketch npx lerna bootstrap
+forme ketch npx taze
 ```
 
 You can run `composer`, `wp`, `npm` and `npx` commands within the container. NB: flags don't work.
