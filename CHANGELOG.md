@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.4] - 2024-06-11
+
+### Miscellaneous Tasks
+
+- Remove the lerna example from help
+- Update deps
+
 ## [2.2.3] - 2024-06-04
 
 ### Bug Fixes
 
 - Another version spoof for test setup
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.2.2] - 2024-06-04
 
