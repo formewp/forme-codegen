@@ -1,12 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2024-09-03
+
+### Features
+
+- Make wrangle command
+
+### Miscellaneous Tasks
+
+- Update deps
+- Update deps
+
 ## [2.2.4] - 2024-06-11
 
 ### Miscellaneous Tasks
 
 - Remove the lerna example from help
 - Update deps
+- Bump version
 
 ## [2.2.3] - 2024-06-04
 
