@@ -23,6 +23,7 @@ final class ClassTypeResolver
         'service'              => 'Services\Service',
         'middleware'           => 'Middleware\Middleware',
         'field-enum'           => 'Enums\Field',
+        'command'              => 'Commands\Wrangle\Command',
     ];
 
     /**
@@ -44,7 +45,10 @@ final class ClassTypeResolver
     {
         $classEnd = self::MAP[$type];
 
-        return explode('\\', $classEnd)[0];
+        $exploded = explode('\\', $classEnd);
+        array_pop($exploded);
+
+        return implode('\\', $exploded);
     }
 
     public function getTargetDirectory(string $type): string
