@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Command;
 
-use Emgag\Flysystem\TempdirAdapter;
+use Forme\CodeGen\Flysystem\TempdirAdapter;
 use Forme\CodeGen\Generators\BaseGenerator;
 use Forme\CodeGen\Utils\ClassFinder;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
@@ -25,7 +25,7 @@ abstract class Command extends SymfonyCommand
     /** @var FilesystemOperator */
     protected $tempFilesystem;
 
-    public function __construct(protected Filesystem $filesystem, protected BaseGenerator $generator, protected ClassFinder $classFinder, protected Resolver $resolver, protected CliMarkdown $cliMarkdown, protected TempDirAdapter $tempFilesystemAdapter, protected ContainerInterface $container)
+    public function __construct(protected Filesystem $filesystem, protected BaseGenerator $generator, protected ClassFinder $classFinder, protected Resolver $resolver, protected CliMarkdown $cliMarkdown, protected TempdirAdapter $tempFilesystemAdapter, protected ContainerInterface $container)
     {
         $this->codegenFilesystem     = $container->get('codegenFilesystem');
         $this->tempFilesystem        = $container->get('tempFilesystem');

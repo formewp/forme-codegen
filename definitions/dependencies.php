@@ -1,6 +1,6 @@
 <?php
 
-use Emgag\Flysystem\TempdirAdapter;
+use Forme\CodeGen\Flysystem\TempdirAdapter;
 use Forme\CodeGen\Generators\GeneratorFactory;
 use Forme\CodeGen\Generators\GeneratorFactoryInterface;
 use Forme\CodeGen\Utils\ClassFinder;

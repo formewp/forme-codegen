@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Forme\CodeGen\Builders;
 
-use Emgag\Flysystem\TempdirAdapter;
+use Forme\CodeGen\Flysystem\TempdirAdapter;
 use Forme\CodeGen\Utils\Resolvers\Resolver;
 use Forme\CodeGen\Visitors\FieldGroupReplaceVisitor;
 use League\Flysystem\FilesystemOperator;
