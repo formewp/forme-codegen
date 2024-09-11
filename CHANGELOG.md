@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2024-09-11
+
+### Miscellaneous Tasks
+
+- Update deps
+- Update forme framework dep
+
 ## [2.3.0] - 2024-09-03
 
 ### Features
@@ -11,6 +18,7 @@ All notable changes to this project will be documented in this file.
 
 - Update deps
 - Update deps
+- Bump version
 
 ## [2.2.4] - 2024-06-11
 
