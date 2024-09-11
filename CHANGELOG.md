@@ -1,12 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.2] - 2024-09-11
+
+### Miscellaneous Tasks
+
+- Integrate tempdir adapter as lib is abandoned
+
 ## [2.3.1] - 2024-09-11
 
 ### Miscellaneous Tasks
 
 - Update deps
 - Update forme framework dep
+- Bump version
 
 ## [2.3.0] - 2024-09-03
 
