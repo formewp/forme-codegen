@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdf89bc1be77ff8866b42692c9fcdb52",
+    "content-hash": "5d3b8eed7da4b700f3b82f6ff114d1f4",
     "packages": [
         {
             "name": "brick/math",
@@ -1095,16 +1095,16 @@
         },
         {
             "name": "forme/framework",
-            "version": "v3.9.3",
+            "version": "v3.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/formewp/forme-framework.git",
-                "reference": "a29f5858d1e53b766b62ead8914b13a74f635142"
+                "reference": "33083f9e80c9f81627191c04e56000e326de281a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/a29f5858d1e53b766b62ead8914b13a74f635142",
-                "reference": "a29f5858d1e53b766b62ead8914b13a74f635142",
+                "url": "https://api.github.com/repos/formewp/forme-framework/zipball/33083f9e80c9f81627191c04e56000e326de281a",
+                "reference": "33083f9e80c9f81627191c04e56000e326de281a",
                 "shasum": ""
             },
             "require": {
@@ -1128,7 +1128,7 @@
                 "spatie/enum": "^3.13",
                 "symfony/string": "^6.3",
                 "symfony/yaml": "^6.3",
-                "twig/twig": "^3.6.1",
+                "twig/twig": "^3.14",
                 "vlucas/phpdotenv": "^5.5"
             },
             "require-dev": {
@@ -1180,9 +1180,9 @@
             "description": "An MVC framework for WordPress.",
             "support": {
                 "issues": "https://github.com/formewp/forme-framework/issues",
-                "source": "https://github.com/formewp/forme-framework/tree/v3.9.3"
+                "source": "https://github.com/formewp/forme-framework/tree/v3.9.4"
             },
-            "time": "2024-09-03T15:36:21+00:00"
+            "time": "2024-09-11T10:46:56+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",

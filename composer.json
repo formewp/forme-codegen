@@ -6,7 +6,7 @@
         "php": "^8.1",
         "consolidation/comments": "^1.0",
         "emgag/flysystem-tempdir": "^3.0",
-        "forme/framework": "^3.9.3",
+        "forme/framework": "^3.9.4",
         "jawira/case-converter": "^3.4",
         "jolicode/jolinotif": "^2.4",
         "league/flysystem": "^3.0",
