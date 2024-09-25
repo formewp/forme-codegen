@@ -1,6 +1,6 @@
 <?php
 
-const VERSION = '2.3.2';
+const VERSION = '2.3.3';
 
 // include autoload for local or global context
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
