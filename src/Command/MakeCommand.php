@@ -19,8 +19,10 @@ use Symfony\Component\Console\Question\Question;
 #[AsCommand(name: 'make')]
 final class MakeCommand extends Command
 {
-    // the name of the command (the part after "bin/console")
-    protected static string $defaultName = 'make';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'make';
 
     /**
      * @var string[]

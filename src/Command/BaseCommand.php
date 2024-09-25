@@ -17,7 +17,10 @@ use Symfony\Component\Process\Process;
 #[AsCommand(name: 'base')]
 final class BaseCommand extends Command
 {
-    protected static string $defaultName = 'base';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'base';
 
     /** @var array */
     private const AVAILABLE_COMMANDS = ['new', 'link', 'config', 'install', 'autoload', 'dotenv', 'setup'];

@@ -30,7 +30,10 @@ final class NewCommand extends Command
      */
     public const VALID_VIEWS = ['plates-4', 'blade', 'twig', 'plates'];
 
-    protected static string $defaultName = 'new';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'new';
 
     protected function configure(): void
     {

@@ -16,7 +16,10 @@ use Symfony\Component\Yaml\Yaml;
 #[AsCommand(name: 'ketch')]
 final class KetchCommand extends Command
 {
-    protected static string $defaultName = 'ketch';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'ketch';
 
     /**
      * @var string[]

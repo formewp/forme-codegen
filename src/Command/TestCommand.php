@@ -15,7 +15,10 @@ use Symfony\Component\Process\Process;
 #[AsCommand(name: 'test')]
 final class TestCommand extends Command
 {
-    protected static string $defaultName = 'test';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'test';
 
     /**
      * @var string[]

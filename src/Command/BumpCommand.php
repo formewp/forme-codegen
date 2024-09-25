@@ -16,7 +16,10 @@ use Symfony\Component\Process\Process;
 #[AsCommand(name: 'bump')]
 final class BumpCommand extends Command
 {
-    protected static string $defaultName = 'bump';
+    /**
+     * @var string
+     */
+    protected static $defaultName = 'bump';
 
     /**
      * @var string[]
