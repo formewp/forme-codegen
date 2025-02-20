@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0bb6f3695d504079f37eb6b0e8fe3b3",
+    "content-hash": "372690a19089f1db2be92c970ebe996f",
     "packages": [
         {
             "name": "brick/math",
@@ -3134,29 +3134,30 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.2.10",
+            "version": "v4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "a4175c62652f2300c8017fb7e640f9ccb11648d2"
+                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/a4175c62652f2300c8017fb7e640f9ccb11648d2",
-                "reference": "a4175c62652f2300c8017fb7e640f9ccb11648d2",
+                "url": "https://api.github.com/repos/nette/utils/zipball/736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
+                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2 <8.4"
+                "php": "8.0 - 8.4"
             },
             "conflict": {
-                "nette/di": "<3.0.6"
+                "nette/finder": "<3",
+                "nette/schema": "<1.2.2"
             },
             "require-dev": {
                 "jetbrains/phpstorm-attributes": "dev-master",
-                "nette/tester": "~2.0",
+                "nette/tester": "^2.5",
                 "phpstan/phpstan": "^1.0",
-                "tracy/tracy": "^2.3"
+                "tracy/tracy": "^2.9"
             },
             "suggest": {
                 "ext-gd": "to use Image",
@@ -3164,13 +3165,12 @@
                 "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
-                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
-                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -3214,9 +3214,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v3.2.10"
+                "source": "https://github.com/nette/utils/tree/v4.0.5"
             },
-            "time": "2023-07-30T15:38:18+00:00"
+            "time": "2024-08-07T15:39:19+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -6828,21 +6828,21 @@
         },
         {
             "name": "symplify/coding-standard",
-            "version": "12.1.6",
+            "version": "12.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/coding-standard.git",
-                "reference": "2a261fe788e8c1e6f216490121b6942d8f7e313c"
+                "reference": "5de526650985cce3c27c9934461df79ef5c7fd16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/coding-standard/zipball/2a261fe788e8c1e6f216490121b6942d8f7e313c",
-                "reference": "2a261fe788e8c1e6f216490121b6942d8f7e313c",
+                "url": "https://api.github.com/repos/symplify/coding-standard/zipball/5de526650985cce3c27c9934461df79ef5c7fd16",
+                "reference": "5de526650985cce3c27c9934461df79ef5c7fd16",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^3.59",
-                "nette/utils": "^3.2",
+                "nette/utils": "^4.0",
                 "php": ">=8.2",
                 "symplify/rule-doc-generator-contracts": "^11.2"
             },
@@ -6871,7 +6871,7 @@
             "description": "Set of Symplify rules for PHP_CodeSniffer and PHP CS Fixer.",
             "support": {
                 "issues": "https://github.com/symplify/coding-standard/issues",
-                "source": "https://github.com/symplify/coding-standard/tree/12.1.6"
+                "source": "https://github.com/symplify/coding-standard/tree/12.2.3"
             },
             "funding": [
                 {
@@ -6883,7 +6883,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-28T14:19:31+00:00"
+            "time": "2024-08-08T08:38:30+00:00"
         },
         {
             "name": "symplify/easy-coding-standard",

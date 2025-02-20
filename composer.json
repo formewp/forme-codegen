@@ -10,7 +10,7 @@
         "jolicode/jolinotif": "^3.1",
         "league/flysystem": "^3.0",
         "nette/php-generator": "^4.0",
-        "nette/utils": "^3.2",
+        "nette/utils": "^4.0",
         "nikic/php-parser": "^4.14",
         "php-di/php-di": "^7.0",
         "phppkg/cli-markdown": "^2.0.1",
@@ -18,7 +18,7 @@
         "symfony/process": "^7.0",
         "symfony/string": "^7.0",
         "symfony/yaml": "^7.0",
-        "symplify/coding-standard": "^12.0",
+        "symplify/coding-standard": "^12.2",
         "symplify/easy-coding-standard": "^12.1"
     },
     "autoload": {
