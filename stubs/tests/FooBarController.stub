@@ -16,7 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class FooBarController extends AbstractController
 {
     public function __construct(
-        public View $view,
+        private View $view,
     ) {
     }
 
