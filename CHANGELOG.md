@@ -1,11 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.4] - 2025-02-20
+
+### Miscellaneous Tasks
+
+- Update deps
+- Update more deps
+- Update nette
+
 ## [2.3.3] - 2024-09-25
 
 ### Bug Fixes
 
 - Symfony console v6 does not like type defs on defaultname
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.3.2] - 2024-09-11
 
