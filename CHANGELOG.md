@@ -1,12 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.1] - 2025-02-21
+
+### Miscellaneous Tasks
+
+- Accept symfony console 6
+
 ## [2.4.0] - 2025-02-21
 
 ### Miscellaneous Tasks
 
 - Upgrade php parser
 - Update pest
+- Bump version
 
 ## [2.3.4] - 2025-02-20
 
