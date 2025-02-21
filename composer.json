@@ -35,7 +35,7 @@
         "friendsofphp/php-cs-fixer": "^3.16",
         "mockery/mockery": "^1.4",
         "nunomaduro/mock-final-classes": "dev-master",
-        "pestphp/pest": "^2.3",
+        "pestphp/pest": "^3.0",
         "phpstan/phpstan": "^2.1",
         "psy/psysh": "^0.12.3",
         "ramsey/conventional-commits": "^1.3",
