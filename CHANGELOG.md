@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2025-02-21
+
+### Miscellaneous Tasks
+
+- Upgrade php parser
+- Update pest
+
 ## [2.3.4] - 2025-02-20
 
 ### Miscellaneous Tasks
@@ -8,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Update deps
 - Update more deps
 - Update nette
+- Bump version
 
 ## [2.3.3] - 2024-09-25
 
