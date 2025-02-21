@@ -19,10 +19,11 @@ use Symfony\Component\Process\Process;
 final class EnumFieldGroupBuilder
 {
     private FilesystemOperator $tempFilesystem;
+    private NodeTraverser $traverser;
 
-    public function __construct(private Parser $parser, private NodeTraverser $traverser, private FieldGroupReplaceVisitor $visitor, private Standard $printer, private Resolver $resolver, private PsrPrinter $nettePrinter, ContainerInterface $container, private TempdirAdapter $tempFilesystemAdapter)
+    public function __construct(private Parser $parser, private FieldGroupReplaceVisitor $visitor, private Standard $printer, private Resolver $resolver, private PsrPrinter $nettePrinter, ContainerInterface $container, private TempdirAdapter $tempFilesystemAdapter)
     {
-        $this->traverser->addVisitor($this->visitor);
+        $this->traverser      = new NodeTraverser($this->visitor);
         $this->tempFilesystem = $container->get('tempFilesystem');
     }
 

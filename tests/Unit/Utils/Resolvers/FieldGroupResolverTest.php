@@ -2,7 +2,7 @@
 
 use Forme\CodeGen\Utils\Resolvers\FieldGroupResolver;
 
-const MD5_CHECK = '2e74235b9453602bd131475610aa7442';
+const MD5_CHECK = '6f2dbd99ce381c8f3ccdfa74d17d9812';
 
 beforeEach(function () {
     $container      = bootstrap();

@@ -14,7 +14,7 @@ final class FieldGroupVisitor extends NodeVisitorAbstract
     public function enterNode(Node $node)
     {
         if ($node instanceof Expression && isset($node->expr->name)) {
-            if ($node->expr->name->parts[0] === 'acf_add_local_field_group') {
+            if ($node->expr->name->toString() === 'acf_add_local_field_group') {
                 $argumentNode   = $node->expr->args[0]->value;
                 // cycle through the arguments and find 'key', 'title' and 'fields'
                 foreach ($argumentNode->items as $item) {

@@ -11,7 +11,7 @@
         "league/flysystem": "^3.0",
         "nette/php-generator": "^4.0",
         "nette/utils": "^4.0",
-        "nikic/php-parser": "^4.14",
+        "nikic/php-parser": "^5.0",
         "php-di/php-di": "^7.0",
         "phppkg/cli-markdown": "^2.0.1",
         "symfony/console": "^7.0",

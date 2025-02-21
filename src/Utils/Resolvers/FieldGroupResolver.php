@@ -10,9 +10,11 @@ use PhpParser\Parser;
 
 final class FieldGroupResolver
 {
-    public function __construct(private Parser $parser, private NodeTraverser $traverser, private FieldGroupVisitor $visitor, private Filesystem $filesystem)
+    private NodeTraverser $traverser;
+
+    public function __construct(private Parser $parser, private FieldGroupVisitor $visitor, private Filesystem $filesystem)
     {
-        $this->traverser->addVisitor($this->visitor);
+        $this->traverser = new NodeTraverser($this->visitor);
     }
 
     public function getFromClassFile(string $classFile): array

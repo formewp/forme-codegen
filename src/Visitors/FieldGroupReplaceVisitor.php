@@ -15,7 +15,7 @@ final class FieldGroupReplaceVisitor extends NodeVisitorAbstract
     {
         // replace the field name, key and label string values with the relevant enum values
         if ($node instanceof Expression && isset($node->expr->name)) {
-            if ($node->expr->name->parts[0] === 'acf_add_local_field_group') {
+            if ($node->expr->name->toString() === 'acf_add_local_field_group') {
                 $argumentNode   = $node->expr->args[0]->value;
                 $isTarget       = (bool) array_filter($argumentNode->items, function ($item) {
                     return $item->key->value === 'key' && $item->value->value === $this->args['group'];
