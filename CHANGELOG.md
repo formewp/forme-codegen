@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.2] - 2025-06-22
+
+### Miscellaneous Tasks
+
+- Bump deps
+
 ## [2.4.1] - 2025-02-21
 
 ### Miscellaneous Tasks
 
 - Accept symfony console 6
+- Bump version
 
 ## [2.4.0] - 2025-02-21
 
