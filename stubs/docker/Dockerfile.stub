@@ -18,8 +18,8 @@ RUN apt-get update \
     && apt-get install -y nginx curl zip unzip git software-properties-common supervisor \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
-    && apt-get install -y php8.1-fpm php8.1-cli php8.1-mcrypt php8.1-gd php8.1-mysql \
-    php8.1-imap php-memcached php8.1-mbstring php8.1-xml php8.1-curl \
+    && apt-get install -y php8.2-fpm php8.2-cli php8.2-mcrypt php8.2-gd php8.2-mysql \
+    php8.2-imap php-memcached php8.2-mbstring php8.2-xml php8.2-curl \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
     && cd /tmp \
@@ -41,7 +41,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 COPY default /etc/nginx/sites-available/default
 
-COPY php-fpm.conf /etc/php/8.1/fpm/php-fpm.conf
+COPY php-fpm.conf /etc/php/8.2/fpm/php-fpm.conf
 
 EXPOSE 80
 
