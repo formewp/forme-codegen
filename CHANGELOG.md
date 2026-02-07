@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.5.0] - 2026-02-07
+
+### Miscellaneous Tasks
+
+- Drop 8.1 support and upgrade deps
+
 ## [2.4.2] - 2025-06-22
 
 ### Miscellaneous Tasks
 
 - Bump deps
+- Bump version
 
 ## [2.4.1] - 2025-02-21
 
