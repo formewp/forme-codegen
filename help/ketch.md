@@ -1,10 +1,10 @@
 #### ⛵ ketch
 
-You can use ketch to configure a new docker container, as well as run simple `docker-compose` commands like `up`, `down`, `restart`, `list` etc.
+You can use ketch to configure a new docker container, as well as run simple `docker compose` commands like `up`, `down`, `restart`, `list` etc.
 
 You can also run a selection of commands within the configured container, such as `composer`, `npm`, `npx` and `wp`, or you can use `shell` to open a bash prompt in the container and run arbitrary commands.
 
-You'll need `docker` and `docker-compose` installed as well as `wp cli`.
+You'll need `docker` installed as well as `wp cli`.
 
 ```bash
 forme ketch init
@@ -42,7 +42,7 @@ Links plugin or theme repo directories into your container.
 forme ketch list
 ```
 
-Lists running containers (equivalent to `docker-compose ps`)
+Lists running containers (equivalent to `docker compose ps`)
 
 ```bash
 forme ketch composer require foo/bar

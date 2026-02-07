@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMPOSE="docker-compose"
+COMPOSE="docker compose"
 
 # If we pass any arguments...
 if [ $# -gt 0 ];then
@@ -58,7 +58,7 @@ if [ $# -gt 0 ];then
         shift 1
         $COMPOSE ps "$@"
 
-    # Else, pass-thru args to docker-compose
+    # Else, pass-thru args to docker compose
     else
         $COMPOSE "$@"
     fi
