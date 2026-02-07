@@ -1,11 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.6.0] - 2026-02-07
+
+### Miscellaneous Tasks
+
+- Update ketch php to 8.2
+- Update docker compose to latest syntax
+
 ## [2.5.0] - 2026-02-07
 
 ### Miscellaneous Tasks
 
 - Drop 8.1 support and upgrade deps
+- Bump version
 
 ## [2.4.2] - 2025-06-22
 
