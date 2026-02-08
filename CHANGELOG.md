@@ -1,11 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.7.3] - 2026-02-08
+
+### Bug Fixes
+
+- Php fpm in nginx
+
 ## [2.7.2] - 2026-02-08
 
 ### Miscellaneous Tasks
 
 - Update docker file for ketch
+- Bump version
 
 ## [2.7.1] - 2026-02-08
 
