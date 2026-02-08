@@ -1,12 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.6.1] - 2026-02-08
+
+### Bug Fixes
+
+- Start server in ipv4
+
+### Documentation
+
+- Comment the last change for clarity
+
 ## [2.6.0] - 2026-02-07
 
 ### Miscellaneous Tasks
 
 - Update ketch php to 8.2
 - Update docker compose to latest syntax
+- Bump version
 
 ## [2.5.0] - 2026-02-07
 
