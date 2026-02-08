@@ -18,7 +18,9 @@ This will create a new `wp-test` directory if it doesn't already exist, containi
 
 ```bash
 forme test server start
+# or specify a port
+forme test server start 8100
 forme test server stop
 ```
 
-This will start or stop a test server using the basic built-in php server. It will be available to use on http://localhost:8000. While it's perfectly serviceable as a local development server, bear in mind that the database state won't persist between integration test runs, so don't rely on that aspect of it. If you need something more persistent, use valet or ketch (i.e. docker) instead.
+This will start or stop a test server using the basic built-in php server. It will be available to use on http://localhost:8000 or the port you specify. While it's perfectly serviceable as a local development server, bear in mind that the database state won't persist between integration test runs, so don't rely on that aspect of it. If you need something more persistent, use valet or ketch (i.e. docker) instead.

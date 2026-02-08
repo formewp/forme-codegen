@@ -91,7 +91,15 @@ final class TestCommand extends Command
         }
 
         if ($commandType === 'start') {
-            $scriptFile        = __DIR__ . '/../Shell/server_start.sh';
+            $port              = $args[1] ?? 8000;
+            $shellScript = $this->codegenFilesystem->read('src/Shell/server_start.sh');
+            if ($port !== 8000) {
+                // add the port to the script
+                $shellScript = str_replace('8000', $port, $shellScript);
+            }
+            $scriptFile        = 'tmp' . uniqid() . '.sh';
+
+            $this->tempFilesystem->write($scriptFile, $shellScript);
         } else {
             $scriptFile        = __DIR__ . '/../Shell/server_stop.sh';
         }
@@ -103,7 +111,7 @@ final class TestCommand extends Command
         }
 
         if ($commandType === 'start') {
-            $output->writeln('🎉 <fg=green>Started the test server successfully! You can visit http://localhost:8000 in your browser');
+            $output->writeln("🎉 <fg=green>Started the test server successfully! You can visit http://localhost:{$port} in your browser");
         } else {
             $output->writeln('🎉 <fg=green>Stopped the test server successfully!');
         }
