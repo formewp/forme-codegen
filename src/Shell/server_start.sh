@@ -8,7 +8,7 @@ fi
 
 # todo: make sure the process is not already running
 cd wp-test/public
-nohup php -S localhost:8000 server.php &> /dev/null &
+nohup php -S 127.0.0.1:8000 server.php &> /dev/null &
 echo $! > ../php.pid
 
 cd ../..
