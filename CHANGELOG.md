@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.7.0] - 2026-02-08
+
+### Features
+
+- Specify port for test server
+
 ## [2.6.1] - 2026-02-08
 
 ### Bug Fixes
@@ -10,6 +16,10 @@ All notable changes to this project will be documented in this file.
 ### Documentation
 
 - Comment the last change for clarity
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.6.0] - 2026-02-07
 
