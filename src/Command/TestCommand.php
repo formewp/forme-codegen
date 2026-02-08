@@ -100,6 +100,7 @@ final class TestCommand extends Command
             $scriptFile        = 'tmp' . uniqid() . '.sh';
 
             $this->tempFilesystem->write($scriptFile, $shellScript);
+            $scriptFile        = $this->tempFilesystemAdapter->getPath() . '/' . $scriptFile;
         } else {
             $scriptFile        = __DIR__ . '/../Shell/server_stop.sh';
         }
