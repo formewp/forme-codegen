@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.7.2] - 2026-02-08
+
+### Miscellaneous Tasks
+
+- Update docker file for ketch
+
 ## [2.7.1] - 2026-02-08
 
 ### Bug Fixes
 
 - Correct tmp path
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.7.0] - 2026-02-08
 
