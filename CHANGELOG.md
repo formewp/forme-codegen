@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.7.1] - 2026-02-08
+
+### Bug Fixes
+
+- Correct tmp path
+
 ## [2.7.0] - 2026-02-08
 
 ### Features
 
 - Specify port for test server
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.6.1] - 2026-02-08
 
