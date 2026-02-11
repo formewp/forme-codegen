@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.7.5] - 2026-02-11
+
+### Bug Fixes
+
+- Notifier syntax
+
 ## [2.7.4] - 2026-02-08
 
 ### Bug Fixes
 
 - Enforce php 8.2 on ketch docker image
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.7.3] - 2026-02-08
 
