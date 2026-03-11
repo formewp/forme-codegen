@@ -1,11 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [3.0.1] - 2026-03-11
+## [3.0.2] - 2026-03-11
+
+### Bug Fixes
+
+- Update more php refs to 8.3 for ketch
+
+### Miscellaneous Tasks
+
+- Update ketch php to 8.3
+
+## [2.8.1] - 2026-03-11
 
 ### Miscellaneous Tasks
 
 - Update deps
+- Bump version
 
 ## [3.0.0] - 2026-03-11
 
