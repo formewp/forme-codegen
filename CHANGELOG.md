@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2026-03-11
+
+### Miscellaneous Tasks
+
+- Update to platine from plates 4
+
 ## [2.7.5] - 2026-02-11
 
 ### Bug Fixes
 
 - Notifier syntax
+
+### Miscellaneous Tasks
+
+- Bump version
 
 ## [2.7.4] - 2026-02-08
 
