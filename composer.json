@@ -3,9 +3,9 @@
     "license": "MIT",
     "description": "Code Generation CLI For The Forme WordPress Framework",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "consolidation/comments": "^2.0",
-        "forme/framework": "^3.9.4",
+        "forme/framework": "^4.0",
         "jawira/case-converter": "^3.4",
         "jolicode/jolinotif": "^3.1",
         "league/flysystem": "^3.0",
@@ -70,7 +70,7 @@
             "pestphp/pest-plugin": true
         },
         "platform": {
-            "php": "8.2.0"
+            "php": "8.3.0"
         }
     }
 }

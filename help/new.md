@@ -26,7 +26,7 @@ You might have different Github users (e.g a work and personal one) and might ha
 forme new plugin FooBar --host=work
 ```
 
-You can select a view engine for the project. The code generator supports `plates-4`, `blade`, `twig` or `plates`. Default is `plates-4`.
+You can select a view engine for the project. The code generator supports `platine`, `blade`, `twig` or `plates`. Default is `platine`.
 
 ```bash
 forme new theme FooBar --view=blade

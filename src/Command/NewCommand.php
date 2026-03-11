@@ -28,7 +28,7 @@ final class NewCommand extends Command
     /**
      * @var string[]
      */
-    public const VALID_VIEWS = ['plates-4', 'blade', 'twig', 'plates'];
+    public const VALID_VIEWS = ['platine', 'blade', 'twig', 'plates'];
 
     /**
      * @var string
@@ -44,7 +44,7 @@ final class NewCommand extends Command
             ->addArgument('name', InputArgument::REQUIRED, 'The name of the project in Title Case')
             ->addOption('host', null, InputOption::VALUE_REQUIRED, 'The github host name if non standard')
             ->addOption('vendor', null, InputOption::VALUE_REQUIRED, 'The vendor namespace - defaults to App')
-            ->addOption('view', null, InputOption::VALUE_REQUIRED, 'The view engine to use - plates-4, blade, twig or plates - defaults to plates-4')
+            ->addOption('view', null, InputOption::VALUE_REQUIRED, 'The view engine to use - platine, blade, twig or plates - defaults to platine')
         ;
     }
 
@@ -55,7 +55,7 @@ final class NewCommand extends Command
         $type             = $input->getArgument('type');
         $host             = $input->getOption('host');
         $vendor           = $input->getOption('vendor') ?: 'App';
-        $view             = $input->getOption('view') ?: 'plates-4';
+        $view             = $input->getOption('view') ?: 'platine';
         if (!in_array($type, self::VALID_TYPES)) {
             $output->writeln('⛔ <fg=red>Not a valid project type.</> Valid types are: ' . implode(', ', self::VALID_TYPES));
 
